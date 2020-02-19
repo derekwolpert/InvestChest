@@ -7,6 +7,9 @@ const passport = require('passport');
 
 const User = require("../../models/User");
 
+const validateRegisterInput = require("../../validation/register");
+const validateLoginInput = require("../../validation/login");
+
 router.get("/current", passport.authenticate("jwt", { session: false }), (req, res) => {
     res.json({
         id: req.user.id,
@@ -16,6 +19,13 @@ router.get("/current", passport.authenticate("jwt", { session: false }), (req, r
 });
 
 router.post("/register", (req, res) => {
+
+    const { errors, isValid } = validateRegisterInput(req.body);
+
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+
     User.findOne({ email: req.body.email })
     .then(user => {
         if (user) {
@@ -41,6 +51,13 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
+
+    const { errors, isValid } = validateLoginInput(req.body);
+
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+
     const email = req.body.email;
     const password = req.body.password;
 
@@ -53,7 +70,7 @@ router.post("/login", (req, res) => {
         .then(isMatch => {
             if (isMatch) {
 
-                const payload = { id: user.id, name:user.name }
+                const payload = { id: user.id, name:user.name };
                 
                 jwt.sign(
                     payload,
