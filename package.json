@@ -4,8 +4,10 @@
   "description": "NY TTP W2020",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "server": "nodemon app.js"
+    "server:debug": "nodemon --inspect app.js",
+    "server": "nodemon app.js",
+    "start": "node app.js"
+
   },
   "repository": {
     "type": "git",

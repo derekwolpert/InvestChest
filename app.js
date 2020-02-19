@@ -8,6 +8,8 @@ const bodyParser = require("body-parser");
 const users = require("./routes/api/users");
 const trades = require("./routes/api/trades");
 
+const User = require("./models/User");
+
 mongoose
 	.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
 	.then(() => console.log("Connected to MongoDB successfully"))
