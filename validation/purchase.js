@@ -17,7 +17,7 @@ module.exports = function validatePurchaseInput(data) {
         errors.symbol = "Ticker Symbol field is required";
     }
 
-    if (!Validator.isCurrency(data.purchasePrice, { allow_negatives: false, digits_after_decimal: [2] })) {
+    if (!Validator.isCurrency(data.purchasePrice, { allow_negatives: false })) {
         errors.purchasePrice = "Purchase Price must be in a valid currency format greater than 0.00.";
     }
 
