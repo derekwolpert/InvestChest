@@ -17,12 +17,8 @@ module.exports = function validatePurchaseInput(data) {
         errors.symbol = "Symbol field is required";
     }
 
-    if (Validator.isCurrency(data.purchasePrice)) {
-        errors.purchasePrice = "Purchase Price must be a number";
-    }
-
-    if (Validator.equals(data.purchasePrice, "0.00")) {
-        errors.purchasePrice = "Purchase Price must be greater than 0.00";
+    if (!Validator.isDecimal(data.purchasePrice, { force_decimal: true, decimal_digits: '2,', locale: 'en-US' }) || Validator.isFloat(data.purchasePrice, { gt: 0 })) {
+        errors.purchasePrice = "Purchase Price must be a value greater than $0.00.";
     }
 
     if (Validator.isEmpty(data.purchasePrice)) {
