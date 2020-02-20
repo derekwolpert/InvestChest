@@ -1,13 +1,14 @@
 const Validator = require("validator");
 const validText = require("./valid-text");
+const validNumber = require("./valid-number");
 
 module.exports = function validatePurchaseInput(data) {
     
     let errors = {};
 
     data.symbol = validText(data.symbol) ? data.symbol : "";
-    data.purchasePrice = validText(data.purchasePrice) ? data.purchasePrice : "";
-    data.numberOfShares = validText(data.numberOfShares) ? data.numberOfShares : "";
+    data.purchasePrice = validNumber(data.purchasePrice) ? "" + data.purchasePrice : "";
+    data.numberOfShares = validNumber(data.numberOfShares) ? "" + data.numberOfShares : "";
 
     if (!Validator.isLength(data.symbol, { min: 1, max: 5 })) {
         errors.symbol = "Symbol must be between 1 and 5 characters";

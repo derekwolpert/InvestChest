@@ -11,11 +11,11 @@ const TradeSchema = new Schema({
         required: true
     },
     purchasePrice: {
-        type: String,
+        type: Number,
         required: true
     },
     numberOfShares: {
-        type: String,
+        type: Number,
         required: true
     },
     date: {

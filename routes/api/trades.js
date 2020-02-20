@@ -3,9 +3,17 @@ const router = express.Router();
 const passport = require('passport');
 
 const Trade = require("../../models/Trade");
-
 const validatePurchaseInput = require("../../validation/purchase");
 
+router.get("/", (req, res) => {
+    Trade.find({ user: req.user.id })
+        .sort({ date: -1 })
+        .then(trades => res.json(trades))
+        .catch(err =>
+            res.status(404).json({ noTradesFound: "No trades found from that user" }
+            )
+        );
+});
 
 router.post("/", passport.authenticate("jwt", { session: false }), (req, res) => {
 
