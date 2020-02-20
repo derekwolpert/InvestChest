@@ -5,7 +5,7 @@ const passport = require('passport');
 const Trade = require("../../models/Trade");
 const validatePurchaseInput = require("../../validation/purchase");
 
-router.get("/", (req, res) => {
+router.get("/", passport.authenticate("jwt", { session: false }), (req, res) => {
     Trade.find({ user: req.user.id })
         .sort({ date: -1 })
         .then(trades => res.json(trades))
