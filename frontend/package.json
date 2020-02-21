@@ -1,0 +1,50 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "Frontend | NY TTP W2020",
+  "main": "./src/index.js",
+  "proxy": "http://localhost:3000",
+  "scripts": {
+    "start": "webpack-dev-server --config webpack.dev.js",
+    "watch": "webpack --watch --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/derekwolpert/InvestChest.git"
+  },
+  "author": "Derek Wolpert",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/derekwolpert/InvestChest/issues"
+  },
+  "homepage": "https://github.com/derekwolpert/InvestChest#readme",
+  "dependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-react": "^7.8.3",
+    "autoprefixer": "^9.7.4",
+    "axios": "^0.19.2",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.4.2",
+    "fibers": "^4.0.2",
+    "jwt-decode": "^2.2.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.13.1",
+    "postcss-loader": "^3.0.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.1.2",
+    "redux": "^4.0.5",
+    "sass": "^1.25.0",
+    "sass-loader": "^8.0.2",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-merge": "^4.2.2"
+  },
+  "devDependencies": {
+    "redux-logger": "^3.0.6",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
