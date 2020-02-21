@@ -8,7 +8,7 @@ module.exports = merge(common, {
     watch: true,
     devServer: {
         contentBase: path.resolve(__dirname, "public"),
-        publicPath: "/dist/",
+        publicPath: "/",
         compress: true,
         watchContentBase: true,
         hot: true
