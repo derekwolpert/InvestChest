@@ -7,6 +7,7 @@ const passport = require('passport');
 
 const users = require("./routes/api/users");
 const trades = require("./routes/api/trades");
+const stocks = require("./routes/api/stocks");
 
 const path = require("path");
 
@@ -32,6 +33,7 @@ app.use(bodyParser.json());
 
 app.use("/api/users", users);
 app.use("/api/trades", trades);
+app.use("/api/stocks", stocks);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));

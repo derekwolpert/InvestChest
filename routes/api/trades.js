@@ -10,8 +10,7 @@ router.get("/", passport.authenticate("jwt", { session: false }), (req, res) => 
         .sort({ date: -1 })
         .then(trades => res.json(trades))
         .catch(err =>
-            res.status(404).json({ noTradesFound: "No trades found from that user" }
-            )
+            res.status(404).json({ noTradesFound: "No trades found from that user" })
         );
 });
 
@@ -35,6 +34,5 @@ router.post("/", passport.authenticate("jwt", { session: false }), (req, res) =>
         .catch(err => console.log(err));
 
 });
-
 
 module.exports = router;
