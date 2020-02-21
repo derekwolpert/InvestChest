@@ -9,18 +9,14 @@ router.get("/", passport.authenticate("jwt", { session: false }), (req, res) => 
     Trade.find({ user: req.user.id })
         .sort({ date: -1 })
         .then(trades => res.json(trades))
-        .catch(err =>
-            res.status(404).json({ noTradesFound: "No trades found from that user" })
-        );
+        .catch(err => res.status(404).json({ noTradesFound: "No trades found from that user" }));
 });
 
 router.post("/", passport.authenticate("jwt", { session: false }), (req, res) => {
 
     const { errors, isValid } = validatePurchaseInput(req.body);
 
-    if (!isValid) {
-        return res.status(400).json(errors);
-    }
+    if (!isValid) return res.status(400).json(errors);
 
     const newTrade = new Trade({
         user: req.user.id,

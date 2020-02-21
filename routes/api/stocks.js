@@ -8,7 +8,8 @@ const iexApiToken = require("../../config/keys").iexApiToken;
 router.get("/batch/:symbols", (req, res) => {
     axios.get(`https://cloud.iexapis.com/stable/stock/market/batch?symbols=${req.params.symbols}&filter=symbol,companyName,latestPrice,latestUpdate&types=quote&token=${iexApiToken}`)
         .then(stocks => res.json(stocks.data))
-        .catch(err => res.status(err.response.status).json({ noStocksFound: err.response.data }));
+        .catch(err => res.status(err.response.status).json({ noStocksFound: err.response.data })
+        );
 });
 
 router.get("/lookup/:symbol", (req, res) => {
