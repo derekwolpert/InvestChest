@@ -7,7 +7,8 @@ import MainPage from "./main/main_page";
 const App = () => (
     <div>
         <Switch>
-            <AuthRoute exact path="/" component={MainPage} />
+            <AuthRoute exact path="/" component={SplashPage} />
+            <MainPage />
         </Switch>
     </div>
 );
