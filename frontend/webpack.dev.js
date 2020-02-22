@@ -10,7 +10,6 @@ module.exports = merge(common, {
         contentBase: path.resolve(__dirname, "public"),
         publicPath: "/",
         compress: true,
-        watchContentBase: true,
-        hot: true
+        watchContentBase: true
     }
 });
