@@ -1,15 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600&display=swap');
-@import "normalize";
+@import "reset";
 @import "color_variables";
-
-body, body * {
-   font-family: 'Nunito';
-}
 
 body {
   background: var(--bg1);
   color: var(--text1);
+  
+  * {
+    font-family: 'Nunito';
+  }
 }
+
 
 .modal-background {
   position: fixed;
@@ -27,3 +28,6 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+@import "header";
+@import "footer";

@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoins } from "@fortawesome/free-solid-svg-icons";
 
 class Header extends React.Component {
     constructor(props) {
@@ -25,7 +27,7 @@ class Header extends React.Component {
         } else {
             return (
                 <div>
-                    <div onClick={() => this.props.openModal("register")}>Register</div>
+                    <div className="header-register" onClick={() => this.props.openModal("register")}>Register</div>
                     <div onClick={() => this.props.openModal("signIn")}>Sign In</div>
                 </div>
             );
@@ -34,10 +36,17 @@ class Header extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>InvestChest</h1>
-                {this.getLinks()}
-            </div>
+            <section className="header-container">
+                <div className="header">
+                    <Link to={this.props.loggedIn ? "/portfolio" : "/"}>
+                        <h1>
+                            <FontAwesomeIcon icon={faCoins} />
+                            InvestChest
+                        </h1>
+                    </Link>
+                    {this.getLinks()}
+                </div>
+            </section>
         );
     }
 }

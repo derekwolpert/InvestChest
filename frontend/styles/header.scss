@@ -1,0 +1,53 @@
+.header-container {
+    display: flex;
+    justify-content: center;
+    height: 56px;
+    background-color: var(--text1);
+    color: var(--bg1);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    padding: 0 16px;
+
+    h1 {
+
+        font-weight: 600;
+        font-size: 32px;
+        cursor: pointer;
+
+        svg {
+            color: $blue;
+            padding-right: 8px;
+        }
+    }
+
+    h1:hover {
+        color: $blue;
+    }
+
+    > div {
+
+        display: flex;
+        justify-content: flex-end;
+        cursor: pointer;
+
+        > div {
+            font-weight: 600;
+            padding: 8px;
+            border-radius: 4px;
+            border: var(--bg1) solid 2px;
+        }
+
+        > div:hover {
+            background-color: $blue;
+            color: var(--text1);
+        }
+        .header-register {
+            margin-right: 8px;
+        }
+    }
+}

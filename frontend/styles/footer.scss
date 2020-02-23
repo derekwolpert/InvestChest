@@ -1,0 +1,58 @@
+footer {
+    position: absolute;
+    bottom: 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    height: 32px;
+    background-color: var(--text1);
+    color: var(--bg1);
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    padding: 0 16px;
+
+    a:hover {
+        color: $blue;
+    }
+
+    .left {
+        display: flex;
+
+        font-size: 12px;
+        span {
+            padding-right: 8px;
+            margin-right: 8px;
+            border-right: var(--bg1) solid 1px;
+        }
+    }
+
+    .right {
+        display: flex;
+        font-size: 24px;
+
+        svg {
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+        svg:hover {
+            color: $blue;
+        }
+
+        .fa-envelope {
+            margin-right: 0;
+        }
+
+
+
+
+    }
+
+}
