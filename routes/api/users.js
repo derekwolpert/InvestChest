@@ -13,7 +13,7 @@ const validateSignInInput = require("../../validation/signin");
 router.get("/current", passport.authenticate("jwt", { session: false }), (req, res) => {
     res.json({
         id: req.user.id,
-        handle: req.user.handle,
+        name: req.user.name,
         email: req.user.email
     });
 });
@@ -64,9 +64,10 @@ router.post("/signin", (req, res) => {
         if (!user) return res.status(404).json({ email: "This user does not exist" });
 
         bcrypt.compare(password, user.password)
+        
         .then(isMatch => {
             if (isMatch) {
-                const payload = { id: user.id, name:user.name };
+                const payload = { id: user.id, name: user.name };
                 
                 jwt.sign( payload, secretOrKey, { expiresIn: 3600 }, (err, token) => {
                     res.json({ success: true, token: "Bearer " + token});}
