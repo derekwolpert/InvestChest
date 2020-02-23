@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Frontend | NY TTP W2020",
   "main": "./src/index.js",
-  "proxy": "http://localhost:3000",
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js",
     "watch": "webpack --watch --config webpack.dev.js",
@@ -23,6 +22,9 @@
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/react-fontawesome": "^0.1.8",
     "autoprefixer": "^9.7.4",
     "axios": "^0.19.2",
     "babel-loader": "^8.0.6",

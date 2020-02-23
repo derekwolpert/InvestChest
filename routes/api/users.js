@@ -8,7 +8,7 @@ const passport = require("passport");
 const User = require("../../models/User");
 
 const validateRegisterInput = require("../../validation/register");
-const validateLoginInput = require("../../validation/login");
+const validateSignInInput = require("../../validation/signin");
 
 router.get("/current", passport.authenticate("jwt", { session: false }), (req, res) => {
     res.json({
@@ -48,9 +48,9 @@ router.post("/register", (req, res) => {
     });
 });
 
-router.post("/login", (req, res) => {
+router.post("/signin", (req, res) => {
 
-    const { errors, isValid } = validateLoginInput(req.body);
+    const { errors, isValid } = validateSignInInput(req.body);
 
     if (!isValid) {
         return res.status(400).json(errors);

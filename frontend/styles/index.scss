@@ -1,3 +1,10 @@
+@import "normalize";
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600&display=swap');
+
+body, body *{
+   font-family: 'Nunito';
+}
+
 div {
     color: orange;
     a {
@@ -6,4 +13,21 @@ div {
             color: blue
         }
     }
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.modal-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

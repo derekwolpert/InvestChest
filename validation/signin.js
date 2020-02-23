@@ -1,7 +1,7 @@
 const Validator = require("validator");
 const validText = require("./valid-text");
 
-module.exports = function validateLoginInput(data) {
+module.exports = function validateSignInInput(data) {
     
     let errors = {};
 

@@ -9,6 +9,7 @@ module.exports = merge(common, {
     devServer: {
         contentBase: path.resolve(__dirname, "public"),
         publicPath: "/",
+        proxy: { "/api": "http://localhost:3000" },
         compress: true,
         watchContentBase: true
     }

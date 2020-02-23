@@ -1,6 +1,6 @@
 import React from "react";
 
-class MainPage extends React.Component {
+class SplashPage extends React.Component {
     render() {
         return (
             <div>
@@ -11,4 +11,4 @@ class MainPage extends React.Component {
     }
 }
 
-export default MainPage;
+export default SplashPage;
