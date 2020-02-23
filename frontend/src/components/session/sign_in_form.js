@@ -54,22 +54,15 @@ class SignInForm extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <div>
                         <br />
-                        Please Sign In or{" "}
-                        <span onClick={this.props.otherForm}>Register</span>
-                        <FontAwesomeIcon
-                            icon={faTimes}
-                            onClick={this.props.closeModal}
-                            className="close-x"
-                        />
-                        <input
-                            type="text"
+                        Please Sign In or <span onClick={this.props.otherForm}>Register</span>
+                        <FontAwesomeIcon icon={faTimes} onClick={this.props.closeModal} className="close-x" />
+                        <input type="text"
                             value={this.state.email}
                             onChange={this.update("email")}
                             placeholder="Email"
                         />
                         <br />
-                        <input
-                            type="password"
+                        <input type="password"
                             value={this.state.password}
                             onChange={this.update("password")}
                             placeholder="Password"

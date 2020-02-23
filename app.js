@@ -1,5 +1,5 @@
 const express = require("express");
-
+const compression = require("compression");
 const app = express();
 const db = require("./config/keys").mongoURI;
 const mongoose = require("mongoose");
@@ -12,16 +12,7 @@ const stocks = require("./routes/api/stocks");
 
 const path = require("path");
 
-mongoose
-	.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
-	.then(() => console.log("Connected to MongoDB successfully"))
-	.catch(err => console.log(err));
-
-app.use(passport.initialize());
-require('./config/passport')(passport);
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(compression());
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("frontend/dist"));
@@ -31,6 +22,17 @@ if (process.env.NODE_ENV === "production") {
         );
     });
 }
+
+mongoose
+	.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+	.then(() => console.log("Connected to MongoDB successfully"))
+    .catch(err => console.log(err));
+
+app.use(passport.initialize());
+require('./config/passport')(passport);
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use("/api/users", users);
 app.use("/api/trades", trades);

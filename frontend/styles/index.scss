@@ -1,18 +1,14 @@
-@import "normalize";
 @import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600&display=swap');
+@import "normalize";
+@import "color_variables";
 
-body, body *{
+body, body * {
    font-family: 'Nunito';
 }
 
-div {
-    color: orange;
-    a {
-        color: green;
-        div {
-            color: blue
-        }
-    }
+body {
+  background: var(--bg1);
+  color: var(--text1);
 }
 
 .modal-background {
@@ -21,7 +17,7 @@ div {
   bottom: 0;
   right: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(#181818, 0.7);
   z-index: 10;
 }
 
