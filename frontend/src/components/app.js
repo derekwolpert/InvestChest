@@ -14,10 +14,16 @@ const App = () => (
         <header>
             <HeaderContainer />
         </header>
-        <Switch>
-            <AuthRoute exact path="/" component={SplashContainer} />
-            <ProtectedRoute exact path="/portfolio" component={PortfolioContainer} />
-        </Switch>
+        <section className="body-container">
+            <Switch>
+                <AuthRoute exact path="/" component={SplashContainer} />
+                <ProtectedRoute
+                    exact
+                    path="/portfolio"
+                    component={PortfolioContainer}
+                />
+            </Switch>
+        </section>
         <footer>
             <Footer />
         </footer>
