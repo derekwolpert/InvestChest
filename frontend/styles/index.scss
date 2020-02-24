@@ -15,6 +15,8 @@ body {
   max-width: 1280px;
   margin: auto;
   background: var(--bg2);
+  border-left: var(--text4) solid 2px;
+  border-right: var(--text4) solid 2px;
 }
 
 @import "modal";

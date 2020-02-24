@@ -12,6 +12,7 @@ header {
     width: 100%;
     background-color: var(--bg1);
     color: var(--text3);
+    border-bottom: var(--text4) solid 2px;
 
     * {
         white-space: nowrap;
