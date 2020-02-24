@@ -1,14 +1,17 @@
 import { connect } from "react-redux";
 import Portfolio from "./portfolio";
+import { getTrades } from "../../actions/trades_action";
 
 const mapStateToProps = state => {
     return {
-        signedIn: state.session.isAuthenticated,
+        user: state.session.user,
+        trades: state.entities.trades
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        getTrades: () => dispatch(getTrades())
     };
 };
 

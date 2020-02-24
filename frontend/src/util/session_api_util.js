@@ -15,3 +15,7 @@ export const register = (userData) => {
 export const signIn = (userData) => {
     return axios.post("/api/users/signin", userData);
 };
+
+export const getCurrentUser = () => {
+    return axios.post("/api/users/current");
+};
