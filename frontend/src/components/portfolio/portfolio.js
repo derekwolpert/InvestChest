@@ -6,6 +6,7 @@ class Portfolio extends React.Component {
         super(props);
         this.formatTradesForPortfolio = this.formatTradesForPortfolio.bind(this);
         this.getStocksFromTrades = this.getStocksFromTrades.bind(this);
+        this.portfolioTotal = this.portfolioTotal.bind(this);
     }
 
     componentDidMount() {
@@ -31,6 +32,13 @@ class Portfolio extends React.Component {
         this.props.getStocks([...symbolsSet].join(","));
     }
 
+    portfolioTotal() {
+        let total = 0;
+        for (let trade of this.props.trades) {
+            total += (this.props.stocks[trade.symbol].quote.latestPrice * trade.numberOfShares);
+        }
+        return total.toFixed(2);
+    }
 
     formatedPortfolioItems(trades) {
         return (
@@ -109,11 +117,13 @@ class Portfolio extends React.Component {
     render() {
         return this.props.trades && this.props.stocks ? (
             <section className="portfolio-container">
-                <h1>Portfolio ($0000.00)<span><span>Logged in as</span>{this.props.user.name}</span></h1>
+                <h1>Portfolio (${this.portfolioTotal()})<span><span>Logged in as</span>{this.props.user.name}</span></h1>
                 <div className="portfolio-content">
                     <div>{this.formatTradesForPortfolio()}</div>
                     <span />
-                    <div>Side 2</div>
+                    <div>
+                        <h1>Cash – ${this.props.user.cash.toFixed(2)}</h1>
+                    </div>
                 </div>
             </section>
         ) : null;

@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const passport = require('passport');
 
+const User = require("../../models/User");
 const Trade = require("../../models/Trade");
 const validatePurchaseInput = require("../../validation/purchase");
 
@@ -14,6 +15,10 @@ router.get("/history", passport.authenticate("jwt", { session: false }), (req, r
 
 router.post("/purchase", passport.authenticate("jwt", { session: false }), (req, res) => {
 
+    if (req.user.cash < (req.body.purchasePrice * req.body.numberOfShares)) {
+        return res.status(400).json({ notEnoughCash: "You do not have enough cash to make this purchase" });
+    }
+
     const { errors, isValid } = validatePurchaseInput(req.body);
 
     if (!isValid) return res.status(400).json(errors);
@@ -25,10 +30,10 @@ router.post("/purchase", passport.authenticate("jwt", { session: false }), (req,
         numberOfShares: req.body.numberOfShares
     });
 
-    newTrade.save()
-        .then(trade => res.json(trade))
+    User.findByIdAndUpdate(req.user.id, { cash: (req.user.cash - (req.body.purchasePrice * req.body.numberOfShares)) }, { new: true })
+        .then(() => newTrade.save())
+        .then(trade => res.json({trade: trade, user: { cash: (req.user.cash - (req.body.purchasePrice * req.body.numberOfShares))}}))
         .catch(err => console.log(err));
-
 });
 
 module.exports = router;

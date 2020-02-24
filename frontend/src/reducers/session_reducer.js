@@ -4,6 +4,8 @@ import {
     RECEIVE_USER_SIGN_IN
 } from "../actions/session_actions";
 
+import { RECEIVE_TRADE } from "../actions/trade_actions";
+
 const initialState = {
     isAuthenticated: false,
     user: {}
@@ -22,6 +24,10 @@ export default function(state = initialState, action) {
                 isAuthenticated: false,
                 user: undefined
             };
+        case RECEIVE_TRADE:
+            const newState = { ...state }
+            newState.user.cash = action.user.cash;
+            return newState;
         case RECEIVE_USER_SIGN_IN:
             return {
                 ...state,

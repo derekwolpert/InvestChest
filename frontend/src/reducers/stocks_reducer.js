@@ -7,7 +7,7 @@ export default function(state = null, action) {
         case RECEIVE_BATCH_STOCKS:
             return action.stocks;
         case RECEIVE_STOCK:
-            return {...state, [action.stock.symbol]: action.stock};
+            return {...state, [action.stock.symbol]: { quote: action.stock } };
         case RECEIVE_USER_LOGOUT:
             return null;
         default:

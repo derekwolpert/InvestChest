@@ -10,7 +10,8 @@ const receiveAllTrades = trades => ({
 
 const receiveTrade = trade => ({
     type: RECEIVE_TRADE,
-    trade: trade.data
+    trade: trade.data.trade,
+    user: trade.date.user
 });
 
 export const getTrades = () => dispatch => APIUtil.getTrades()

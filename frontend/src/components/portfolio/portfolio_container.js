@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import Portfolio from "./portfolio";
 import { getTrades } from "../../actions/trade_actions";
-import { getStocks, getStock } from "../../actions/stock_actions";
+import { getStocks } from "../../actions/stock_actions";
 
 const formatTradesForPortfolio = (trades) => {
     const combinedTrades = {};
