@@ -1,61 +1,75 @@
 .portfolio-container {
-    position: relative;
-    height: calc(100vh - 80px);
-
+    padding-top: 40px;
+    width: 100%;
+    height: calc(100vh - 32px);
     max-width: 1080px;
     margin: auto;
     background: var(--bg1);
 
     h1 {
-        position: absolute;
-        font-size: 36px;
-        font-weight: 600;
-        margin: 16px 16px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        font-size: 32px;
+        padding: 16px 16px 0;
+        span {
+            font-size: 20px;
+        }
     }
 }
 
 .portfolio-content {
-    position: absolute;
-    top: 74px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 32px 16px 16px;
-
+    display: flex;    
+    margin: 16px 16px 16px;
+    height: calc(100vh - 160px);
     display: flex;
     justify-content: space-between;
 
     > div:first-of-type {
         flex: 3;
-        margin-right: 16px;
+        overflow-y: scroll;
+        margin-top: 8px;
     }
 
     > div:last-of-type {
         flex: 2;
         margin-left: 16px;
+        margin-top: 8px;
     }
 
     > span {
-        border-right: var(--text4) solid 4px;
+        border-right: var(--text4) solid 2px;
     }
 
 }
 
 .portfolio-items-container {
-    overflow-y: scroll;
-
+    margin-right: 16px;
     li {
         position: relative;
         
         font-size: 16px;
         padding-bottom: 16px;
-        border-bottom: var(--text4) solid 4px;
+        border-bottom: var(--text4) solid 2px;
         margin-bottom: 16px;
 
         > div {
             display: flex;
             justify-content: space-between;
             margin-bottom: 8px;
+
+            > span:last-of-type {
+                font-weight: 600;
+                margin-left: 4px;
+            }
+
+
+            .green {
+                color: $green;
+            }
+            .red {
+                color: $red;
+            }
         }
         > span {
             font-size: 12px;

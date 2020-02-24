@@ -1,7 +1,15 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
 .header-container {
     display: flex;
     justify-content: center;
-    height: 48px;
+    height: 40px;
+    width: 100%;
     background-color: var(--text3);
     color: var(--bg2);
 
@@ -15,7 +23,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100vw;
+    width: 100%;
     max-width: 1080px;
     margin: auto;
     padding: 0 16px;

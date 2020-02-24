@@ -1,6 +1,7 @@
 footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
+    width: 100%;
 }
 
 .footer-container {
@@ -15,7 +16,7 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100vw;
+    width: 100%;
     padding: 0 16px;
 
     a:hover {

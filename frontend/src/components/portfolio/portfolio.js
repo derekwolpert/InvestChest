@@ -32,21 +32,34 @@ class Portfolio extends React.Component {
                 {Object.keys(trades)
                     .sort()
                     .map((symbol, idx) => (
-                        <li className="portfolio-item" key={idx}>
+                        <li key={idx}>
                             <div>
                                 <span>{`${symbol} (${
                                     trades[symbol].companyName
                                 }) – ${trades[symbol].totalShares} Share${
                                     trades[symbol].totalShares > 1 ? "s" : ""
                                 }`}</span>
-                                <span>{`$${trades[symbol].totalValue.toFixed(
+                                <span
+                                    className={
+                                        trades[symbol].totalValue >
+                                        trades[symbol].totalCost
+                                            ? "green"
+                                            : trades[symbol].totalValue <
+                                              trades[symbol].totalCost
+                                            ? "red"
+                                            : ""
+                                    }
+                                >{`$${trades[symbol].totalValue.toFixed(
                                     2
                                 )}`}</span>
                             </div>
 
-                            <span>Last Updated: {moment(
-                                this.props.stocks[symbol].quote.latestUpdate
-                            ).calendar()}</span>
+                            <span>
+                                Last Updated:{" "}
+                                {moment(
+                                    this.props.stocks[symbol].quote.latestUpdate
+                                ).calendar()}
+                            </span>
                         </li>
                     ))}
             </ul>
@@ -67,11 +80,17 @@ class Portfolio extends React.Component {
                         trade.numberOfShares;
                     combinedTrades[trade.symbol].totalValue +=
                         trade.numberOfShares * this.props.stocks[trade.symbol].quote.latestPrice;
+                    combinedTrades[trade.symbol].totalCost +=
+                        trade.numberOfShares * trade.purchasePrice;
                 } else {
                     combinedTrades[trade.symbol] = {
                         totalShares: trade.numberOfShares,
-                        totalValue: trade.numberOfShares * this.props.stocks[trade.symbol].quote.latestPrice,
-                        companyName: this.props.stocks[trade.symbol].quote.companyName
+                        totalValue:
+                            trade.numberOfShares *
+                            this.props.stocks[trade.symbol].quote.latestPrice,
+                        companyName: this.props.stocks[trade.symbol].quote
+                            .companyName,
+                        totalCost: trade.numberOfShares * trade.purchasePrice
                     };
                 }
             }
@@ -84,10 +103,10 @@ class Portfolio extends React.Component {
     render() {
         return this.props.trades && this.props.stocks ? (
             <section className="portfolio-container">
-                <h1>Portfolio ($0000.00)</h1>
+                <h1>Portfolio ($0000.00)<span>{this.props.user.name}</span></h1>
                 <div className="portfolio-content">
                     <div>{this.formatTradesForPortfolio()}</div>
-                    <span></span>
+                    <span />
                     <div>Side 2</div>
                 </div>
             </section>
