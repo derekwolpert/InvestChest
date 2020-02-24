@@ -1,7 +1,7 @@
 import {
     RECEIVE_ALL_TRADES,
     RECEIVE_TRADE
-} from "../actions/trades_action";
+} from "../actions/trade_actions";
 
 export default function(state = null, action) {
     switch (action.type) {

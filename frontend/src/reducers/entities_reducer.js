@@ -1,9 +1,10 @@
 import { combineReducers } from "redux";
 import tradesReducer from "./trades_reducer";
-// import stocksReducer from "./stocks_reducer";
+import stocksReducer from "./stocks_reducer";
 
 const entitiesReducer = combineReducers({
-    trades: tradesReducer,
+    stocks: stocksReducer,
+    trades: tradesReducer
 });
 
 export default entitiesReducer;

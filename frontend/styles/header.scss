@@ -1,9 +1,14 @@
 .header-container {
     display: flex;
     justify-content: center;
-    height: 56px;
-    background-color: var(--text1);
-    color: var(--bg1);
+    height: 48px;
+    background-color: var(--text3);
+    color: var(--bg2);
+
+    * {
+        white-space: nowrap;
+        overflow: hidden;
+    }
 }
 
 .header {
@@ -11,17 +16,19 @@
     justify-content: space-between;
     align-items: center;
     width: 100vw;
+    max-width: 1080px;
+    margin: auto;
     padding: 0 16px;
 
     h1 {
 
         font-weight: 600;
-        font-size: 32px;
+        font-size: 30px;
         cursor: pointer;
 
         svg {
             color: $blue;
-            padding-right: 8px;
+            padding-right: 6px;
         }
     }
 
@@ -36,9 +43,9 @@
 
         > div, a {
             font-weight: 600;
-            padding: 8px;
+            padding: 4px 6px;
             border-radius: 8px;
-            border: var(--bg1) solid 2px;
+            border: var(--bg2) solid 2px;
             cursor: pointer;
         }
 

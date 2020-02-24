@@ -7,8 +7,8 @@ footer {
     display: flex;
     justify-content: center;
     height: 32px;
-    background-color: var(--text1);
-    color: var(--bg1);
+    background-color: var(--text3);
+    color: var(--bg2);
 }
 
 .footer {
@@ -29,7 +29,7 @@ footer {
         span {
             padding-right: 8px;
             margin-right: 8px;
-            border-right: var(--bg1) solid 1px;
+            border-right: var(--bg3) solid 1px;
         }
     }
 

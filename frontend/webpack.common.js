@@ -1,5 +1,6 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MomentLocalesPlugin = require("moment-locales-webpack-plugin");
 
 module.exports = {
     context: __dirname,
@@ -52,6 +53,7 @@ module.exports = {
             filename: "bundle.css",
             ignoreOrder: false
         }),
-        require("autoprefixer")
+        require("autoprefixer"),
+        new MomentLocalesPlugin(),
     ]
 };
