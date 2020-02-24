@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600,700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,600,700&display=swap");
 @import "reset";
 @import "color_variables";
 
@@ -7,7 +7,7 @@ body {
   color: var(--text3);
   
   * {
-    font-family: 'Nunito';
+    font-family: "Nunito", ;
   }
 }
 
@@ -20,8 +20,10 @@ body {
 }
 
 @import "modal";
+@import "loading_spinner";
 @import "session";
 @import "header";
 @import "splash";
 @import "portfolio";
+@import "purchase_form";
 @import "footer";

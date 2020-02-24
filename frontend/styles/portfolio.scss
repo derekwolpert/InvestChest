@@ -37,8 +37,12 @@
 
     > div:last-of-type {
         flex: 2;
+        display: flex;
+        flex-direction: column;
         margin-left: 16px;
         margin-top: 8px;
+
+        overflow-y: scroll;
 
         > h1 {
             text-align: center;

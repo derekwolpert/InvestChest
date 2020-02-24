@@ -1,4 +1,5 @@
 import React from "react";
+import PurchaseContainer from "./purchase_container"
 import * as moment from "moment";
 
 class Portfolio extends React.Component {
@@ -115,18 +116,23 @@ class Portfolio extends React.Component {
     };
 
     render() {
-        return this.props.trades && this.props.stocks ? (
+        return (
             <section className="portfolio-container">
-                <h1>Portfolio (${this.portfolioTotal()})<span><span>Logged in as</span>{this.props.user.name}</span></h1>
-                <div className="portfolio-content">
-                    <div>{this.formatTradesForPortfolio()}</div>
-                    <span />
-                    <div>
-                        <h1>Cash – ${this.props.user.cash.toFixed(2)}</h1>
+                {this.props.trades && this.props.stocks ?
+                <>
+                    <h1>Portfolio (${this.portfolioTotal()})<span><span>Logged in as</span>{this.props.user.name}</span></h1>
+                    <div className="portfolio-content">
+                        <div>{this.formatTradesForPortfolio()}</div>
+                        <span />
+                        <div>
+                            <h1>Cash – ${this.props.user.cash.toFixed(2)}</h1>
+                            <PurchaseContainer />
+                        </div>
                     </div>
-                </div>
+                </>
+                : <div className="center-spinner"><div className="lds-ring"><div></div><div></div><div></div><div></div></div></div> }
             </section>
-        ) : null;
+        );
     }
 }
 

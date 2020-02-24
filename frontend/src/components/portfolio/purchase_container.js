@@ -6,14 +6,15 @@ import PurchaseForm from "./purchase_form";
 const mapStateToProps = state => {
     return {
         user: state.session.user,
-        stocks: state.entities.stocks ? state.entities.stocks : null
+        stocks: state.entities.stocks ? state.entities.stocks : null,
+        stockError: state.errors.stock
     };
 };
 
 
 const mapDispatchToProps = dispatch => {
     return {
-        getStocks: (stocks) => dispatch(getStocks(stocks))
+        getStock: (stock) => dispatch(getStock(stock))
     };
 };
 

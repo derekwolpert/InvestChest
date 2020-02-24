@@ -5,7 +5,6 @@ import {
 
 import { RECEIVE_USER_LOGOUT } from "../actions/session_actions";
 
-
 export default function(state = null, action) {
     switch (action.type) {
         case RECEIVE_ALL_TRADES:
