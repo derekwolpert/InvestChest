@@ -3,7 +3,7 @@
 @import "color_variables";
 
 body {
-  background: var(--bg2);
+  background: var(--bg3);
   color: var(--text3);
   
   * {
@@ -14,7 +14,7 @@ body {
 .body-container {
   max-width: 1280px;
   margin: auto;
-  background: var(--bg1);
+  background: var(--bg2);
 }
 
 @import "modal";

@@ -5,24 +5,30 @@ class Portfolio extends React.Component {
     constructor(props) {
         super(props);
         this.formatTradesForPortfolio = this.formatTradesForPortfolio.bind(this);
+        this.getStocksFromTrades = this.getStocksFromTrades.bind(this);
     }
 
     componentDidMount() {
-        this.props.getTrades();
+        if (!this.props.trades) {
+            this.props.getTrades();
+        }
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.trades && !this.props.stocks)  {
-
-            const symbolsSet = new Set();
-
-            for (let trade of this.props.trades) {
-                symbolsSet.add(trade.symbol);
-            }
-            this.props.getStocks([...symbolsSet].join(","));
+            this.getStocksFromTrades();
+            
         } else if (!this.props.trades) {
             this.props.getTrades();
         }
+    }
+
+    getStocksFromTrades() {
+        const symbolsSet = new Set();
+        for (let trade of this.props.trades) {
+            symbolsSet.add(trade.symbol);
+        }
+        this.props.getStocks([...symbolsSet].join(","));
     }
 
 
@@ -73,7 +79,7 @@ class Portfolio extends React.Component {
         for (let trade of this.props.trades) {
 
             if (!(trade.symbol in this.props.stocks)) {
-                this.props.getStocks();
+                this.getStocksFromTrades();
             } else {
                 if (trade.symbol in combinedTrades) {
                     combinedTrades[trade.symbol].totalShares +=
@@ -103,7 +109,7 @@ class Portfolio extends React.Component {
     render() {
         return this.props.trades && this.props.stocks ? (
             <section className="portfolio-container">
-                <h1>Portfolio ($0000.00)<span>{this.props.user.name}</span></h1>
+                <h1>Portfolio ($0000.00)<span><span>Logged in as</span>{this.props.user.name}</span></h1>
                 <div className="portfolio-content">
                     <div>{this.formatTradesForPortfolio()}</div>
                     <span />

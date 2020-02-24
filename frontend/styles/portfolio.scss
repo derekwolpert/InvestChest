@@ -4,7 +4,6 @@
     height: calc(100vh - 32px);
     max-width: 1080px;
     margin: auto;
-    background: var(--bg1);
 
     h1 {
         display: flex;
@@ -12,8 +11,12 @@
         align-items: flex-start;
         font-size: 32px;
         padding: 16px 16px 0;
-        span {
-            font-size: 20px;
+        > span {
+            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            text-align: end;
         }
     }
 }

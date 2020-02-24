@@ -8,8 +8,8 @@ footer {
     display: flex;
     justify-content: center;
     height: 32px;
-    background-color: var(--text3);
-    color: var(--bg2);
+    background-color: var(--bg1);
+    color: var(--text3);
 }
 
 .footer {
@@ -19,7 +19,8 @@ footer {
     width: 100%;
     max-width: 1080px;
     margin: auto;
-    padding: 0 16px;
+    height: 32px;
+    padding: 0 8px;
 
     a:hover {
         color: $blue;
@@ -27,12 +28,11 @@ footer {
 
     .left {
         display: flex;
-
         font-size: 12px;
         span {
             padding-right: 8px;
             margin-right: 8px;
-            border-right: var(--bg3) solid 1px;
+            border-right: var(--text4) solid 1px;
         }
     }
 
@@ -43,6 +43,7 @@ footer {
         svg {
             margin-right: 8px;
             cursor: pointer;
+            color: var(--text4);
         }
 
         svg:hover {
