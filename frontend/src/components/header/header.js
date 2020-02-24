@@ -19,16 +19,27 @@ class Header extends React.Component {
         if (this.props.loggedIn) {
             return (
                 <div>
-                    <Link to={"/portfolio"}>Portfolio</Link>
-                    <Link to={"/transactions"}>Transactions</Link>
-                    <button onClick={this.logoutUser}>Logout</button>
+                    <Link className="header-spacing" to={"/portfolio"}>
+                        Portfolio
+                    </Link>
+                    <Link className="header-spacing" to={"/transactions"}>
+                        Transactions
+                    </Link>
+                    <div onClick={this.logoutUser}>Logout</div>
                 </div>
             );
         } else {
             return (
                 <div>
-                    <div className="header-register" onClick={() => this.props.openModal("register")}>Register</div>
-                    <div onClick={() => this.props.openModal("signIn")}>Sign In</div>
+                    <div
+                        className="header-spacing"
+                        onClick={() => this.props.openModal("register")}
+                    >
+                        Register
+                    </div>
+                    <div onClick={() => this.props.openModal("signIn")}>
+                        Sign In
+                    </div>
                 </div>
             );
         }

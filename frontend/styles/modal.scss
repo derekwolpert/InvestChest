@@ -5,12 +5,19 @@
   right: 0;
   left: 0;
   background: rgba(#181818, 0.7);
-  z-index: 10;
+  z-index: 100;
 }
 
 .modal-child {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 50%;
+  min-width: 360px;
+  max-width: 640px;
   transform: translate(-50%, -50%);
+  background: #e8e8e8;
+  padding: 16px;
+  border-radius: 8px;
+  border: #181818 solid 4px;
 }

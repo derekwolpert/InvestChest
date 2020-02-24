@@ -1,0 +1,95 @@
+.session-form-container {
+    position: relative;
+
+    .fa-times {
+        color: #383838;
+        position: absolute;
+        top: 0;
+        right: 0;
+        cursor: pointer;
+        font-size: 24px;
+    }
+    .fa-times:hover {
+        color: $blue;
+    }
+}
+
+.session-form {
+
+    > div:first-of-type {
+        font-weight: 700;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 16px;
+
+        span {
+            color: $blue;
+            font-size: 24px;
+        }
+
+        span:first-of-type {
+            padding-right: 8px;
+            margin-right: 8px;
+            border-right: #383838 solid 3px;
+        }
+
+        .session-switch {
+            cursor: pointer;
+            color: #383838;
+        }
+
+        .session-switch:hover {
+            color: $blue;
+        }
+    }
+
+    .session-input-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 16px;
+        
+        input, div.session-submit {
+            width: 100%;
+            max-width: 400px;
+            font-size: 16px;
+            padding: 8px 16px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            border: #585858 solid 3px;
+            outline: none;
+            color: #383838;
+            background-color: white;
+        }
+
+        input:focus {
+            border-color: #181818;
+        }
+
+        .session-submit {
+            display: inline-block;
+            font-weight: 600;
+            margin-bottom: 0 !important;
+            cursor: pointer;
+            width: min-content !important;
+            margin: auto;
+            white-space:nowrap !important;
+        }
+
+        .session-submit:hover {
+            font-weight: 600;
+            background-color: $blue;
+            border-color: #181818;
+        }
+
+        input.session-submit {
+            margin-right: 8px;
+        }
+
+        .session-error {
+            color: $red;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+    }
+}

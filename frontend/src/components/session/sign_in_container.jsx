@@ -5,7 +5,6 @@ import SignInForm from "./sign_in_form";
 
 const mapStateToProps = (state) => {
     return {
-        signedIn: state.session.isAuthenticated,
         errors: state.errors.session
     };
 };
@@ -16,7 +15,7 @@ const mapDispatchToProps = (dispatch) => {
         otherForm: () => dispatch(openModal("register")),
         closeModal: () => dispatch(closeModal()),
         removeSessionErrors: () => dispatch(removeSessionErrors())
-    }
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignInForm);

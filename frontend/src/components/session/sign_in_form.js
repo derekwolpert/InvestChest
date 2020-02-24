@@ -10,9 +10,7 @@ class SignInForm extends React.Component {
             email: "",
             password: "",
         };
-
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.renderErrors = this.renderErrors.bind(this);
     }
 
     componentWillUnmount() {
@@ -36,43 +34,67 @@ class SignInForm extends React.Component {
         this.props.signIn(user);
     }
 
-    renderErrors() {
-        return (
-            <ul>
-                {Object.keys(this.props.errors).map((error, i) => (
-                    <li key={`error-${i}`}>
-                        {this.props.errors[error]}
-                    </li>
-                ))}
-            </ul>
-        );
-    }
-
     render() {
         return (
-            <div>
+            <section className="session-form-container">
                 <form onSubmit={this.handleSubmit}>
-                    <div>
-                        <br />
-                        Please Sign In or <span onClick={this.props.otherForm}>Register</span>
-                        <FontAwesomeIcon icon={faTimes} onClick={this.props.closeModal} className="close-x" />
-                        <input type="text"
-                            value={this.state.email}
-                            onChange={this.update("email")}
-                            placeholder="Email"
-                        />
-                        <br />
-                        <input type="password"
-                            value={this.state.password}
-                            onChange={this.update("password")}
-                            placeholder="Password"
-                        />
-                        <br />
-                        <input type="submit" value="Submit" />
-                        {this.renderErrors()}
+                    <div className="session-form">
+                        <div>
+                            <span
+                                className="session-switch"
+                                onClick={this.props.otherForm}
+                            >
+                                Register
+                            </span>
+                            <span>Sign In</span>
+                            <FontAwesomeIcon
+                                icon={faTimes}
+                                onClick={this.props.closeModal}
+                            />
+                        </div>
+                        <div className="session-input-container">
+                            <input
+                                type="text"
+                                value={this.state.email}
+                                onChange={this.update("email")}
+                                placeholder="Email"
+                            />
+                            {this.props.errors.email ? (
+                                <div className="session-error">
+                                    {this.props.errors.email}
+                                </div>
+                            ) : null}
+                            <input
+                                type="password"
+                                value={this.state.password}
+                                onChange={this.update("password")}
+                                placeholder="Password"
+                            />
+                            {this.props.errors.password ? (
+                                <div className="session-error">
+                                    {this.props.errors.password}
+                                </div>
+                            ) : null}
+                            <div>
+                                <input
+                                    className="session-submit"
+                                    type="submit"
+                                    value="Submit"
+                                />
+                                <div className="session-submit"
+                                    onClick={() =>
+                                        this.props.signIn({
+                                            email: "demo@email.com",
+                                            password: "password"
+                                        })
+                                    }>
+                                    Demo User Login
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </form>
-            </div>
+            </section>
         );
     }
 }

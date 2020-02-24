@@ -11,9 +11,7 @@ class RegisterForm extends React.Component {
             password: "",
             password2: "",
         };
-
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.renderErrors = this.renderErrors.bind(this);
     }
 
     update(field) {
@@ -33,69 +31,103 @@ class RegisterForm extends React.Component {
         this.props.register(user);
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.signedIn && !prevProps.signedIn) {
+            this.props.signIn({ email: this.state.email, password: this.state.password});
+        }
+    }
+
     componentWillUnmount() {
         this.props.removeSessionErrors();
     }
 
-    renderErrors() {
-        return (
-            <ul>
-                {Object.keys(this.props.errors).map((error, i) => (
-                    <li key={`error-${i}`}>
-                        {this.props.errors[error]}
-                    </li>
-                ))}
-            </ul>
-        );
-    }
-
     render() {
         return (
-            <div className="session-form-container">
+            <section className="session-form-container">
                 <form onSubmit={this.handleSubmit}>
                     <div className="session-form">
-                        <br />
-                        Please{" "}
-                        <span onClick={this.props.otherForm}>Sign In</span> or
-                        Register
+                        <div>
+                            <span>Register</span>
+                            <span
+                                className="session-switch"
+                                onClick={this.props.otherForm}
+                            >
+                                Sign In
+                            </span>
+                        </div>
+
                         <FontAwesomeIcon
                             icon={faTimes}
                             onClick={this.props.closeModal}
-                            className="close-x"
                         />
-                        <input
-                            type="text"
-                            value={this.state.email}
-                            onChange={this.update("email")}
-                            placeholder="Email"
-                        />
-                        <br />
-                        <input
-                            type="text"
-                            value={this.state.name}
-                            onChange={this.update("name")}
-                            placeholder="Name"
-                        />
-                        <br />
-                        <input
-                            type="password"
-                            value={this.state.password}
-                            onChange={this.update("password")}
-                            placeholder="Password"
-                        />
-                        <br />
-                        <input
-                            type="password"
-                            value={this.state.password2}
-                            onChange={this.update("password2")}
-                            placeholder="Confirm Password"
-                        />
-                        <br />
-                        <input type="submit" value="Submit" />
-                        {this.renderErrors()}
+                        <div className="session-input-container">
+                            <input
+                                type="text"
+                                value={this.state.email}
+                                onChange={this.update("email")}
+                                placeholder="Email"
+                            />
+                            {this.props.errors.email ? (
+                                <div className="session-error">
+                                    {this.props.errors.email}
+                                </div>
+                            ) : null}
+                            <input
+                                type="text"
+                                value={this.state.name}
+                                onChange={this.update("name")}
+                                placeholder="Name"
+                            />
+                            {this.props.errors.name ? (
+                                <div className="session-error">
+                                    {this.props.errors.name}
+                                </div>
+                            ) : null}
+                            <input
+                                type="password"
+                                value={this.state.password}
+                                onChange={this.update("password")}
+                                placeholder="Password"
+                            />
+                            {this.props.errors.password ? (
+                                <div className="session-error">
+                                    {this.props.errors.password}
+                                </div>
+                            ) : null}
+                            <input
+                                type="password"
+                                value={this.state.password2}
+                                onChange={this.update("password2")}
+                                placeholder="Confirm Password"
+                            />
+                            {this.props.errors.password2 ? (
+                                <div className="session-error">
+                                    {this.props.errors.password2}
+                                </div>
+                            ) : null}
+
+                            <div>
+                                <input
+                                    className="session-submit"
+                                    type="submit"
+                                    value="Submit"
+                                />
+                                <div
+                                    className="session-submit"
+                                    onClick={() =>
+                                        this.props.signIn({
+                                            email: "demo@email.com",
+                                            password: "password"
+                                        })
+                                    }
+                                >
+                                    Demo User Login
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </form>
-            </div>
+            </section>
         );
     }
 }

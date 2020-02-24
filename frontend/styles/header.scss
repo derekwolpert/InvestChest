@@ -21,7 +21,7 @@
 
         svg {
             color: $blue;
-            padding-right: 8px;
+            padding-right: 16px;
         }
     }
 
@@ -33,21 +33,21 @@
 
         display: flex;
         justify-content: flex-end;
-        cursor: pointer;
 
-        > div {
+        > div, a {
             font-weight: 600;
             padding: 8px;
-            border-radius: 4px;
+            border-radius: 8px;
             border: var(--bg1) solid 2px;
+            cursor: pointer;
         }
 
-        > div:hover {
-            background-color: $blue;
+        > div:hover, a:hover {
+            background: $blue;
             color: var(--text1);
         }
-        .header-register {
-            margin-right: 8px;
+        .header-spacing {
+            margin-right: 16px;
         }
     }
 }

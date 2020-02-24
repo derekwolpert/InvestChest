@@ -6,6 +6,7 @@
     background-size: cover;
     background-attachment: fixed;
     color: #e8e8e8;
+    overflow: hidden;
 }
 
 .splash {
@@ -62,7 +63,7 @@
         font-size: 24px;
         background: rgba(#181818, 0.6);
         padding: 8px;
-        border-radius: 4px;
+        border-radius: 8px;
         border: $blue solid 2px;
         cursor: pointer;
         display: flex;        
