@@ -23,13 +23,10 @@ class PurchaseForm extends React.Component {
     }
 
     switchToPartTwo() {
-
-
         this.setState({ 
             currentStock: this.state.ticker.toUpperCase(),
             quantity: ""
         });
-
         if (this.state.ticker.toUpperCase() in this.props.stocks) {
             this.props.removeStockError();
         }
@@ -49,16 +46,15 @@ class PurchaseForm extends React.Component {
                     placeholder="Ticker"
                     
                 />
-                <button className="purchase-button" 
+                <div className={"purchase-button " + ((this.state.ticker.length > 0 && (this.state.currentStock !== this.state.ticker.toUpperCase())) ? "" : "disabled" )} 
                     onClick={ (e) => { e.preventDefault();
-                        this.state.ticker.length > 0 ? this.switchToPartTwo() : null }}
-                    disabled={((this.state.ticker.length === 0) || (this.state.currentStock === this.state.ticker.toUpperCase()))}        
+                        (this.state.ticker.length > 0 && (this.state.currentStock !== this.state.ticker.toUpperCase())) ? this.switchToPartTwo() : null }}
                 >
                     Lookup
-                </button>
+                </div>
                 {this.props.stockError.noStockFound ? 
                 <div className="purchase-error">
-                    {this.props.stockError.noStockFound}
+                        {`${this.props.stockError.noStockFound} ${this.props.stockError.symbol}`}
                 </div> : null}
             </>
         );

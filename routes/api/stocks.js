@@ -15,7 +15,7 @@ router.get("/batch/:symbols", (req, res) => {
 router.get("/lookup/:symbol", (req, res) => {
     axios.get(`https://cloud.iexapis.com/stable/stock/${req.params.symbol}/quote?filter=symbol,companyName,latestPrice,latestUpdate&token=${iexApiToken}`)
         .then(stock => res.json(stock.data))
-        .catch(err => res.status(err.response.status).json({ noStockFound: err.response.data }));
+        .catch(err => res.status(err.response.status).json({ noStockFound: err.response.data, symbol: req.params.symbol.toUpperCase() }));
 });
 
 module.exports = router;
