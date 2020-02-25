@@ -1,6 +1,7 @@
 .purchase-form-container {
     margin-top: 8px;
     position: relative;
+    overflow-y: scroll;
 
     > form {
         display: flex;
@@ -24,6 +25,9 @@
         border-color: $blue;
     }
 
+    input:disabled {
+        cursor: not-allowed;
+    }
 
     .purchase-button {
         text-align: center;
@@ -34,12 +38,22 @@
     }
 
     .purchase-button:hover {
-        font-weight: 600;
         background-color: $blue;
         border-color: var(--text1);
         color: var(--text1);
-
     }
+
+    .purchase-button:disabled {
+        cursor: not-allowed;
+    }
+
+    .purchase-button:disabled:hover {
+        cursor: not-allowed;
+        color: var(--text3);
+        background-color: var(--bg1);
+        border: var(--text4) solid 3px;
+    }
+
     .purchase-error {
         color: $red;
         font-weight: 600;
@@ -61,8 +75,6 @@
     span:last-of-type {
         margin-bottom: 16px;
     }
-
-
 }
 
 

@@ -23,8 +23,12 @@ class PurchaseForm extends React.Component {
     }
 
     switchToPartTwo() {
-        
-        this.setState({ currentStock: this.state.ticker.toUpperCase() });
+
+
+        this.setState({ 
+            currentStock: this.state.ticker.toUpperCase(),
+            quantity: ""
+        });
 
         if (this.state.ticker.toUpperCase() in this.props.stocks) {
             this.props.removeStockError();
@@ -43,11 +47,15 @@ class PurchaseForm extends React.Component {
                     value={this.state.ticker}
                     onChange={this.update("ticker")}
                     placeholder="Ticker"
+                    
                 />
-                <div className="purchase-button" 
-                    onClick={ () => this.state.ticker.length > 0 ? this.switchToPartTwo() : null }>
+                <button className="purchase-button" 
+                    onClick={ (e) => { e.preventDefault();
+                        this.state.ticker.length > 0 ? this.switchToPartTwo() : null }}
+                    disabled={((this.state.ticker.length === 0) || (this.state.currentStock === this.state.ticker.toUpperCase()))}        
+                >
                     Lookup
-                </div>
+                </button>
                 {this.props.stockError.noStockFound ? 
                 <div className="purchase-error">
                     {this.props.stockError.noStockFound}
@@ -74,16 +82,13 @@ class PurchaseForm extends React.Component {
                         <span>– – –</span>
                         <span>– – –</span>
                     </>
-            
                 }
-                
-
-                
                 <input
-                    type="text"
+                    type="number"
                     value={this.state.quantity}
                     onChange={this.update("quantity")}
                     placeholder="Quantity"
+                    disabled={!(this.state.currentStock in this.props.stocks)}
                 />
             </>
         );
