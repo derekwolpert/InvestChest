@@ -7,6 +7,7 @@
     --text3: #383838;
     --text2: #282828;
     --text1: #181818;
+    --opacitybg: 248, 248, 248;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,6 +20,7 @@
     --text3: #d8d8d8;
     --text2: #e8e8e8;
     --text1: #f8f8f8;
+    --opacitybg: 24, 24, 24;
   }
 }
 
@@ -31,6 +33,7 @@
   --text3: #383838;
   --text2: #282828;
   --text1: #181818;
+  --opacitybg: 248, 248, 248;
 }
 
 [theme-mode="dark"] {
@@ -42,6 +45,7 @@
   --text3: #d8d8d8;
   --text2: #e8e8e8;
   --text1: #f8f8f8;
+  --opacitybg: 24, 24, 24;
 }
 
 $red: #ab4642;

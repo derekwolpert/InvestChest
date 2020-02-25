@@ -62,7 +62,7 @@ class RegisterForm extends React.Component {
                         />
                         <div className="session-input-container">
                             <input
-                                type="text"
+                                type="email"
                                 value={this.state.email}
                                 onChange={this.update("email")}
                                 placeholder="Email"

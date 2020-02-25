@@ -53,7 +53,7 @@ class SignInForm extends React.Component {
                         </div>
                         <div className="session-input-container">
                             <input
-                                type="text"
+                                type="email"
                                 value={this.state.email}
                                 onChange={this.update("email")}
                                 placeholder="Email"

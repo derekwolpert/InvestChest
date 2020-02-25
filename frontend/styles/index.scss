@@ -11,6 +11,10 @@ body {
   }
 }
 
+input {
+  line-height: normal;
+}
+
 .body-container {
   max-width: 1280px;
   margin: auto;
@@ -23,6 +27,7 @@ body {
 @import "loading_spinner";
 @import "session";
 @import "header";
+@import "theme_switch";
 @import "splash";
 @import "portfolio";
 @import "purchase_form";

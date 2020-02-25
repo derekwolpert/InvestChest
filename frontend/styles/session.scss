@@ -73,12 +73,17 @@
             width: min-content !important;
             margin: auto;
             white-space:nowrap !important;
+            line-height: normal;
         }
 
         .session-submit:hover {
             font-weight: 600;
             background-color: $blue;
             border-color: #181818;
+        }
+
+        div.session-submit:hover {
+            background-color: $green;
         }
 
         input.session-submit {

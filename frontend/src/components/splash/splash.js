@@ -11,8 +11,7 @@ class Splash extends React.Component {
                         <div>
                             <span>Welcome to InvestChest!</span>
                             <span>
-                                The online destination for building your own
-                                very stock investment portfolio
+                                The online destination for building your very own (mock) stock investment portfolio
                             </span>
                         </div>
                         <div className="splash-button-container">
