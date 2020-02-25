@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { getStock } from "../../actions/stock_actions";
+import { getStock, removeStockError } from "../../actions/stock_actions";
 import PurchaseForm from "./purchase_form";
 
 
@@ -14,7 +14,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getStock: (stock) => dispatch(getStock(stock))
+        getStock: (stock) => dispatch(getStock(stock)),
+        removeStockError: () => dispatch(removeStockError())
     };
 };
 

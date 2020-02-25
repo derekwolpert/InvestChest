@@ -1,6 +1,5 @@
 .purchase-form-container {
     margin-top: 8px;
-    flex-grow: 1;
     position: relative;
 
     > form {
@@ -13,7 +12,7 @@
         width: 100%;
         font-size: 16px;
         padding: 8px 16px;
-        margin: 0 auto 8px;
+        margin: 0 auto 8px !important;
         border-radius: 4px;
         border: var(--text4) solid 3px;
         outline: none;
@@ -29,7 +28,6 @@
     .purchase-button {
         text-align: center;
         font-weight: 600;
-        margin-bottom: 0 !important;
         cursor: pointer;
         margin: auto;
         white-space:nowrap !important;
@@ -46,6 +44,22 @@
         color: $red;
         font-weight: 600;
         margin-bottom: 8px;
+    }
+
+    span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 8px;
+    }
+
+    span:first-of-type {
+        margin-top: 8px;
+    }
+
+    span:last-of-type {
+        margin-bottom: 16px;
     }
 
 
