@@ -17,11 +17,10 @@ class Portfolio extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.trades && !this.props.stocks)  {
-            this.getStocksFromTrades();
-            
-        } else if (!this.props.trades) {
+        if (!this.props.trades) {
             this.props.getTrades();
+        } else if ((!this.props.stocks) && (this.props.trades.length > 0)) {
+            this.getStocksFromTrades();
         }
     }
 
@@ -116,21 +115,27 @@ class Portfolio extends React.Component {
     };
 
     render() {
+
+        const loadingSpinner = <div className="center-spinner"><div className="lds-ring"><div></div><div></div><div></div><div></div></div></div>
+
         return (
             <section className="portfolio-container">
-                {this.props.trades && this.props.stocks ?
-                <>
-                    <h1>Portfolio (${this.portfolioTotal()})<span><span>Logged in as</span>{this.props.user.name}</span></h1>
-                    <div className="portfolio-content">
-                        <div>{this.formatTradesForPortfolio()}</div>
-                        <span />
-                        <div>
-                            <h1>Cash – ${this.props.user.cash.toFixed(2)}</h1>
-                            <PurchaseContainer />
-                        </div>
-                    </div>
-                </>
-                : <div className="center-spinner"><div className="lds-ring"><div></div><div></div><div></div><div></div></div></div> }
+                { this.props.trades ? (
+                    
+                    ((this.props.trades && this.props.stocks) || (this.props.trades.length === 0)) ?
+                        <>
+                            <h1>Portfolio (${this.portfolioTotal()})<span><span>Logged in as</span>{this.props.user.name}</span></h1>
+                            <div className="portfolio-content">
+                                <div>{this.formatTradesForPortfolio()}</div>
+                                <span />
+                                <div>
+                                    <h1>Cash – ${this.props.user.cash.toFixed(2)} USD</h1>
+                                    <PurchaseContainer />
+                                </div>
+                            </div>
+                        </> : loadingSpinner
+                        )
+                : loadingSpinner }
             </section>
         );
     }

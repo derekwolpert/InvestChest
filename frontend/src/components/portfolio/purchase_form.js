@@ -7,12 +7,12 @@ class PurchaseForm extends React.Component {
         this.state = {
             ticker: "",
             quantity: "",
-            currentStock: "",
-            partTwo: false
+            currentStock: ""
         };
         this.partOne = this.partOne.bind(this);
         this.partTwo = this.partTwo.bind(this);
         this.switchToPartTwo = this.switchToPartTwo.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
 
@@ -66,7 +66,7 @@ class PurchaseForm extends React.Component {
                 {this.state.currentStock in this.props.stocks ?
                     <>
                         <span>{this.props.stocks[this.state.currentStock].quote.symbol} ({this.props.stocks[this.state.currentStock].quote.companyName})</span>
-                        <span>{`Latest Price: $${this.props.stocks[this.state.currentStock].quote.latestPrice}`}</span>
+                        <span>{`Latest Price: $${this.props.stocks[this.state.currentStock].quote.latestPrice.toFixed(2)}`}</span>
                         <span>Last Updated:{" "}
                             {moment(
                                 this.props.stocks[this.state.currentStock].quote.latestUpdate
@@ -86,14 +86,35 @@ class PurchaseForm extends React.Component {
                     placeholder="Quantity"
                     disabled={!(this.state.currentStock in this.props.stocks)}
                 />
+                <input
+                    className="purchase-button"
+                    disabled={(this.state.currentStock.length === 0) || (!this.state.quantity) }
+                    type="submit"
+                    value="Submit"
+                />
             </>
         );
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        let trade = {
+            symbol: this.state.currentStock,
+            purchasePrice: this.props.stocks[this.state.currentStock].quote.latestPrice.toFixed(2),
+            numberOfShares: this.state.quantity
+        }
+        this.props.createTrade(trade);
+        this.setState({
+            ticker: "",
+            quantity: "",
+            currentStock: ""
+        })
     }
 
     render() {
         return (
             <section className="purchase-form-container">
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     { this.partOne() }
                     { this.partTwo() }
                 </form>

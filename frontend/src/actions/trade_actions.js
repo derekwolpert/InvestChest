@@ -11,7 +11,7 @@ const receiveAllTrades = trades => ({
 const receiveTrade = trade => ({
     type: RECEIVE_TRADE,
     trade: trade.data.trade,
-    user: trade.date.user
+    user: trade.data.user
 });
 
 export const getTrades = () => dispatch => APIUtil.getTrades()
@@ -19,7 +19,7 @@ export const getTrades = () => dispatch => APIUtil.getTrades()
         dispatch(receiveAllTrades(trades))
     );
 
-export const createTrade = trade => dispatch => APIUtil.createTrade(track)
+export const createTrade = trade => dispatch => APIUtil.createTrade(trade)
     .then(trade =>
         dispatch(receiveTrade(trade))
     );

@@ -43,15 +43,17 @@
         color: var(--text1);
     }
 
-    .purchase-button.disabled {
+    .purchase-button.disabled, .purchase-button:disabled {
         cursor: not-allowed;
+        color: var(--text4);
     }
 
-    .purchase-button.disabled:hover {
+    .purchase-button.disabled:hover, .purchase-button:disabled:hover {
         cursor: not-allowed;
         color: var(--text3);
         background-color: var(--bg1);
         border: var(--text4) solid 3px;
+        color: var(--text4);
     }
 
     .purchase-error {

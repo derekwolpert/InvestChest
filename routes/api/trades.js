@@ -14,7 +14,6 @@ router.get("/history", passport.authenticate("jwt", { session: false }), (req, r
 });
 
 router.post("/purchase", passport.authenticate("jwt", { session: false }), (req, res) => {
-
     if (req.user.cash < (req.body.purchasePrice * req.body.numberOfShares)) {
         return res.status(400).json({ notEnoughCash: "You do not have enough cash to make this purchase" });
     }
@@ -30,7 +29,14 @@ router.post("/purchase", passport.authenticate("jwt", { session: false }), (req,
         numberOfShares: req.body.numberOfShares
     });
 
-    User.findByIdAndUpdate(req.user.id, { cash: (req.user.cash - (req.body.purchasePrice * req.body.numberOfShares)) }, { new: true })
+    const query = { _id: req.user.id };
+    const update = {
+        "$set": {
+            cash: (req.user.cash - (req.body.purchasePrice * req.body.numberOfShares))
+        }
+    };
+
+    User.updateOne(query, update)
         .then(() => newTrade.save())
         .then(trade => res.json({trade: trade, user: { cash: (req.user.cash - (req.body.purchasePrice * req.body.numberOfShares))}}))
         .catch(err => console.log(err));
