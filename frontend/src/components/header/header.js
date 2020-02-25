@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
+import ThemeSwitch from "../theme_switch/theme_switch";
 
 class Header extends React.Component {
     constructor(props) {
@@ -19,20 +20,20 @@ class Header extends React.Component {
         if (this.props.loggedIn) {
             return (
                 <div>
-                    <Link className="header-spacing" to={"/portfolio"}>
+                    <Link to={"/portfolio"}>
                         Portfolio
                     </Link>
-                    <Link className="header-spacing" to={"/transactions"}>
+                    <Link to={"/transactions"}>
                         Transactions
                     </Link>
                     <div onClick={this.logoutUser}>Logout</div>
+                    <ThemeSwitch />
                 </div>
             );
         } else {
             return (
                 <div>
                     <div
-                        className="header-spacing"
                         onClick={() => this.props.openModal("register")}
                     >
                         Register
@@ -40,6 +41,7 @@ class Header extends React.Component {
                     <div onClick={() => this.props.openModal("signIn")}>
                         Sign In
                     </div>
+                    <ThemeSwitch />
                 </div>
             );
         }

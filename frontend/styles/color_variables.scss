@@ -22,6 +22,28 @@
   }
 }
 
+[theme-mode="light"] {
+  --bg1: #f8f8f8;
+  --bg2: #e8e8e8;
+  --bg3: #d8d8d8;
+  --bg4: #b8b8b8;
+  --text4: #585858;
+  --text3: #383838;
+  --text2: #282828;
+  --text1: #181818;
+}
+
+[theme-mode="dark"] {
+  --bg1: #181818;
+  --bg2: #282828;
+  --bg3: #383838;
+  --bg4: #585858;
+  --text4: #b8b8b8;
+  --text3: #d8d8d8;
+  --text2: #e8e8e8;
+  --text1: #f8f8f8;
+}
+
 $red: #ab4642;
 $orange: #dc9656;
 $yellow: #f7ca88;

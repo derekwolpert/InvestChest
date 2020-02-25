@@ -25,10 +25,6 @@
         border-color: $blue;
     }
 
-    input:disabled {
-        cursor: not-allowed;
-    }
-
     .purchase-button {
         text-align: center;
         font-weight: 600;
@@ -43,43 +39,45 @@
         color: var(--text1);
     }
 
-    .purchase-button.disabled, .purchase-button:disabled {
+    .purchase-button.disabled, .purchase-button:disabled, input:disabled {
         cursor: not-allowed;
-        color: var(--text4);
+        color: var(--bg4);
+        border: var(--bg4) solid 3px;
     }
 
-    .purchase-button.disabled:hover, .purchase-button:disabled:hover {
+    .purchase-button.disabled:hover, .purchase-button:disabled:hover, input:disabled:hover {
         cursor: not-allowed;
         color: var(--text3);
         background-color: var(--bg1);
-        border: var(--text4) solid 3px;
-        color: var(--text4);
+        border: var(--bg4) solid 3px;
+        color: var(--bg4);
     }
 
     .purchase-error {
         color: $red;
         font-weight: 600;
-        margin-bottom: 8px;
     }
 
     span {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
+        display: block;
         margin-bottom: 8px;
+        width: 100%;
+        text-align: center;
     }
 
     span:first-of-type {
+        border-top: var(--text4) solid 2px;
+        padding-top: 16px;
         margin-top: 8px;
     }
 
     span:last-of-type {
         margin-bottom: 16px;
     }
+
+    div.purchase-error {
+        margin-top: 8px;
+        text-align: center;
+        word-break: break-word;
+    }
 }
-
-
-
-
-    

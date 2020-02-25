@@ -13,6 +13,7 @@ class PurchaseForm extends React.Component {
         this.partTwo = this.partTwo.bind(this);
         this.switchToPartTwo = this.switchToPartTwo.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.unaffordableWarning = this.unaffordableWarning.bind(this);
     }
 
 
@@ -52,10 +53,6 @@ class PurchaseForm extends React.Component {
                 >
                     Lookup
                 </div>
-                {this.props.stockError.noStockFound ? 
-                <div className="purchase-error">
-                        {`${this.props.stockError.noStockFound} ${this.props.stockError.symbol}`}
-                </div> : null}
             </>
         );
     }
@@ -65,7 +62,7 @@ class PurchaseForm extends React.Component {
             <>
                 {this.state.currentStock in this.props.stocks ?
                     <>
-                        <span>{this.props.stocks[this.state.currentStock].quote.symbol} ({this.props.stocks[this.state.currentStock].quote.companyName})</span>
+                        <span>{`Selected Company: ${this.props.stocks[this.state.currentStock].quote.symbol} (${this.props.stocks[this.state.currentStock].quote.companyName})`}</span>
                         <span>{`Latest Price: $${this.props.stocks[this.state.currentStock].quote.latestPrice.toFixed(2)}`}</span>
                         <span>Last Updated:{" "}
                             {moment(
@@ -74,7 +71,9 @@ class PurchaseForm extends React.Component {
                         </span>
                     </> :
                     <>
-                        <span>– – –</span>
+                        {this.props.stockError.noStockFound ? <span className="purchase-error">
+                            {`${this.props.stockError.noStockFound} ${this.props.stockError.symbol}`}
+                            </span> : <span>– – –</span> }
                         <span>– – –</span>
                         <span>– – –</span>
                     </>
@@ -88,12 +87,22 @@ class PurchaseForm extends React.Component {
                 />
                 <input
                     className="purchase-button"
-                    disabled={(this.state.currentStock.length === 0) || (!this.state.quantity) }
+                    disabled={((this.state.currentStock.length === 0) || (!this.state.quantity) || this.unaffordableWarning()) }
                     type="submit"
                     value="Submit"
                 />
+                {this.unaffordableWarning() ? <div className="purchase-error" >Cannot afford {this.state.quantity} shares of {this.state.currentStock}</div> : null }
             </>
         );
+    }
+
+    unaffordableWarning() {
+        if ((!!this.state.quantity) && (this.state.currentStock in this.props.stocks)) {
+            if ((this.props.stocks[this.state.currentStock].quote.latestPrice * this.state.quantity) > this.props.user.cash) {
+                return true;
+            }
+        }
+        return false;
     }
 
     handleSubmit(e) {
