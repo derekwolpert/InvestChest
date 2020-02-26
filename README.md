@@ -9,7 +9,7 @@
 InvestChest was completed as apart of the Winter 2020 assessment for the New York Tech Talent Pipeline. The given instructions were to build a fullstack web-based stock profolio application where users can purchase stock based on values fetched from a third-party API. 
 The specifics of the functionality for the app (user registration/signin/purchase forms, portfolio and transaction page, etc.) were given ahead of time, but there was freedom select the technologies one viewed best fit for the task. There were also rough design and styling guidelines given with the instructions (including the wireframe mockups included below).
 
-Technologies used include MERN (MongoDB, Express.js, React, Node.js) stack, Redux, Webpack, SASS, CSS3, HTML5 and the third-party IEX Cloud finance API.
+Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, Redux, Webpack, SASS, CSS3, HTML5</b> and the third-party <b>IEX Cloud</b> finance API.
 
 <p align="middle">
     <img src="./readme_images/final_splash.png" width="430" />
@@ -54,6 +54,12 @@ Technologies used include MERN (MongoDB, Express.js, React, Node.js) stack, Redu
     <img src="./readme_images/wireframe_transactions.jpg" width="430" />
     <img src="./readme_images/final_transactions.png" width="430" />
 </p>
+
+## Potential Future Features
+
+- Enhanced ticker symbol field in the purchase form with predictive values based on valid inputs, allow querying based on company name
+- Enhanced responsiveness for various screen sizes, and mobile optimization
+- Impliment selling of stocks within a user's portfolio, which would be included as their own seperate entries on the Transaction page
 
 ## Resources
 
