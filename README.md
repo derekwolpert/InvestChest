@@ -37,7 +37,39 @@ Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, R
 - Dynamic and auto-detecting light/dark mode in conjunction with a theme switch in the webpage's header.
 - A polished, intuitive, responsive user interface/experience.
 
+## Folder Struture
+    .
+    ├── config
+    ├── frontend
+    |   └── ... 
+    ├── models
+    ├── readme_images
+    ├── routes
+    |   └── api
+    └── validation
+
+    frontend
+    ├── public      
+    ├── src
+    |   |── actions 
+    |   |── components
+    |   |   |── footer
+    |   |   |── header
+    |   |   |── modal
+    |   |   |── portfolio
+    |   |   |── purchase
+    |   |   |── session
+    |   |   |── splash
+    |   |   |── theme_switch
+    |   |   └── transactions
+    |   |── middleware
+    |   |── reducers
+    |   |── store
+    |   └── util
+    └── styles
+
 ## Wireframe vs. Final Design
+
 <p align="middle">
     <img src="./readme_images/wireframe_signin.jpg" width="430" />
     <img src="./readme_images/final_signin.png" width="430" />
