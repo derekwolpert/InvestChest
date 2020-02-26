@@ -15,7 +15,7 @@ const TransactionItem = (props) => {
                 Purchase Date:{" "}
                 {moment(
                     props.trade.date
-                ).format('MMMM Do YYYY, h:mm:ss a')}
+                ).format("MMMM Do YYYY, h:mm:ss A")}
             </span>
         </li>
     )
