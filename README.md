@@ -38,25 +38,30 @@ Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, R
 - A polished, intuitive, responsive user interface/experience.
 
 ## Folder Struture
+
     # Backend Directory
-    
+
     .
     ├── config
-    ├── frontend
+    ├── frontend        # see the frontend directory below
     |   └── ... 
-    ├── models
-    ├── readme_images
+    ├── models          # defines the strucuture of db schema
+    ├── readme_images   # images used on this page
     ├── routes
-    |   └── api
-    └── validation
+    |   └── api         # set connection btw frontend, backend
+    |   |                   # and db interactions
+    └── validation      # checks an instances details before registering
+                            # or modifying a db entry   
 
     # Frontend Directory
 
     frontend
-    ├── public      
+    ├── dist                    # compiled js and css files
+    ├── public                  # publicly accessible files
+    |                               # including primary html   
     ├── src
     |   |── actions 
-    |   |── components
+    |   |── components          # react components
     |   |   |── footer
     |   |   |── header
     |   |   |── modal
@@ -66,11 +71,12 @@ Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, R
     |   |   |── splash
     |   |   |── theme_switch
     |   |   └── transactions
-    |   |── middleware
-    |   |── reducers
-    |   |── store
-    |   └── util
-    └── styles
+    |   |── middleware          # includes a thunk definition
+    |   |── reducers            # organizes information for the
+    |   |                           # global redux store
+    |   |── store               # defines the redux store
+    |   └── util                # set api calls to access backend
+    └── styles                  # design/styling files
 
 ## Wireframe vs. Final Design
 
