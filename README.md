@@ -38,6 +38,8 @@ Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, R
 - A polished, intuitive, responsive user interface/experience.
 
 ## Folder Struture
+    # Backend Directory
+    
     .
     ├── config
     ├── frontend
@@ -47,6 +49,8 @@ Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, R
     ├── routes
     |   └── api
     └── validation
+
+    # Frontend Directory
 
     frontend
     ├── public      
