@@ -22,6 +22,11 @@ const App = () => (
                     path="/portfolio"
                     component={PortfolioContainer}
                 />
+                <ProtectedRoute
+                    exact
+                    path="/transactions"
+                    component={PortfolioContainer}
+                />
             </Switch>
         </section>
         <footer>

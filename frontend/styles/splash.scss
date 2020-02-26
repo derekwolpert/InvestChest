@@ -42,7 +42,7 @@
         span {
             display: block;
             text-align: center;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 700;
             -webkit-text-stroke-width: 0.5px;
             -webkit-text-stroke-color: var(--bg1);
@@ -53,7 +53,7 @@
         }
 
         span:last-of-type {
-            max-width: 486px;
+            max-width: 500px;
         }
     }
 }
@@ -62,7 +62,7 @@
     display: flex;
     justify-content: center;
     div {
-        font-weight: 600;
+        font-weight: 500;
         font-size: 24px;
         background: var(--bg1);
         padding: 8px;

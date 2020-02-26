@@ -1,6 +1,7 @@
 import React from "react";
-import PurchaseContainer from "./purchase_container"
+import PurchaseContainer from "../purchase/purchase_container";
 import * as moment from "moment";
+import TransactionItem from "../transactions/transaction_item";
 
 class Portfolio extends React.Component {
     constructor(props) {
@@ -8,11 +9,14 @@ class Portfolio extends React.Component {
         this.formatTradesForPortfolio = this.formatTradesForPortfolio.bind(this);
         this.getStocksFromTrades = this.getStocksFromTrades.bind(this);
         this.portfolioTotal = this.portfolioTotal.bind(this);
+        this.formatTransactionItems = this.formatTransactionItems.bind(this);
     }
 
     componentDidMount() {
         if (!this.props.trades) {
             this.props.getTrades();
+        } else if ((!this.props.stocks) && (this.props.trades.length > 0)) {
+            this.getStocksFromTrades();
         }
     }
 
@@ -114,9 +118,25 @@ class Portfolio extends React.Component {
         return this.formatedPortfolioItems(combinedTrades);
     };
 
-    render() {
+    formatTransactionItems() {
+        return (
 
-        const loadingSpinner = <div className="center-spinner"><div className="lds-ring"><div></div><div></div><div></div><div></div></div></div>
+            <ul className="portfolio-items-container">
+
+                {this.props.trades.map((trade, idx) => (
+                    <TransactionItem trade={trade} companyName={this.props.stocks[trade.symbol].quote.companyName} key={idx} />
+                ))
+                }
+
+            </ul>
+
+
+        )
+
+    }
+
+    render() {
+        const loadingSpinner = <div className="center-spinner"><div className="lds-ring"><div></div><div></div><div></div><div></div></div></div>;
 
         return (
             <section className="portfolio-container">
@@ -124,9 +144,9 @@ class Portfolio extends React.Component {
                     
                     ((this.props.trades && this.props.stocks) || (this.props.trades.length === 0)) ?
                         <>
-                            <h1>Portfolio (${this.portfolioTotal()})<span><span>Logged in as</span>{this.props.user.name}</span></h1>
+                            <h1>{this.props.match.path === "/portfolio" ? `Portfolio ($${this.portfolioTotal()})` : "Transactions"}<span><span>Logged in as</span>{this.props.user.name}</span></h1>
                             <div className="portfolio-content">
-                                <div>{this.formatTradesForPortfolio()}</div>
+                                <div>{this.props.match.path === "/portfolio" ? this.formatTradesForPortfolio() : this.formatTransactionItems()}</div>
                                 <span />
                                 <div>
                                     <h1>Cash – ${this.props.user.cash.toFixed(2)} USD</h1>

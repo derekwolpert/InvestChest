@@ -2,25 +2,7 @@ import { connect } from "react-redux";
 import Portfolio from "./portfolio";
 import { getTrades } from "../../actions/trade_actions";
 import { getStocks } from "../../actions/stock_actions";
-
-const formatTradesForPortfolio = (trades) => {
-    const combinedTrades = {};
-    
-    for (let trade of trades) {
-
-        if (trade.symbol in combinedTrades) {
-            combinedTrades[trade.symbol].totalShares += trade.numberOfShares;
-            combinedTrades[trade.symbol].totalValue += trade.numberOfShares * trade.purchasePrice;
-        } else {
-            combinedTrades[trade.symbol] = {
-                totalShares: trade.numberOfShares,
-                totalValue: trade.numberOfShares * trade.purchasePrice
-            };
-        }
-
-    }
-    return combinedTrades;
-};
+import { withRouter } from "react-router-dom";
 
 const mapStateToProps = state => {
     return {
@@ -37,4 +19,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Portfolio);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Portfolio));
