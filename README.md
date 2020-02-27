@@ -46,14 +46,14 @@ Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, R
     # Backend Directory
 
     .
-    ├── config
+    ├── config          # includes access keys, and user auth config
     ├── frontend        # see the frontend directory below
-    |   └── ... 
+    |   └── ...
     ├── models          # defines the structure of db schema
     ├── readme_images   # images used on this page
     ├── routes
     |   └── api         # set connection btw frontend, backend
-    |   |                   # and db interactions
+    |                       # and db interactions
     └── validation      # checks an instances details before registering
                             # or modifying a db entry   
 
