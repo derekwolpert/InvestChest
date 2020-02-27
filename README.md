@@ -1,4 +1,4 @@
-<a href="https://investchest.derekwolpert.com">
+<a href="https://investchest.herokuapp.com">
     <img src="./readme_images/logo.png" alt="InvestChest Logo" title="InvestChest" align="right" height="60" />
 </a>
 
@@ -10,6 +10,8 @@ InvestChest was completed as apart of the Winter 2020 assessment for the New Yor
 The specifics of the functionality for the app (user registration/signin/purchase forms, portfolio and transaction page, etc.) were given ahead of time, but there was freedom select the technologies one viewed best fit for the task. There were also rough design and styling guidelines given with the instructions (including the wireframe mockups included below).
 
 Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, Redux, Webpack, SASS, CSS3, HTML5</b> and the third-party <b>IEX Cloud</b> finance API.
+
+### [This project is currently hosted at investchest.herokuapp.com - CLICK HERE to visit the live version of this project](https://investchest.herokuapp.com/#/)
 
 <p align="middle">
     <img src="./readme_images/final_splash.png" width="430" />
