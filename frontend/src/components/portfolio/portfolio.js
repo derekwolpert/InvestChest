@@ -2,6 +2,8 @@ import React from "react";
 import PurchaseContainer from "../purchase/purchase_container";
 import * as moment from "moment";
 import TransactionItem from "../transactions/transaction_item";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 class Portfolio extends React.Component {
     constructor(props) {
@@ -129,10 +131,7 @@ class Portfolio extends React.Component {
                 }
 
             </ul>
-
-
         )
-
     }
 
     render() {
@@ -146,7 +145,20 @@ class Portfolio extends React.Component {
                         <>
                             <h1>{this.props.match.path === "/portfolio" ? `Portfolio ($${this.portfolioTotal()})` : "Transactions"}<span><span>Logged in as</span>{this.props.user.name}</span></h1>
                             <div className="portfolio-content">
+                                {(this.props.trades.length > 0) ?
+
                                 <div>{this.props.match.path === "/portfolio" ? this.formatTradesForPortfolio() : this.formatTransactionItems()}</div>
+                                : <div className="no-trades-message">
+                                    <h1>
+                                        Welcome to InvestChest!
+                                    </h1>
+                                    <span>
+                                        You do not own any stocks on our platform. To start your portfolio enter a stock ticker and a purchase quantity in the form on the right side of this page.
+                                    </span>
+                                    <FontAwesomeIcon icon={faArrowRight} />
+
+                                </div>
+                                }
                                 <span />
                                 <div>
                                     <h1>Cash – ${this.props.user.cash.toFixed(2)} USD</h1>

@@ -99,3 +99,26 @@
         }
     }
 }
+
+.no-trades-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow-y: scroll;
+
+    h1 {
+        font-size: 32px;
+        margin-bottom: 16px;
+    }
+
+    span {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+
+    svg {
+        font-size: 48px;
+    }
+}
