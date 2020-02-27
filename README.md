@@ -6,8 +6,8 @@
 
 ## Overview
 
-InvestChest was completed as apart of the Winter 2020 assessment for the New York Tech Talent Pipeline. The given instructions were to build a fullstack web-based stock profolio application where users can purchase stock based on values fetched from a third-party API. 
-The specifics of the functionality for the app (user registration/signin/purchase forms, portfolio and transaction page, etc.) were given ahead of time, but there was freedom select the technologies one viewed best fit for the task. There were also rough design and styling guidelines given with the instructions (including the wireframe mockups included below).
+InvestChest was completed as a part of the Winter 2020 assessment for the New York Tech Talent Pipeline. The given instructions were to build a full-stack web-based stock portfolio application where users can purchase stock based on values fetched from a third-party API. 
+The specifics of the functionality for the app (user registration, sign-in, purchase forms, portfolio and transaction page, etc.) were given ahead of time, as were rough design and styling guidelines (including the wireframe mockups included below).
 
 Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, Redux, Webpack, SASS, CSS3, HTML5</b> and the third-party <b>IEX Cloud</b> finance API.
 
@@ -28,20 +28,20 @@ Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, R
 - <b>MongoDB</b>, a document-oriented (NoSQL) database system used for storage and management of information.
 - <b>Webpack</b>, a JavaScript bundler to assist with development and production builds.
 - <b>SASS, CSS3 and HTML5</b>, used to manage the presentation and styling of the project.
-- <b>IEX Cloud</b>, a third-party finance API used to query and recieve real-time stock prices.
+- <b>IEX Cloud</b>, a third-party finance API used to query and receive real-time stock prices.
 
 ## Functionality
 
 - Comprehensive registration/authentication behavior for management of user sessions, and keeping track of user information (e.g. available cash, trades association, etc.).
-- Error handling for input fields to prevent invalid entries along with appropiate error mesages (e.g. prevents users from signing in with incorrect credentials, stops a user from registering an account under a previously used email address, prevent purchase of a stocks that cost more than a user's available cash, etc.).
-- Seperate Portfolio and Transaction pages. Portfolio page displays an aggregated list of all stocks a user has purchased, and lists in alphabetical order based on stock ticker. If a stock was purchased in two seperate transactions then the transactions are grouped together. Transaction page displays a list of each individual trade in reverse-chronological order.
+- Error handling for input fields to prevent invalid entries along with appropriate error messages (e.g. prevents users from signing in with incorrect credentials, stops a user from registering an account under a previously used email address, prevent purchase of a stocks that cost more than a user's available cash, etc.).
+- Separate Portfolio and Transaction pages. Portfolio page displays an aggregated list of all stocks a user has purchased, and lists in alphabetical order based on stock ticker. If a stock was purchased in two separate transactions then the transactions are grouped together. Transaction page displays a list of each individual trade in reverse-chronological order.
 - Color indicators for the pricing information on the Portfolio page to indicate if a user has gained (green) or lost (red) money when comparing how much they've spent on the stock verses it's current price.
 - Dynamic and auto-detecting light/dark mode in conjunction with a theme switch in the webpage's header.
 - A polished, intuitive, responsive user interface/experience.
 
 ![Dark/Light Theme Gif](./readme_images/dark_light.gif)
 
-## Folder Struture
+## Folder Structure
 
     # Backend Directory
 
@@ -49,7 +49,7 @@ Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, R
     ├── config
     ├── frontend        # see the frontend directory below
     |   └── ... 
-    ├── models          # defines the strucuture of db schema
+    ├── models          # defines the structure of db schema
     ├── readme_images   # images used on this page
     ├── routes
     |   └── api         # set connection btw frontend, backend
@@ -75,7 +75,7 @@ Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, R
     |   |   |── splash
     |   |   |── theme_switch
     |   |   └── transactions
-    |   |── middleware          # includes a thunk definition
+    |   |── middleware          # includes a thunk middleware definition
     |   |── reducers            # organizes information for the
     |   |                           # global redux store
     |   |── store               # defines the redux store
@@ -105,7 +105,7 @@ Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, R
 
 - Enhanced ticker symbol field in the purchase form with predictive values based on valid inputs, allow querying based on company name
 - Enhanced responsiveness for various screen sizes, and mobile optimization
-- Impliment selling of stocks within a user's portfolio, which would be included as their own seperate entries on the Transaction page
+- Implement selling of stocks within a user's portfolio, which would be included as their own separate entries on the Transaction page
 
 ## Resources
 
@@ -113,3 +113,4 @@ Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, R
 - The basis for the styling of the loading spinner adapted from Loading.io: https://loading.io/css
 - The CSS reset used in this project: https://meyerweb.com/eric/tools/css/reset
 - Color selection variables inspired by Base16 default colors: http://chriskempson.com/projects/base16/
+
