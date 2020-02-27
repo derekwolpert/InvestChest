@@ -9,7 +9,7 @@
 InvestChest was completed as a part of the Winter 2020 assessment for the New York Tech Talent Pipeline. The given instructions were to build a full-stack web-based stock portfolio application where users can purchase stock based on values fetched from a third-party API. 
 The specifics of the functionality for the app (user registration, sign-in, purchase forms, portfolio and transaction page, etc.) were given ahead of time, as were rough design and styling guidelines (including the wireframe mockups included below).
 
-Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, Redux, Webpack, SASS, CSS3, HTML5</b> and the third-party <b>IEX Cloud</b> finance API.
+Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, Redux, Webpack, Sass, CSS3, HTML5</b> and the third-party <b>IEX Cloud</b> finance API.
 
 ### [This project is currently hosted at investchest.herokuapp.com - CLICK HERE to visit the live version of this project](https://investchest.herokuapp.com/#/)
 
@@ -27,7 +27,7 @@ Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, R
 - <b>JavaScript</b>, the project's front and backend programing language.
 - <b>MongoDB</b>, a document-oriented (NoSQL) database system used for storage and management of information.
 - <b>Webpack</b>, a JavaScript bundler to assist with development and production builds.
-- <b>SASS, CSS3 and HTML5</b>, used to manage the presentation and styling of the project.
+- <b>Sass, CSS3 and HTML5</b>, used to manage the presentation and styling of the project.
 - <b>IEX Cloud</b>, a third-party finance API used to query and receive real-time stock prices.
 
 ## Functionality
