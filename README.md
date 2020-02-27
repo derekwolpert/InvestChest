@@ -37,6 +37,8 @@ Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, R
 - Dynamic and auto-detecting light/dark mode in conjunction with a theme switch in the webpage's header.
 - A polished, intuitive, responsive user interface/experience.
 
+![Dark/Light Theme Gif](./readme_images/dark_light.gif)
+
 ## Folder Struture
 
     # Backend Directory
