@@ -113,4 +113,3 @@ Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, R
 - The basis for the styling of the loading spinner adapted from Loading.io: https://loading.io/css
 - The CSS reset used in this project: https://meyerweb.com/eric/tools/css/reset
 - Color selection variables inspired by Base16 default colors: http://chriskempson.com/projects/base16/
-
