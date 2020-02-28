@@ -20,10 +20,10 @@ class Header extends React.Component {
         if (this.props.loggedIn) {
             return (
                 <div>
-                    <Link to={"/portfolio"}>
+                    <Link to={"/portfolio"} className={this.props.history.location.pathname === "/portfolio" ? "active" : ""}>
                         Portfolio
                     </Link>
-                    <Link to={"/transactions"}>
+                    <Link to={"/transactions"} className={this.props.history.location.pathname === "/transactions" ? "active" : ""}>
                         Transactions
                     </Link>
                     <div onClick={this.logoutUser}>Logout</div>

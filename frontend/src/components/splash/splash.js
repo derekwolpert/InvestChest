@@ -2,6 +2,14 @@ import React from "react";
 
 class Splash extends React.Component {
 
+    componentDidMount() {
+        document.title = "InvestChest";
+    }
+
+    componentDidUpdate() {
+        document.title = "InvestChest";
+    }
+
     render() {
         return (
             <section className="splash-container">

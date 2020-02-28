@@ -20,6 +20,12 @@ class Portfolio extends React.Component {
         } else if ((!this.props.stocks) && (this.props.trades.length > 0)) {
             this.getStocksFromTrades();
         }
+
+        if (this.props.match.path === "/portfolio") {
+            document.title = "InvestChest | Your Portfolio";
+        } else if (this.props.match.path === "/transactions") {
+            document.title = "InvestChest | Your Transaction History";
+        }
     }
 
     componentDidUpdate(prevProps) {
@@ -27,6 +33,11 @@ class Portfolio extends React.Component {
             this.props.getTrades();
         } else if ((!this.props.stocks) && (this.props.trades.length > 0)) {
             this.getStocksFromTrades();
+        }
+        if (this.props.match.path === "/portfolio") {
+            document.title = "InvestChest | Your Portfolio";
+        } else if (this.props.match.path === "/transactions") {
+            document.title = "InvestChest | Your Transactions";
         }
     }
 
