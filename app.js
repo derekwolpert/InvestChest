@@ -9,13 +9,14 @@ const passport = require('passport');
 const users = require("./routes/api/users");
 const trades = require("./routes/api/trades");
 const stocks = require("./routes/api/stocks");
-
+const favicon = require("serve-favicon");
 const path = require("path");
 
 app.use(compression());
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("frontend/dist"));
+    app.use(favicon(path.join(__dirname, "frontend", "public", "favicon.ico")));
     app.get("/", (req, res) => {
         res.sendFile(
             path.resolve(__dirname, "frontend", "public", "index.html")
