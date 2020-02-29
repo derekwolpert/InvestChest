@@ -21,9 +21,9 @@ COPY /routes ./routes
 COPY /validation ./validation
 COPY app.js ./
 
-ENV PORT 80
+ENV PORT 3000
 ENV NODE_ENV production
 
-EXPOSE 80
+EXPOSE 3000
 
 CMD ["npm", "start"]
