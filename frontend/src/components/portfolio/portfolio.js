@@ -12,6 +12,8 @@ class Portfolio extends React.Component {
         this.getStocksFromTrades = this.getStocksFromTrades.bind(this);
         this.portfolioTotal = this.portfolioTotal.bind(this);
         this.formatTransactionItems = this.formatTransactionItems.bind(this);
+        this._leftscroll = React.createRef();
+
     }
 
     componentDidMount() {
@@ -34,10 +36,12 @@ class Portfolio extends React.Component {
         } else if ((!this.props.stocks) && (this.props.trades.length > 0)) {
             this.getStocksFromTrades();
         }
-        if (this.props.match.path === "/portfolio") {
+        if ((this.props.match.path === "/portfolio") && (prevProps.match.path !== "/portfolio")) {
             document.title = "InvestChest | Your Portfolio";
-        } else if (this.props.match.path === "/transactions") {
+            this._leftscroll.scrollTop = 0;
+        } else if ((this.props.match.path === "/transactions") && (prevProps.match.path !== "/transactions")) {
             document.title = "InvestChest | Your Transactions";
+            this._leftscroll.scrollTop = 0;
         }
     }
 
@@ -158,7 +162,7 @@ class Portfolio extends React.Component {
                             <div className="portfolio-content">
                                 {(this.props.trades.length > 0) ?
 
-                                <div>{this.props.match.path === "/portfolio" ? this.formatTradesForPortfolio() : this.formatTransactionItems()}</div>
+                                <div ref={(l) => this._leftscroll = l}>{this.props.match.path === "/portfolio" ? this.formatTradesForPortfolio() : this.formatTransactionItems()}</div>
                                 : <div className="no-trades-message">
                                     <h1>
                                         Welcome to InvestChest!
