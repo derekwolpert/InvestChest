@@ -1,4 +1,4 @@
-<a href="https://investchest.herokuapp.com">
+<a href="https://investchest.derekwolpert.com">
     <img src="./readme_images/logo.png" alt="InvestChest Logo" title="InvestChest" align="right" height="60" />
 </a>
 
@@ -6,11 +6,11 @@
 
 ## Overview
 
-InvestChest was completed as a part of the Winter 2020 assessment for the New York Tech Talent Pipeline. The given instructions were to build a full-stack web-based stock portfolio application where users can purchase stock based on values fetched from a third-party API.  The specifics regarding functionality (e.g. user registration, sign-in, purchase forms, portfolio and transaction page, etc.) were detailed ahead of time, as were rough design and styling guidelines (including the wireframe mockups included below).  Otherwise, I was free to utilize the tools I viewed as best fit for the task.
+InvestChest was completed as a part of the Winter 2020 assessment for the New York Tech Talent Pipeline. The given instructions were to build a full-stack web-based stock portfolio application where users can purchase stock based on values fetched from a third-party API.  The specifics regarding functionality (e.g. user registration, sign-in, purchase forms, portfolio and transaction page, etc.) were detailed ahead of time, as were rough design and styling guidelines (including the wireframe mockups included below).  Otherwise, I was free to utilize tools best fit for the task.
 
-Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, Redux, Webpack, Sass, CSS3, HTML5</b> and the third-party <b>IEX Cloud</b> finance API.
+Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, Redux, Webpack, Sass, CSS3, HTML5</b> and the third-party <b>IEX Cloud</b> finance API.  InvestChest is deployed within a <b>Docker Container</b> through <b>Amazon Web Services</b>.
 
-### [This project is currently hosted at investchest.herokuapp.com - CLICK HERE to visit the live version of this project](https://investchest.herokuapp.com/#/)
+### [This project is currently hosted at <b>investchest.derekwolpert.com</b> - CLICK HERE to visit the live version of this project](https://investchest.derekwolpert.com)
 
 <p align="middle">
     <img src="./readme_images/final_splash.png" width="430" />
@@ -28,6 +28,8 @@ Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, R
 - <b>Webpack</b>, a JavaScript bundler to assist with development and production builds.
 - <b>Sass, CSS3 and HTML5</b>, used to manage the presentation and styling of the project.
 - <b>IEX Cloud</b>, a third-party finance API used to query and receive real-time stock prices.
+- <b>Docker</b>, containerization platform that allows the creation of lightweight/portable environments to run the project.
+- <b>Amazon Web Services</b>, an on-demand cloud computing platform utilized to assist with storage and deployment of the project (using ECR, ECS and EC2 along with appropriate network configuration).
 
 ## Functionality
 
@@ -102,9 +104,9 @@ Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, R
 
 ## Potential Future Features
 
+- Implement selling of stocks, which would be included as their own separate entries on the Transaction page
+- Enhanced responsiveness for various screen sizes, and mobile presentation optimization
 - Enhanced ticker symbol field in the purchase form with predictive values based on valid inputs, allow querying based on company name
-- Enhanced responsiveness for various screen sizes, and mobile optimization
-- Implement selling of stocks within a user's portfolio, which would be included as their own separate entries on the Transaction page
 
 ## Resources
 
