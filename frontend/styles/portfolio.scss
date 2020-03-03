@@ -98,6 +98,10 @@
             justify-content: flex-end;
         }
     }
+
+    li:last-of-type {
+        margin-bottom: 0;
+    }
 }
 
 .no-trades-message {
