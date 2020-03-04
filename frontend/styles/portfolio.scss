@@ -35,13 +35,13 @@
         margin: 8px;
     }
     > div:first-of-type {
-        flex: 4;
+        flex: 3;
         overflow-y: scroll;
         margin-left: 0;
     }
 
     > div:last-of-type {
-        flex: 3;
+        flex: 2;
         display: flex;
         flex-direction: column;
         margin-right: 0;

@@ -62,12 +62,12 @@ class PortfolioItem extends React.Component {
                         </tr>
                     </thead>
                     <tbody >
-                        {this.props.trades.reverse().map((trade, idx) => (
+                        {[...this.props.trades].reverse().map((trade, idx) => (
                             <tr key={idx}>
                                 <td>{moment(trade.date)
                                     .format("l LTS")}</td>
                                 <td>{trade.numberOfShares}</td>
-                                <td>${trade.purchasePrice}</td>
+                                <td>${trade.purchasePrice.toFixed(2)}</td>
                             </tr>
                         ))}
                     </tbody>
