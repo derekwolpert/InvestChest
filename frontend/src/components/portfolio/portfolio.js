@@ -1,6 +1,6 @@
 import React from "react";
+import PortfolioItem from "./portfolio_item";
 import PurchaseContainer from "../purchase/purchase_container";
-import * as moment from "moment";
 import TransactionItem from "../transactions/transaction_item";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
@@ -62,89 +62,42 @@ class Portfolio extends React.Component {
     }
 
     formatedPortfolioItems(trades) {
+
         return (
             <ul className="portfolio-items-container">
                 {Object.keys(trades)
                     .sort()
                     .map((symbol, idx) => (
-                        <li key={idx}>
-                            <div>
-                                <span>{`${symbol} (${
-                                    trades[symbol].companyName
-                                }) – ${trades[symbol].totalShares} Share${
-                                    trades[symbol].totalShares > 1 ? "s" : ""
-                                }`}</span>
-                                <span
-                                    className={
-                                        trades[symbol].totalValue >
-                                        trades[symbol].totalCost
-                                            ? "green"
-                                            : trades[symbol].totalValue <
-                                              trades[symbol].totalCost
-                                            ? "red"
-                                            : ""
-                                    }
-                                >{`$${trades[symbol].totalValue.toFixed(
-                                    2
-                                )}`}</span>
-                            </div>
-
-                            <span>
-                                Last Updated:{" "}
-                                {moment(
-                                    this.props.stocks[symbol].quote.latestUpdate
-                                ).calendar()}
-                            </span>
-                        </li>
+                        <PortfolioItem key={idx} stock={this.props.stocks[symbol].quote} trades={trades[symbol]} />
                     ))}
             </ul>
         );
-
     }
 
     formatTradesForPortfolio() {
         const combinedTrades = {};
         
         for (let trade of this.props.trades) {
-
             if (!(trade.symbol in this.props.stocks)) {
                 this.getStocksFromTrades();
             } else {
                 if (trade.symbol in combinedTrades) {
-                    combinedTrades[trade.symbol].totalShares +=
-                        trade.numberOfShares;
-                    combinedTrades[trade.symbol].totalValue +=
-                        trade.numberOfShares * this.props.stocks[trade.symbol].quote.latestPrice;
-                    combinedTrades[trade.symbol].totalCost +=
-                        trade.numberOfShares * trade.purchasePrice;
+                    combinedTrades[trade.symbol].push(trade);
                 } else {
-                    combinedTrades[trade.symbol] = {
-                        totalShares: trade.numberOfShares,
-                        totalValue:
-                            trade.numberOfShares *
-                            this.props.stocks[trade.symbol].quote.latestPrice,
-                        companyName: this.props.stocks[trade.symbol].quote
-                            .companyName,
-                        totalCost: trade.numberOfShares * trade.purchasePrice
-                    };
+                    combinedTrades[trade.symbol] = [trade];
                 }
             }
-
-
         }
         return this.formatedPortfolioItems(combinedTrades);
-    };
+    }
 
     formatTransactionItems() {
         return (
 
             <ul className="portfolio-items-container">
-
                 {this.props.trades.map((trade, idx) => (
                     <TransactionItem trade={trade} companyName={this.props.stocks[trade.symbol].quote.companyName} key={idx} />
-                ))
-                }
-
+                ))}
             </ul>
         )
     }

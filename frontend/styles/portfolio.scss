@@ -35,13 +35,13 @@
         margin: 8px;
     }
     > div:first-of-type {
-        flex: 3;
+        flex: 4;
         overflow-y: scroll;
         margin-left: 0;
     }
 
     > div:last-of-type {
-        flex: 2;
+        flex: 3;
         display: flex;
         flex-direction: column;
         margin-right: 0;
@@ -84,7 +84,6 @@
                 margin-left: 4px;
             }
 
-
             .green {
                 color: $green;
             }
@@ -102,6 +101,10 @@
     li:last-of-type {
         margin-bottom: 0;
     }
+}
+
+.portfolio-item {
+    cursor: pointer;
 }
 
 .no-trades-message {
@@ -124,5 +127,51 @@
 
     svg {
         font-size: 48px;
+    }
+}
+
+.portfolio-table-container {
+    margin-top: 8px;
+    margin-bottom: 0 !important;
+    width: 100%;
+    font-size: 12px;
+    border: var(--text4) solid 2px;
+    border-radius: 4px;
+    background-color: var(--bg1);
+
+    table {
+        width: 100%;
+    }
+
+    th, td {
+        padding: 4px;
+        line-height: normal;
+    }
+
+    thead {
+        font-weight: 700;
+        font-size: 14px;
+        th {
+            padding-top: 8px;
+        }
+        border-bottom: var(--text4) solid 2px;
+    }
+
+    th:first-of-type, td:first-of-type {
+        padding-left: 8px;
+    }
+
+    th:last-of-type, td:last-of-type {
+        padding-right: 8px;
+    }
+
+    tbody {
+        > tr:nth-child(odd) {
+            background-color: var(--bg2);
+        }
+
+        > tr:last-of-type td {
+            padding-bottom: 8px;
+        }
     }
 }
