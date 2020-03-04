@@ -62,7 +62,7 @@ class PortfolioItem extends React.Component {
                         </tr>
                     </thead>
                     <tbody >
-                        {this.props.trades.map((trade, idx) => (
+                        {this.props.trades.reverse().map((trade, idx) => (
                             <tr key={idx}>
                                 <td>{moment(trade.date)
                                     .format("l LTS")}</td>
@@ -79,36 +79,39 @@ class PortfolioItem extends React.Component {
     render() {
         return (
             this.state.stateIsSet ?
-            <li className="portfolio-item" onClick={() => this.setState({showDetails: !this.state.showDetails})}>
-                <div>
-                    <span>{`${this.props.stock.symbol} (${
-                        this.props.stock.companyName
-                        }) – ${this.state.totalShares} Share${
-                        this.state.totalShares > 1 ? "s" : ""
-                        }`}</span>
-                    <span
-                        className={
-                            this.state.totalValue >
-                                this.state.totalCost
-                                ? "green"
-                                : this.state.totalValue <
+            <>
+                <li className="portfolio-item" onClick={() => this.setState({showDetails: !this.state.showDetails})}>
+                    <div>
+                        <span>{`${this.props.stock.symbol} (${
+                            this.props.stock.companyName
+                            }) – ${this.state.totalShares} Share${
+                            this.state.totalShares > 1 ? "s" : ""
+                            }`}</span>
+                        <span
+                            className={
+                                this.state.totalValue >
                                     this.state.totalCost
-                                    ? "red"
-                                    : ""
-                        }
-                    >{`$${this.state.totalValue.toFixed(
-                        2
-                    )}`}</span>
-                </div>
+                                    ? "green"
+                                    : this.state.totalValue <
+                                        this.state.totalCost
+                                        ? "red"
+                                        : ""
+                            }
+                        >{`$${this.state.totalValue.toFixed(
+                            2
+                        )}`}</span>
+                    </div>
 
-                <span>
-                    Last Updated:{" "}
-                    {moment(
-                        this.props.stock.latestUpdate
-                    ).calendar()}
-                </span>
-                {this.state.showDetails ? this.formatTradesHistory() : null}
-            </li>
+                    <span>
+                        Last Updated:{" "}
+                        {moment(
+                            this.props.stock.latestUpdate
+                        ).calendar()}
+                    </span>
+                    {this.state.showDetails ? this.formatTradesHistory() : null}
+                </li>
+                <span className="spacer" />
+            </>
             : null
         )
     }

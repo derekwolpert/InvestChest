@@ -21,6 +21,10 @@
         background-color: var(--bg1);
     }
 
+    input:last-of-type {
+        margin-bottom: 0 !important;
+    }
+
     input:focus {
         border-color: $blue;
     }

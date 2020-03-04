@@ -67,13 +67,8 @@
 .portfolio-items-container {
     margin-right: 16px;
     li {
-        position: relative;
-        
         font-size: 16px;
-        padding-bottom: 16px;
-        border-bottom: var(--text4) solid 2px;
         margin-bottom: 16px;
-
         > div {
             display: flex;
             justify-content: space-between;
@@ -100,6 +95,16 @@
 
     li:last-of-type {
         margin-bottom: 0;
+    }
+
+    .spacer {
+        margin: 16px 0;
+        display: block;
+        border-bottom: var(--text4) solid 2px;
+    }
+
+    .spacer:last-of-type {
+        margin-bottom: 0px;
     }
 }
 
