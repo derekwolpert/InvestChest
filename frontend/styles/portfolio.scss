@@ -67,18 +67,17 @@
 .portfolio-items-container {
     margin-right: 16px;
     li {
+        position: relative;
         font-size: 16px;
         margin-bottom: 16px;
         > div {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 8px;
-
+            margin: 0 24px 8px 0;
             > span:last-of-type {
                 font-weight: 600;
                 margin-left: 4px;
             }
-
             .green {
                 color: $green;
             }
@@ -86,6 +85,15 @@
                 color: $red;
             }
         }
+
+        svg {
+            position: absolute;
+            margin-left: 4px;
+            top: 0;
+            right: 0;
+            color: var(--text4);
+        }
+
         > span {
             font-size: 12px;
             display: flex;
@@ -136,7 +144,7 @@
 }
 
 .portfolio-table-container {
-    margin-top: 8px;
+    margin-top: 8px !important;
     margin-bottom: 0 !important;
     width: 100%;
     font-size: 12px;
@@ -151,15 +159,17 @@
     th, td {
         padding: 4px;
         line-height: normal;
+        text-align: center;
     }
 
     thead {
         font-weight: 700;
         font-size: 14px;
+        border-bottom: var(--text4) solid 2px;
+        text-transform: uppercase;
         th {
             padding-top: 8px;
         }
-        border-bottom: var(--text4) solid 2px;
     }
 
     th:first-of-type, td:first-of-type {

@@ -1,5 +1,7 @@
 import React from "react";
 import * as moment from "moment";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
 class PortfolioItem extends React.Component {
 
@@ -57,7 +59,7 @@ class PortfolioItem extends React.Component {
                     <thead>
                         <tr>
                             <th>Date</th>
-                            <th>Num of Shares</th>
+                            <th># of Shares</th>
                             <th>Price per Share</th>
                         </tr>
                     </thead>
@@ -99,9 +101,10 @@ class PortfolioItem extends React.Component {
                             }
                         >{`$${this.state.totalValue.toFixed(
                             2
-                        )}`}</span>
+                            )}`}
+                        </span>
                     </div>
-
+                    <FontAwesomeIcon icon={this.state.showDetails ? faChevronUp : faChevronDown} />
                     <span>
                         Last Updated:{" "}
                         {moment(
