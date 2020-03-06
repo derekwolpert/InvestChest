@@ -8,6 +8,7 @@
   --text2: #282828;
   --text1: #181818;
   --opacitybg: 248, 248, 248;
+  --chart: #999999;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,6 +22,7 @@
     --text2: #e8e8e8;
     --text1: #f8f8f8;
     --opacitybg: 24, 24, 24;
+    --chart: #666666
   }
 }
 
@@ -34,6 +36,7 @@
   --text2: #282828;
   --text1: #181818;
   --opacitybg: 248, 248, 248;
+  --chart: #999999;
 }
 
 [theme-mode="dark"] {
@@ -46,6 +49,7 @@
   --text2: #e8e8e8;
   --text1: #f8f8f8;
   --opacitybg: 24, 24, 24;
+  --chart: #666666;
 }
 
 $red: #ab4642;

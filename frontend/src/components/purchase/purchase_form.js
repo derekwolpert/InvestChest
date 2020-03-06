@@ -1,6 +1,6 @@
 import React from "react";
 import * as moment from "moment";
-import StockChart from "../stock_chart/stock_chart";
+import StockChartContainer from "../stock_chart/stock_chart_container";
 
 class PurchaseForm extends React.Component {
     constructor(props) {
@@ -128,7 +128,7 @@ class PurchaseForm extends React.Component {
                     {this.partOne()}
                     {this.partTwo()}
                 </form>
-                <StockChart />
+                <StockChartContainer />
             </section>
         );
     }

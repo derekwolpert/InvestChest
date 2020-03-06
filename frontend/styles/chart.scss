@@ -1,0 +1,60 @@
+.chart-selectors {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin: 16px 0 12px;
+    border-top: var(--text4) solid 2px;
+    padding-top: 16px;
+    color: var(--text4);
+
+    .chart-range, .chart-range-active{
+        text-align: center;
+        flex: 1;
+        cursor: pointer;
+        letter-spacing: 1px;
+        font-weight: 600;
+    }
+
+    .chart-range:hover {
+        color: var(--text1);
+    }
+
+    .chart-range-active {
+        color: $blue;
+    }
+
+    .divider {
+        border-right: var(--text4) solid 1px;
+    }
+
+}
+
+.stock-chart-container {
+    font-size: 12px;
+    background-color: var(--bg1);
+    border: var(--text4) solid 3px;
+    border-radius: 4px;
+
+    tspan {
+        fill: var(--chart);
+    }
+    line {
+        stroke: var(--chart);
+    }
+}
+
+.chart-tooltip {
+    background: rgba(var(--opacitybg), 0.8);
+    border-radius: 4px;
+    padding: 4px 8px;
+    border: var(--text4) solid 1px;
+    color: var(--text3);
+    font-weight: 600;
+
+    p:first-of-type {
+        margin-bottom: 4px;
+    }
+    p {
+        text-align: center;
+    }
+}

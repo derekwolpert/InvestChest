@@ -42,6 +42,7 @@
     "react-dom": "^16.13.0",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
+    "recharts": "^2.0.0-beta.1",
     "redux": "^4.0.5",
     "sass": "^1.26.2",
     "sass-loader": "^8.0.2",
