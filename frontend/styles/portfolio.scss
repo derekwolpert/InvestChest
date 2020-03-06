@@ -92,6 +92,7 @@
             top: 0;
             right: 0;
             color: var(--text4);
+            cursor: pointer;
         }
 
         > span {
@@ -114,10 +115,6 @@
     .spacer:last-of-type {
         margin-bottom: 0px;
     }
-}
-
-.portfolio-item {
-    cursor: pointer;
 }
 
 .no-trades-message {

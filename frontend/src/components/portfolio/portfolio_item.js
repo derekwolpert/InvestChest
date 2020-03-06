@@ -79,44 +79,47 @@ class PortfolioItem extends React.Component {
     }
 
     render() {
-        return (
-            this.state.stateIsSet ?
+        return this.state.stateIsSet ? (
             <>
-                <li className="portfolio-item" onClick={() => this.setState({showDetails: !this.state.showDetails})}>
+                <li>
                     <div>
                         <span>{`${this.props.stock.symbol} (${
                             this.props.stock.companyName
-                            }) – ${this.state.totalShares} Share${
+                        }) – ${this.state.totalShares} Share${
                             this.state.totalShares > 1 ? "s" : ""
-                            }`}</span>
+                        }`}</span>
                         <span
                             className={
-                                this.state.totalValue >
-                                    this.state.totalCost
+                                this.state.totalValue > this.state.totalCost
                                     ? "green"
                                     : this.state.totalValue <
-                                        this.state.totalCost
-                                        ? "red"
-                                        : ""
+                                      this.state.totalCost
+                                    ? "red"
+                                    : ""
                             }
-                        >{`$${this.state.totalValue.toFixed(
-                            2
-                            )}`}
+                        >
+                            {`$${this.state.totalValue.toFixed(2)}`}
                         </span>
                     </div>
-                    <FontAwesomeIcon icon={this.state.showDetails ? faChevronUp : faChevronDown} />
+                    <FontAwesomeIcon
+                        icon={
+                            this.state.showDetails ? faChevronUp : faChevronDown
+                        }
+                        onClick={() =>
+                            this.setState({
+                                showDetails: !this.state.showDetails
+                            })
+                        }
+                    />
                     <span>
                         Last Updated:{" "}
-                        {moment(
-                            this.props.stock.latestUpdate
-                        ).calendar()}
+                        {moment(this.props.stock.latestUpdate).calendar()}
                     </span>
                     {this.state.showDetails ? this.formatTradesHistory() : null}
                 </li>
                 <span className="spacer" />
             </>
-            : null
-        )
+        ) : null;
     }
 }
 
