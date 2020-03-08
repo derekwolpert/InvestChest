@@ -41,7 +41,7 @@
     background-color: var(--bg1);
     border: var(--text4) solid 3px;
     border-radius: 4px;
-    height: 326px;
+    height: 294px;
     position: relative;
     overflow: hidden;
 
@@ -50,7 +50,7 @@
     }
     line {
         stroke: var(--chart);
-        opacity: 0.5;
+        opacity: 0.4;
     }
     > p {
         display: inline-block;

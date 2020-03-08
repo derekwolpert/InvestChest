@@ -38,12 +38,12 @@
         overflow-x: hidden;
     }
     > div:first-of-type {
-        flex: 11;
+        flex: 1;
         overflow-y: scroll;
     }
 
     > div:last-of-type {
-        flex: 9 0 16px;
+        flex: 1 0 16px;
         display: flex;
         flex-direction: column;
 
@@ -51,7 +51,7 @@
             text-align: center;
             font-size: 24px;
             padding-bottom: 16px;
-            margin: 0 16px 8px 24px;
+            margin: 0 16px 8px 16px;
             border-bottom: var(--text4) solid 2px;
         }
     }

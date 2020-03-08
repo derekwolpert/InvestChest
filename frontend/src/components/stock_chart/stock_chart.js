@@ -68,7 +68,7 @@ class StockChart extends React.Component {
             >
                 <p>{this.props.symbol}</p>
                 {this.props.data.length > 0 ?
-                    <ResponsiveContainer isAnimationActive={false} height={320}>
+                    <ResponsiveContainer isAnimationActive={false} height={288}>
                         <AreaChart
                             data={this.props.data}
                             margin={{ top: -1, right: 0, left: -1, bottom: 0 }}
