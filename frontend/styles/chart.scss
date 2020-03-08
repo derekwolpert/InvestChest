@@ -64,14 +64,14 @@
     > p {
         display: inline-block;
         position: absolute;
-        font-size: 48px;
-        font-weight: 700;
+        font-size: 64px;
+        font-weight: 600;
         top: 16px;
         left: 16px;
         opacity: 0.4;
-        letter-spacing: 1px;
         color: var(--text1);
-        -webkit-text-stroke-width: 3px;
+        letter-spacing: 1px;
+        -webkit-text-stroke-width: 4px;
         -webkit-text-stroke-color: var(--bg1);
     }
 }

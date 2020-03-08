@@ -94,16 +94,16 @@
         text-align: center;
         word-break: break-word;
     }
-    > a, > p {
+    > p {
         display: block;
-        margin: 12px 6px 0;
+        margin: 12px 12px 0;
         font-size: 12px;
         line-height: normal;
         color: var(--text4);
         text-align: center;
     }
 
-    > p {
+    > p:last-of-type {
         margin-top: 4px;
     }
 

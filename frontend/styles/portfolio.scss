@@ -2,7 +2,7 @@
     padding-top: 40px;
     width: 100%;
     height: calc(100vh - 32px);
-    max-width: 1080px;
+    max-width: 1120px;
     margin: auto;
 
     > h1 {
@@ -38,12 +38,12 @@
         overflow-x: hidden;
     }
     > div:first-of-type {
-        flex: 1;
+        flex: 1 1 0;
         overflow-y: scroll;
     }
 
     > div:last-of-type {
-        flex: 1 0 16px;
+        flex: 1 1 16px;
         display: flex;
         flex-direction: column;
 

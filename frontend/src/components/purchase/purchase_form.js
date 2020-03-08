@@ -263,7 +263,7 @@ class PurchaseForm extends React.Component {
                         }
                     </section> 
                 <StockChart data={this.handleChart()} range={this.state.currentRange} symbol={this.props.stockError.noStockFound ? "" : this.state.currentStock} />
-                <a href="https://iexcloud.io/docs/api/#testing-sandbox" target="_blank">NOTE: Stock chart data used above utilizes IEX Cloud's Sandbox testing to avoid exceeding IEX's free-tier API call limit, click here to learn more about this limitation</a>
+                <p>NOTE: Stock chart data used above utilizes IEX Cloud's Sandbox testing to avoid exceeding IEX's free-tier API call limit, <a href="https://iexcloud.io/docs/api/#testing-sandbox" target="_blank">click here to learn more about this limitation</a></p>
                 <p>Other financial data (e.g. latest price, last updated, etc.) are unaffected</p>
             </section>
         );
