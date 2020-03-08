@@ -13,6 +13,9 @@ body {
 
 input {
   line-height: normal;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .body-container {

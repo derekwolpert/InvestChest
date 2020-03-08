@@ -27,7 +27,7 @@ export const CustomizedYTick = props => {
     const { x, y, payload } = props;
 
     return (
-        <g transform={`translate(${x + 3},${y + 2})`}>
+        <g transform={`translate(${x + 3},${y + 3})`}>
             <text dx={10} textAnchor="middle" fill="var(--chart)">
                 {payload.value}
             </text>

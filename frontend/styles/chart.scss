@@ -29,6 +29,15 @@
         color: $blue;
     }
 
+    .chart-range.disabled {
+        cursor: not-allowed;
+        color: var(--bg4);
+    }
+
+    .chart-range.disabled:hover {
+        color: var(--bg4);
+    }
+
     .divider {
         border-right: var(--text4) solid 1px;
         height: 19px;
@@ -41,7 +50,7 @@
     background-color: var(--bg1);
     border: var(--text4) solid 3px;
     border-radius: 4px;
-    height: 294px;
+    height: 320px;
     position: relative;
     overflow: hidden;
 
@@ -59,7 +68,7 @@
         font-weight: 700;
         top: 16px;
         left: 16px;
-        opacity: 0.2;
+        opacity: 0.4;
         letter-spacing: 1px;
         color: var(--text1);
         -webkit-text-stroke-width: 3px;

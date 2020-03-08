@@ -31,11 +31,17 @@ class PurchaseForm extends React.Component {
     }
 
     handleChart() {
+        if (!this.state.currentStock) {
+            return undefined;
+        }
+        if (!(this.state.currentStock in this.props.stocks)) {
+            return undefined;
+        }
         if (!("chart" in this.props.stocks[this.state.currentStock])) {
-            return [];
+            return undefined;
         }
         if (!(this.state.currentRange in this.props.stocks[this.state.currentStock].chart)) {
-            return [];
+            return undefined;
         }
         return this.props.stocks[this.state.currentStock].chart[this.state.currentRange];
     }
@@ -177,71 +183,88 @@ class PurchaseForm extends React.Component {
                     {this.partOne()}
                     {this.partTwo()}
                 </form>
-                {this.state.currentStock in this.props.stocks ?
-                <>
                     <section className="chart-selectors">
-                        <p 
-                            className={`chart-range${this.state.currentRange === "1d" ? "-active" : ""}`}
-                            onClick={() => this.setRange("1d")}
-                        >
-                            1D
-                        </p>
-                        <p className="divider" />
-                        <p
-                            className={`chart-range${this.state.currentRange === "5dm" ? "-active" : ""}`}
-                            onClick={() => this.setRange("5dm")}
-                        >
-                            1W
-                        </p>
-                        <p className="divider" />
-                        <p
-                            className={`chart-range${this.state.currentRange === "1mm" ? "-active" : ""}`}
-                            onClick={() => this.setRange("1mm")}
-                        >
-                            1M
-                        </p>
-                        <p className="divider" />
-                        <p 
-                            className={`chart-range${this.state.currentRange === "3m" ? "-active" : ""}`}
-                            onClick={() => this.setRange("3m")}
-                        >
-                            3M
-                        </p>
-                        <p className="divider" />
-                        <p 
-                            className={`chart-range${this.state.currentRange === "6m" ? "-active" : ""}`}
-                            onClick={() => this.setRange("6m")}
-                        >
-                            6M
-                        </p>
-                        <p className="divider" />
-                        <p 
-                            className={`chart-range${this.state.currentRange === "1y" ? "-active" : ""}`}
-                            onClick={() => this.setRange("1y")}
-                        >
-                            1Y
-                        </p>
-                        <p className="divider" />
-                        <p 
-                            className={`chart-range${this.state.currentRange === "2y" ? "-active" : ""}`}
-                            onClick={() => this.setRange("2y")}
-                        >
-                            2Y
-                        </p>
-                        <p className="divider" />
-                        <p 
-                            className={`chart-range${this.state.currentRange === "5y" ? "-active" : ""}`}
-                            onClick={() => this.setRange("5y")}
-                        >
-                            5Y
-                        </p>
-                    </section>
-                    <StockChart data={this.handleChart()} range={this.state.currentRange} symbol={this.state.currentStock} />
-                    <a href="https://iexcloud.io/docs/api/#testing-sandbox" target="_blank">NOTE: Stock chart data is purposefully manipulated using IEX Cloud's Sandbox testing to avoid exceeding IEX's free-tier API call limit, click here to learn more about this limitation</a>
-                    <p>Other financial data (e.g. latest price, last updated, etc.) are unaffected</p>
-                </> : null
-                }
-                
+                        {this.state.currentStock in this.props.stocks ?
+                        <>
+                            <p 
+                                className={`chart-range${this.state.currentRange === "1d" ? "-active" : ""}`}
+                                onClick={() => this.setRange("1d")}
+                            >
+                                1D
+                            </p>
+                            <p className="divider" />
+                            <p
+                                className={`chart-range${this.state.currentRange === "5dm" ? "-active" : ""}`}
+                                onClick={() => this.setRange("5dm")}
+                            >
+                                1W
+                            </p>
+                            <p className="divider" />
+                            <p
+                                className={`chart-range${this.state.currentRange === "1mm" ? "-active" : ""}`}
+                                onClick={() => this.setRange("1mm")}
+                            >
+                                1M
+                            </p>
+                            <p className="divider" />
+                            <p 
+                                className={`chart-range${this.state.currentRange === "3m" ? "-active" : ""}`}
+                                onClick={() => this.setRange("3m")}
+                            >
+                                3M
+                            </p>
+                            <p className="divider" />
+                            <p 
+                                className={`chart-range${this.state.currentRange === "6m" ? "-active" : ""}`}
+                                onClick={() => this.setRange("6m")}
+                            >
+                                6M
+                            </p>
+                            <p className="divider" />
+                            <p 
+                                className={`chart-range${this.state.currentRange === "1y" ? "-active" : ""}`}
+                                onClick={() => this.setRange("1y")}
+                            >
+                                1Y
+                            </p>
+                            <p className="divider" />
+                            <p 
+                                className={`chart-range${this.state.currentRange === "2y" ? "-active" : ""}`}
+                                onClick={() => this.setRange("2y")}
+                            >
+                                2Y
+                            </p>
+                            <p className="divider" />
+                            <p 
+                                className={`chart-range${this.state.currentRange === "5y" ? "-active" : ""}`}
+                                onClick={() => this.setRange("5y")}
+                            >
+                                5Y
+                            </p>
+                        </>
+                        :
+                        <>
+                            <p className="chart-range disabled">1D</p>
+                            <p className="divider" />
+                            <p className="chart-range disabled">1W</p>
+                            <p className="divider" />
+                            <p className="chart-range disabled">1M</p>
+                            <p className="divider" />
+                            <p className="chart-range disabled">3M</p>
+                            <p className="divider" />
+                            <p className="chart-range disabled">6M</p>
+                            <p className="divider" />
+                            <p className="chart-range disabled">1Y</p>
+                            <p className="divider" />
+                            <p className="chart-range disabled">2Y</p>
+                            <p className="divider" />
+                            <p className="chart-range disabled">5Y</p>
+                        </>
+                        }
+                    </section> 
+                <StockChart data={this.handleChart()} range={this.state.currentRange} symbol={this.props.stockError.noStockFound ? "" : this.state.currentStock} />
+                <a href="https://iexcloud.io/docs/api/#testing-sandbox" target="_blank">NOTE: Stock chart data used above utilizes IEX Cloud's Sandbox testing to avoid exceeding IEX's free-tier API call limit, click here to learn more about this limitation</a>
+                <p>Other financial data (e.g. latest price, last updated, etc.) are unaffected</p>
             </section>
         );
     }

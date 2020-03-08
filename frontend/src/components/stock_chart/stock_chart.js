@@ -13,11 +13,13 @@ class StockChart extends React.Component {
     }
 
     componentDidMount() {
-        this.setColor();
+        if (this.props.data !== undefined) {
+            this.setColor();
+        }
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.data !== prevProps.data) {
+        if ((this.props.data !== prevProps.data) && (this.props.data !== undefined)) {
             this.setColor();
         }
     }
@@ -55,6 +57,11 @@ class StockChart extends React.Component {
         const loadingSpinner = <div className="center-spinner"><div className="lds-ring"><div></div><div></div><div></div><div></div></div></div>;
 
         return (
+            this.props.data === undefined ?
+                <section className="stock-chart-container">
+                { this.props.symbol ? loadingSpinner : null }
+                </section>
+                 :
             <section
                 className="stock-chart-container"
                 onMouseOver={() =>
@@ -68,10 +75,10 @@ class StockChart extends React.Component {
             >
                 <p>{this.props.symbol}</p>
                 {this.props.data.length > 0 ?
-                    <ResponsiveContainer isAnimationActive={false} height={288}>
+                    <ResponsiveContainer isAnimationActive={false} height={314}>
                         <AreaChart
                             data={this.props.data}
-                            margin={{ top: -1, right: 0, left: -1, bottom: 0 }}
+                            margin={{ top: -1, right: 1, left: -1, bottom: 1 }}
                         >
                             <defs>
                                 <linearGradient
@@ -141,6 +148,7 @@ class StockChart extends React.Component {
                     </ResponsiveContainer> : loadingSpinner
                 }
             </section>
+                
         );
 
     }
