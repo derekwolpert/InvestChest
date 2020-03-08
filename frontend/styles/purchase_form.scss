@@ -3,7 +3,7 @@
     position: relative;
     overflow-y: scroll;
     height: 100%;
-    margin-left: 24px;
+    margin-left: 16px;
     padding-right: 16px;
 
     > form {
@@ -39,6 +39,7 @@
         margin: auto;
         white-space:nowrap !important;
         line-height: normal;
+        overflow: hidden;
     }
 
     .purchase-button:hover {
@@ -92,13 +93,17 @@
         text-align: center;
         word-break: break-word;
     }
-    a {
+    > a, > p {
         display: block;
         margin: 12px 6px 0;
         font-size: 12px;
         line-height: normal;
         color: var(--text4);
         text-align: center;
+    }
+
+    > p {
+        margin-top: 4px;
     }
 
     a:hover {

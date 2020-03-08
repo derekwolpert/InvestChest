@@ -15,9 +15,21 @@ export const CustomizedXTick = props => {
     }
 
     return (
-        <g transform={`translate(${x + (range === "1d" ? 4 : 0)},${y})`}>
+        <g transform={`translate(${x + (range === "1d" ? 3 : 0)},${y})`}>
             <text dy={10} textAnchor="middle" fill="var(--chart)">
                 {value}
+            </text>
+        </g>
+    );
+};
+
+export const CustomizedYTick = props => {
+    const { x, y, payload } = props;
+
+    return (
+        <g transform={`translate(${x + 3},${y + 2})`}>
+            <text dx={10} textAnchor="middle" fill="var(--chart)">
+                {payload.value}
             </text>
         </g>
     );

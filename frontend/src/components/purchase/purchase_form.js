@@ -237,7 +237,8 @@ class PurchaseForm extends React.Component {
                         </p>
                     </section>
                     <StockChart data={this.handleChart()} range={this.state.currentRange} symbol={this.state.currentStock} />
-                    <a href="https://iexcloud.io/docs/api/#testing-sandbox" target="_blank">NOTE: Stock chart data above is purposefully manipulated using IEX Cloud's Sandbox testing setting to avoid exceeding IEX's free-tier API call limit, click here to learn more about this limitation</a>
+                    <a href="https://iexcloud.io/docs/api/#testing-sandbox" target="_blank">NOTE: Stock chart data is purposefully manipulated using IEX Cloud's Sandbox testing to avoid exceeding IEX's free-tier API call limit, click here to learn more about this limitation</a>
+                    <p>Other financial data (e.g. latest price, last updated, etc.) are unaffected</p>
                 </> : null
                 }
                 

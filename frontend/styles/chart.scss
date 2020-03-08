@@ -43,6 +43,7 @@
     border-radius: 4px;
     height: 326px;
     position: relative;
+    overflow: hidden;
 
     tspan {
         fill: var(--chart);
@@ -58,10 +59,10 @@
         font-weight: 700;
         top: 16px;
         left: 16px;
-        opacity: 0.3;
+        opacity: 0.2;
         letter-spacing: 1px;
         color: var(--text1);
-        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-width: 3px;
         -webkit-text-stroke-color: var(--bg1);
     }
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { CustomizedXTick, CustomizedTooltip } from "./stock_chart_util";
+import { CustomizedXTick, CustomizedYTick, CustomizedTooltip } from "./stock_chart_util";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 class StockChart extends React.Component {
@@ -96,9 +96,12 @@ class StockChart extends React.Component {
                             <CartesianGrid />
                             <XAxis
                                 dataKey={this.props.range === "1d" ? "minute" : "date"}
-                                height={24}
+                                height={14}
                                 tick={<CustomizedXTick range={this.props.range} />}
                                 minTickGap={this.props.range === "1d" ? 60 : null}
+                                tickMargin={-4}
+                                tickLine={false}
+                                interval="preserveStart"
                             />
                             <YAxis
                                 dataKey="close"
@@ -106,9 +109,12 @@ class StockChart extends React.Component {
                                     dataMin => Math.floor(dataMin * .95),
                                     dataMax => Math.ceil(dataMax * 1.05)
                                 ]}
-                                width={38}
+                                tick={<CustomizedYTick />}
+                                width={30}
                                 orientation="right"
                                 allowDecimals={false}
+                                tickMargin={-4}
+                                tickLine={false}
                             />
                             <Tooltip
                                 isAnimationActive={false}
