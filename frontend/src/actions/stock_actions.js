@@ -2,6 +2,7 @@ import * as APIUtil from "../util/stock_api_util";
 
 export const RECEIVE_BATCH_STOCKS = "RECEIVE_BATCH_STOCKS";
 export const RECEIVE_STOCK = "RECEIVE_STOCK";
+export const RECEIVE_CHART = "RECEIVE_CHART";
 export const RECEIVE_STOCK_ERROR = "RECEIVE_STOCK_ERROR";
 export const REMOVE_STOCK_ERROR = "REMOVE_STOCK_ERROR";
 
@@ -13,6 +14,11 @@ const receiveBatchStocks = stocks => ({
 const receiveStock = stock => ({
     type: RECEIVE_STOCK,
     stock: stock.data
+});
+
+const receiveChart = chart => ({
+    type: RECEIVE_CHART,
+    ...chart.data
 });
 
 export const receiveStockError = error => ({
@@ -37,3 +43,7 @@ export const getStock = stock => dispatch =>
         dispatch(receiveStockError(err.response.data));
     });
 
+export const getChart = (symbol, range) => dispatch =>
+    APIUtil.getChart(symbol, range).then(chart =>
+        dispatch(receiveChart(chart))
+    );

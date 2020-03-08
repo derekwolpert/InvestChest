@@ -7,3 +7,7 @@ export const getStocks = symbols => {
 export const getStock = symbol => {
     return axios.get(`/api/stocks/lookup/${symbol}`);
 };
+
+export const getChart = (symbol, range) => {
+    return axios.get(`/api/stocks/chart/${symbol}/${range}`);
+};

@@ -1,23 +1,53 @@
 import React from "react";
+import * as moment from "moment";
 
 export const CustomizedXTick = props => {
-    const { x, y, payload } = props;
+    const { x, y, payload, range } = props;
+
+    let value;
+
+    if (range === "1d") {
+        value = moment(payload.value, 'HH:mm').format('h:mm A');
+    } else if ((new Set(["5dm", "1mm", "3m", "6m", "1y"])).has(range)) {
+        value = moment(payload.value).format("MMM Do");
+    } else {
+        value = moment(payload.value).format("MMM Do YY");
+    }
+
     return (
-        <g transform={`translate(${x},${y})`}>
+        <g transform={`translate(${x + (range === "1d" ? 4 : 0)},${y})`}>
             <text dy={10} textAnchor="middle" fill="var(--chart)">
-                {payload.value}
+                {value}
             </text>
         </g>
     );
 };
 
 export const CustomizedTooltip = props => {
-    const price = props.payload[0] ? props.payload[0].value : 0;
-    const date = props.label;
-    return (
-        <section className="chart-tooltip">
-            <p>${price.toFixed(2)}</p>
-            <p>{date}</p>
-        </section>
-    );
+
+    if (props.payload[0]) {
+        const { close, date } = props.payload[0].payload;
+        const formatDate = (new Set(["2y", "5y"]).has(props.range)) ?
+            moment(date).format("MMM Do YY") : moment(date).format("MMM Do");
+        if (new Set(["1d", "5dm", "1mm"]).has(props.range)) {
+            const { minute } = props.payload[0].payload;
+            const formatMinute = moment(minute, 'HH:mm').format('h:mm A');
+            return (
+                <section className="chart-tooltip">
+                    <p>${close.toFixed(2)}</p>
+                    <p>{formatMinute}</p>
+                    <p>{formatDate}</p>
+                </section>
+            )
+        } else {
+            return (
+                <section className="chart-tooltip">
+                    <p>${close.toFixed(2)}</p>
+                    <p>{formatDate}</p>
+                </section>
+            )
+        }
+    } else {
+        return null;
+    }
 };

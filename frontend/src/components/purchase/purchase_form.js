@@ -1,6 +1,6 @@
 import React from "react";
 import * as moment from "moment";
-import StockChartContainer from "../stock_chart/stock_chart_container";
+import StockChart from "../stock_chart/stock_chart";
 
 class PurchaseForm extends React.Component {
     constructor(props) {
@@ -8,15 +8,37 @@ class PurchaseForm extends React.Component {
         this.state = {
             ticker: "",
             quantity: "",
-            currentStock: ""
+            currentStock: "",
+            currentRange: "1d"
         };
         this.partOne = this.partOne.bind(this);
         this.partTwo = this.partTwo.bind(this);
         this.switchToPartTwo = this.switchToPartTwo.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.unaffordableWarning = this.unaffordableWarning.bind(this);
+        this.setRange = this.setRange.bind(this);
+        this.handleChart = this.handleChart.bind(this);
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.state.currentStock in this.props.stocks) {
+            if (!("chart" in this.props.stocks[this.state.currentStock])) {
+                this.props.getChart(this.state.currentStock, this.state.currentRange);
+            } else if (!(this.state.currentRange in this.props.stocks[this.state.currentStock].chart)) {
+                this.props.getChart(this.state.currentStock, this.state.currentRange);
+            }
+        }
+    }
+
+    handleChart() {
+        if (!("chart" in this.props.stocks[this.state.currentStock])) {
+            return [];
+        }
+        if (!(this.state.currentRange in this.props.stocks[this.state.currentStock].chart)) {
+            return [];
+        }
+        return this.props.stocks[this.state.currentStock].chart[this.state.currentRange];
+    }
 
     update(field) {
         return e => this.setState({
@@ -27,6 +49,7 @@ class PurchaseForm extends React.Component {
     switchToPartTwo() {
         this.setState({ 
             currentStock: this.state.ticker.toUpperCase(),
+            currentRange: "1d",
             quantity: ""
         });
         if (this.state.ticker.toUpperCase() in this.props.stocks) {
@@ -117,8 +140,17 @@ class PurchaseForm extends React.Component {
         this.setState({
             ticker: "",
             quantity: "",
-            currentStock: ""
+            currentStock: "",
+            currentRange: "1d"
         })
+    }
+
+    setRange(range) {
+        if (this.state.currentRange !== range) {
+            this.setState({
+                currentRange: range
+            })
+        }
     }
 
     render() {
@@ -128,7 +160,69 @@ class PurchaseForm extends React.Component {
                     {this.partOne()}
                     {this.partTwo()}
                 </form>
-                <StockChartContainer />
+                {this.state.currentStock in this.props.stocks ?
+                <>
+                    <section className="chart-selectors">
+                        <p 
+                            className={`chart-range${this.state.currentRange === "1d" ? "-active" : ""}`}
+                            onClick={() => this.setRange("1d")}
+                        >
+                            1D
+                        </p>
+                        <p className="divider" />
+                        <p
+                            className={`chart-range${this.state.currentRange === "5dm" ? "-active" : ""}`}
+                            onClick={() => this.setRange("5dm")}
+                        >
+                            1W
+                        </p>
+                        <p className="divider" />
+                        <p
+                            className={`chart-range${this.state.currentRange === "1mm" ? "-active" : ""}`}
+                            onClick={() => this.setRange("1mm")}
+                        >
+                            1M
+                        </p>
+                        <p className="divider" />
+                        <p 
+                            className={`chart-range${this.state.currentRange === "3m" ? "-active" : ""}`}
+                            onClick={() => this.setRange("3m")}
+                        >
+                            3M
+                        </p>
+                        <p className="divider" />
+                        <p 
+                            className={`chart-range${this.state.currentRange === "6m" ? "-active" : ""}`}
+                            onClick={() => this.setRange("6m")}
+                        >
+                            6M
+                        </p>
+                        <p className="divider" />
+                        <p 
+                            className={`chart-range${this.state.currentRange === "1y" ? "-active" : ""}`}
+                            onClick={() => this.setRange("1y")}
+                        >
+                            1Y
+                        </p>
+                        <p className="divider" />
+                        <p 
+                            className={`chart-range${this.state.currentRange === "2y" ? "-active" : ""}`}
+                            onClick={() => this.setRange("2y")}
+                        >
+                            2Y
+                        </p>
+                        <p className="divider" />
+                        <p 
+                            className={`chart-range${this.state.currentRange === "5y" ? "-active" : ""}`}
+                            onClick={() => this.setRange("5y")}
+                        >
+                            5Y
+                        </p>
+                    </section>
+                    <StockChart data={this.handleChart()} range={this.state.currentRange} />
+                </> : null
+                }
+                
             </section>
         );
     }

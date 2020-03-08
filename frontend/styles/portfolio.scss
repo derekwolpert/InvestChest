@@ -25,27 +25,30 @@
 
 .portfolio-content {
     display: flex;    
-    margin: 16px 16px 16px;
+    margin: 16px 0;
     height: calc(100vh - 160px);
     display: flex;
     justify-content: space-between;
 
 
     > div {
-        margin: 8px;
+        // margin: 8px;
         overflow-x: hidden;
+        margin: 8px 0 0 16px;
     }
     > div:first-of-type {
-        flex: 4;
+        flex: 1;
         overflow-y: scroll;
-        margin-left: 0;
+        // margin-left: 0;
+        padding-right: 16px;
     }
 
     > div:last-of-type {
-        flex: 3;
+        flex: 1;
         display: flex;
         flex-direction: column;
-        margin-right: 0;
+        // margin-right: 0;
+        margin-left: 16px;
 
         > h1 {
             text-align: center;
@@ -53,18 +56,18 @@
             padding-bottom: 16px;
             margin-bottom: 8px;
             border-bottom: var(--text4) solid 2px;
+            margin-right: 16px;
+
         }
     }
 
     > span {
         border-right: var(--text4) solid 2px;
-        margin-right: 16px;
+        // margin: 0 16px;
     }
-
 }
 
 .portfolio-items-container {
-    margin-right: 16px;
     li {
         position: relative;
         font-size: 16px;
