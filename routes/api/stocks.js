@@ -32,7 +32,7 @@ router.get("/chart/:symbol/:range", (req, res) => {
         "5y": "5y/?filter=date,close"
     };
 
-    axios.get(`https://${process.env.NODE_ENV === "production" ? "cloud" : "sandbox"}.iexapis.com/stable/stock/${req.params.symbol}/chart/${rangeSubUrl[req.params.range]}&token=${iexSandboxToken}`)
+    axios.get(`https://sandbox.iexapis.com/stable/stock/${req.params.symbol}/chart/${rangeSubUrl[req.params.range]}&token=${iexSandboxToken}`)
         .then(chart => res.json({ symbol: req.params.symbol, range: req.params.range, chart: chart.data }))
         .catch(err => res.status(err.response.status).json({ noStockFound: err.response.data, symbol: req.params.symbol.toUpperCase() }));
 });
