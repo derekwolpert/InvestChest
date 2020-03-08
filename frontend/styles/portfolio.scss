@@ -12,6 +12,7 @@
         font-size: 32px;
         padding: 24px 16px 0;
         font-weight: 600;
+        flex: 1;
         > span {
             font-size: 16px;
             line-height: 16px;
@@ -25,49 +26,43 @@
 
 .portfolio-content {
     display: flex;    
-    margin: 16px 0;
+    margin: 16px 0 16px 16px;
     height: calc(100vh - 160px);
     display: flex;
     justify-content: space-between;
 
 
     > div {
-        // margin: 8px;
+        margin: 8px 0;
         overflow-x: hidden;
-        margin: 8px 0 0 16px;
     }
     > div:first-of-type {
-        flex: 1;
+        flex: 11;
         overflow-y: scroll;
-        // margin-left: 0;
-        padding-right: 16px;
     }
 
     > div:last-of-type {
-        flex: 1;
+        flex: 9 0 16px;
         display: flex;
         flex-direction: column;
-        // margin-right: 0;
-        margin-left: 16px;
 
         > h1 {
             text-align: center;
             font-size: 24px;
             padding-bottom: 16px;
-            margin-bottom: 8px;
+            margin: 0 16px 8px 24px;
             border-bottom: var(--text4) solid 2px;
-            margin-right: 16px;
-
         }
     }
 
     > span {
         border-right: var(--text4) solid 2px;
-        // margin: 0 16px;
     }
 }
 
 .portfolio-items-container {
+    padding-right: 16px;
+    margin-right: 8px;
     li {
         position: relative;
         font-size: 16px;

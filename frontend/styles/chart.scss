@@ -51,12 +51,25 @@
         stroke: var(--chart);
         opacity: 0.5;
     }
+    > p {
+        display: inline-block;
+        position: absolute;
+        font-size: 48px;
+        font-weight: 700;
+        top: 16px;
+        left: 16px;
+        opacity: 0.3;
+        letter-spacing: 1px;
+        color: var(--text1);
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: var(--bg1);
+    }
 }
 
 .chart-tooltip {
     background: rgba(var(--opacitybg), 0.8);
     border-radius: 4px;
-    padding: 4px 8px 0;
+    padding: 6px 6px 0;
     border: var(--text4) solid 1px;
     color: var(--text3);
     font-weight: 600;
@@ -64,6 +77,6 @@
     
     p {
         text-align: center;
-        margin-bottom: 4px;
+        margin-bottom: 6px;
     }
 }

@@ -66,6 +66,7 @@ class StockChart extends React.Component {
                     this.state.color === "#7cafc2" ? this.setColor() : null
                 }
             >
+                <p>{this.props.symbol}</p>
                 {this.props.data.length > 0 ?
                     <ResponsiveContainer isAnimationActive={false} height={320}>
                         <AreaChart

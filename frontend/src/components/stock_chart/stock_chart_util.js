@@ -34,16 +34,16 @@ export const CustomizedTooltip = props => {
             const formatMinute = moment(minute, 'HH:mm').format('h:mm A');
             return (
                 <section className="chart-tooltip">
-                    <p>${close.toFixed(2)}</p>
-                    <p>{formatMinute}</p>
-                    <p>{formatDate}</p>
+                    <p>Price: ${close.toFixed(2)}</p>
+                    <p>Time: {formatMinute}</p>
+                    <p>Date: {formatDate}</p>
                 </section>
             )
         } else {
             return (
                 <section className="chart-tooltip">
-                    <p>${close.toFixed(2)}</p>
-                    <p>{formatDate}</p>
+                    <p>Price: ${close.toFixed(2)}</p>
+                    <p>Date: {formatDate}</p>
                 </section>
             )
         }

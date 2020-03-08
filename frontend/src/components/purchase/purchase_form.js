@@ -57,6 +57,7 @@ class PurchaseForm extends React.Component {
         }
 
         if (!(this.state.ticker.toUpperCase() in this.props.stocks)) {
+            this.props.removeStockError();
             this.props.getStock(this.state.ticker);
         }
     }
@@ -82,26 +83,42 @@ class PurchaseForm extends React.Component {
     }
 
     partTwo() {
+
+        const loadingSpinner = <div className="center-spinner"><div className="lds-ring"><div></div><div></div><div></div><div></div></div></div>;
+        
         return (
             <>
-                {this.state.currentStock in this.props.stocks ?
-                    <>
-                        <span>{`Selected Company: ${this.props.stocks[this.state.currentStock].quote.symbol} (${this.props.stocks[this.state.currentStock].quote.companyName})`}</span>
-                        <span>{`Latest Price: $${this.props.stocks[this.state.currentStock].quote.latestPrice.toFixed(2)}`}</span>
-                        <span>Last Updated:{" "}
-                            {moment(
-                                this.props.stocks[this.state.currentStock].quote.latestUpdate
-                            ).calendar()}
-                        </span>
-                    </> :
-                    <>
-                        {this.props.stockError.noStockFound ? <span className="purchase-error">
-                            {`${this.props.stockError.noStockFound} ${this.props.stockError.symbol}`}
-                            </span> : <span>– – –</span> }
-                        <span>– – –</span>
-                        <span>– – –</span>
-                    </>
-                }
+                <span/>
+                    {this.state.currentStock ?
+                        (this.state.currentStock in this.props.stocks ?
+                            <>
+                                <span>{`Selected Company: ${this.props.stocks[this.state.currentStock].quote.symbol} (${this.props.stocks[this.state.currentStock].quote.companyName})`}</span>
+                                <span>{`Latest Price: $${this.props.stocks[this.state.currentStock].quote.latestPrice.toFixed(2)}`}</span>
+                                <span>Last Updated:{" "}
+                                    {moment(
+                                        this.props.stocks[this.state.currentStock].quote.latestUpdate
+                                    ).format('MMM Do YYYY, h:mm:ss A')}
+                                </span>
+                            </> 
+                            :
+                            (this.props.stockError.noStockFound ?
+                                <>
+                                    <span className="stock-data purchase-error">
+                                        {`${this.props.stockError.noStockFound} ${this.props.stockError.symbol}`}
+                                    </span>
+                                    <span className="empty stock-data purchase-error" />
+                                    <span className="empty stock-data purchase-error" />
+                                </>
+                                :
+                                <div className="purchase-loading-container">{loadingSpinner}</div>
+                            )
+                        ) :
+                        <>
+                            <span className="empty" />
+                            <span className="empty" />
+                            <span className="empty" />
+                        </>
+                    }
                 <input
                     type="number"
                     value={this.state.quantity}
@@ -219,7 +236,8 @@ class PurchaseForm extends React.Component {
                             5Y
                         </p>
                     </section>
-                    <StockChart data={this.handleChart()} range={this.state.currentRange} />
+                    <StockChart data={this.handleChart()} range={this.state.currentRange} symbol={this.state.currentStock} />
+                    <a href="https://iexcloud.io/docs/api/#testing-sandbox" target="_blank">NOTE: Stock chart data above is purposefully manipulated using IEX Cloud's Sandbox testing setting to avoid exceeding IEX's free-tier API call limit, click here to learn more about this limitation</a>
                 </> : null
                 }
                 

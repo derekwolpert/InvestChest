@@ -2,6 +2,8 @@
     margin-top: 8px;
     position: relative;
     overflow-y: scroll;
+    height: 100%;
+    margin-left: 24px;
     padding-right: 16px;
 
     > form {
@@ -73,17 +75,86 @@
 
     span:first-of-type {
         border-top: var(--text4) solid 2px;
-        padding-top: 16px;
         margin-top: 8px;
+        margin-bottom: 16px;
     }
 
     span:last-of-type {
         margin-bottom: 16px;
     }
 
+    .empty {
+        height: 16px;
+    }
+
     div.purchase-error {
         margin-top: 8px;
         text-align: center;
         word-break: break-word;
+    }
+    a {
+        display: block;
+        margin: 12px 6px 0;
+        font-size: 12px;
+        line-height: normal;
+        color: var(--text4);
+        text-align: center;
+    }
+
+    a:hover {
+        color: $blue;
+    }
+    .purchase-loading-container {
+        height: 64px;
+        display: block;
+        margin-bottom: 16px;
+        .center-spinner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .lds-ring {
+            display: inline-block;
+            position: relative;
+            width: 80px;
+            height: 80px;
+            align-items: center;
+
+            div {
+                box-sizing: border-box;
+                display: block;
+                position: absolute;
+                width: 64px;
+                height: 64px;
+                margin: 8px;
+                border: 8px solid var(--text4);
+                border-radius: 50%;
+                animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+                border-color: var(--text4) transparent transparent transparent;
+            }
+
+            div:nth-child(1) {
+                animation-delay: -0.45s;
+            }
+
+            div:nth-child(2) {
+                animation-delay: -0.3s;
+            }
+
+            div:nth-child(3) {
+                animation-delay: -0.15s;
+            }
+        }
+
+        @keyframes lds-ring {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
     }
 }

@@ -113,7 +113,7 @@ class PortfolioItem extends React.Component {
                     />
                     <span>
                         Last Updated:{" "}
-                        {moment(this.props.stock.latestUpdate).calendar()}
+                        {moment(this.props.stock.latestUpdate).format("l LTS")}
                     </span>
                     {this.state.showDetails ? this.formatTradesHistory() : null}
                 </li>
