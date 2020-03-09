@@ -6,7 +6,7 @@
 
 ## Overview
 
-InvestChest was completed as a part of the Winter 2020 assessment for the New York Tech Talent Pipeline. The given instructions were to build a full-stack web-based stock portfolio application where users can purchase stock based on values fetched from a third-party API.  The specifics regarding functionality (e.g. user registration, sign-in, purchase forms, portfolio and transaction page, etc.) were detailed ahead of time, as were rough design and styling guidelines (including the wireframe mockups included below).  Otherwise, I was free to utilize tools best fit for the task.
+InvestChest was completed as a part of the Winter 2020 assessment for the NYC Tech Talent Pipeline. The given instructions were to build a full-stack web-based stock portfolio application where users can purchase stock based on values fetched from a third-party API.  The specifics regarding functionality (e.g. user registration, sign-in, purchase forms, portfolio and transaction page, etc.) were detailed ahead of time, as were rough design and styling guidelines (including the wireframe mockups included below).  Otherwise, I was free to utilize tools best fit for the task.
 
 Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, Redux, Webpack, Sass, CSS3, HTML5, Recharts</b> and the third-party <b>IEX Cloud</b> finance API.  InvestChest is deployed within a <b>Docker Container</b> through <b>Amazon Web Services</b>.
 
