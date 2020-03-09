@@ -58,7 +58,7 @@ class PortfolioItem extends React.Component {
                 <table>
                     <thead>
                         <tr>
-                            <th>Date</th>
+                            <th>Purchase Date</th>
                             <th># of Shares</th>
                             <th>Price per Share</th>
                         </tr>

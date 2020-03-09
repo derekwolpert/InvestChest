@@ -17,6 +17,8 @@
     background: rgba(var(--opacitybg), 0.4);
     display: flex;
     justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .splash-content {
@@ -25,7 +27,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    overflow-y: scroll;
+    overflow: hidden;
 
     h1 {
         font-size: 56px;
@@ -69,7 +71,8 @@
         border-radius: 4px;
         border: $blue solid 2px;
         cursor: pointer;
-        display: flex;        
+        display: flex;
+        text-align: center;
     }
 
     div:hover {

@@ -27,11 +27,11 @@
 
 .portfolio-content {
     display: flex;    
-    margin: 16px 0 16px 16px;
-    height: calc(100vh - 152px);
+    margin: 8px 0 8px 16px;
+    height: calc(100vh - 136px);
     display: flex;
     justify-content: space-between;
-
+    overflow: hidden;
 
     > div {
         margin: 8px 0;
@@ -126,6 +126,7 @@
     align-items: center;
     text-align: center;
     overflow-y: scroll;
+    line-height: normal;
 
     h1 {
         font-size: 32px;
@@ -150,6 +151,8 @@
     border: var(--text4) solid 2px;
     border-radius: 4px;
     background-color: var(--bg1);
+    overflow: hidden;
+
 
     table {
         width: 100%;

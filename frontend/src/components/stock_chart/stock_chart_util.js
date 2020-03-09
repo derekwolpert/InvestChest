@@ -7,7 +7,7 @@ export const CustomizedXTick = props => {
     let value;
 
     if (range === "1d") {
-        value = moment(payload.value, 'HH:mm').format('h:mm A');
+        value = moment(payload.value, 'HH:mm').format('h:mm');
     } else if ((new Set(["5dm", "1mm", "3m", "6m", "1y"])).has(range)) {
         value = moment(payload.value).format("MMM Do");
     } else {
@@ -15,7 +15,7 @@ export const CustomizedXTick = props => {
     }
 
     return (
-        <g transform={`translate(${x + (range === "1d" ? 3 : 0)},${y})`}>
+        <g transform={`translate(${x},${y})`}>
             <text dy={10} textAnchor="middle" fill="var(--chart)">
                 {value}
             </text>
