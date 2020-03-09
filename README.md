@@ -12,10 +12,7 @@ Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, R
 
 ### [This project is currently hosted at <b>investchest.derekwolpert.com</b> - CLICK HERE to visit the live version of this project](https://investchest.derekwolpert.com)
 
-<p align="middle">
-    <img src="./readme_images/final_splash.png" width="430" />
-    <img src="./readme_images/dark_portfolio.png" width="430" />
-</p>
+![Demo Gif](./readme_images/demo.gif)
 
 ## Architecture & Technologies
 
@@ -40,7 +37,10 @@ Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, R
 - Dynamic and auto-detecting light/dark mode in conjunction with a theme switch in the webpage's header.
 - A polished, intuitive, responsive user interface/experience.
 
-![Dark/Light Theme Gif](./readme_images/dark_light.gif)
+<p align="middle">
+    <img src="./readme_images/light_dark1.gif" width="430" />
+    <img src="./readme_images/light_dark2.gif" width="430" />
+</p>
 
 ## Folder Structure
 
@@ -74,6 +74,7 @@ Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, R
     |   |   |── purchase
     |   |   |── session
     |   |   |── splash
+    |   |   |── stock_chart
     |   |   |── theme_switch
     |   |   └── transactions
     |   |── middleware          # includes a thunk middleware definition
