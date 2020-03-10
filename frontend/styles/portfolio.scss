@@ -82,7 +82,7 @@
             }
         }
 
-        svg {
+        > svg {
             position: absolute;
             margin-left: 4px;
             top: 0;
@@ -91,15 +91,24 @@
             cursor: pointer;
         }
 
-        svg:hover {
-            color: var(--text1);
+        > svg:hover {
+            color: $blue;
         }
 
         > span {
-            margin-top: 4px;
+            font-size: 14px;
+            margin: 12px 0 0 8px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        > span:first-of-type {
+            text-transform: initial;
+            margin: 4px 0 0;
             font-size: 12px;
-            display: flex;
-            justify-content: flex-end;
+            text-align: end;
+            letter-spacing: 0px;
         }
     }
 
@@ -115,6 +124,19 @@
 
     .spacer:last-of-type {
         margin-bottom: 0px;
+    }
+
+    p {
+        display: block;
+        margin: 12px 12px 0;
+        font-size: 12px;
+        line-height: normal;
+        color: var(--text4);
+        text-align: center;
+
+        a:hover {
+            color: $blue;
+        }
     }
 }
 
@@ -161,13 +183,17 @@
         padding: 4px;
         line-height: normal;
         text-align: center;
+
+        svg {
+            margin-left: 4px;
+        }
     }
 
     thead {
-        font-weight: 700;
         font-size: 14px;
         border-bottom: var(--text4) solid 2px;
         text-transform: uppercase;
+        color: $orange;
         th {
             padding-top: 8px;
         }

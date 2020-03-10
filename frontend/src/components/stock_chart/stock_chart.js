@@ -56,12 +56,11 @@ class StockChart extends React.Component {
     render() {
         const loadingSpinner = <div className="center-spinner"><div className="lds-ring"><div></div><div></div><div></div><div></div></div></div>;
 
-        return (
-            this.props.data === undefined ?
-                <section className="stock-chart-container">
-                { this.props.symbol ? loadingSpinner : null }
-                </section>
-                 :
+        return this.props.data === undefined ? (
+            <section className="stock-chart-container">
+                {this.props.symbol ? loadingSpinner : null}
+            </section>
+        ) : (
             <section
                 className="stock-chart-container"
                 onMouseOver={() =>
@@ -74,8 +73,8 @@ class StockChart extends React.Component {
                 }
             >
                 <p>{this.props.symbol}</p>
-                {this.props.data.length > 0 ?
-                    <ResponsiveContainer isAnimationActive={false} height={314}>
+                {this.props.data.length > 0 ? (
+                    <ResponsiveContainer isAnimationActive={false} height={320}>
                         <AreaChart
                             data={this.props.data}
                             margin={{ top: -1, right: 1, left: -1, bottom: 1 }}
@@ -102,10 +101,18 @@ class StockChart extends React.Component {
                             </defs>
                             <CartesianGrid />
                             <XAxis
-                                dataKey={this.props.range === "1d" ? "minute" : "date"}
+                                dataKey={
+                                    this.props.range === "1d"
+                                        ? "minute"
+                                        : "date"
+                                }
                                 height={14}
-                                tick={<CustomizedXTick range={this.props.range} />}
-                                minTickGap={this.props.range === "1d" ? 60 : null}
+                                tick={
+                                    <CustomizedXTick range={this.props.range} />
+                                }
+                                minTickGap={
+                                    this.props.range === "1d" ? 60 : null
+                                }
                                 tickMargin={-4}
                                 tickLine={false}
                                 interval="preserveStart"
@@ -113,7 +120,7 @@ class StockChart extends React.Component {
                             <YAxis
                                 dataKey="close"
                                 domain={[
-                                    dataMin => Math.floor(dataMin * .95),
+                                    dataMin => Math.floor(dataMin * 0.95),
                                     dataMax => Math.ceil(dataMax * 1.05)
                                 ]}
                                 tick={<CustomizedYTick />}
@@ -127,7 +134,9 @@ class StockChart extends React.Component {
                                 isAnimationActive={false}
                                 cursor={{ stroke: this.state.color }}
                                 content={
-                                    <CustomizedTooltip range={this.props.range} />
+                                    <CustomizedTooltip
+                                        range={this.props.range}
+                                    />
                                 }
                             />
                             <Area
@@ -145,10 +154,11 @@ class StockChart extends React.Component {
                                 }}
                             />
                         </AreaChart>
-                    </ResponsiveContainer> : loadingSpinner
-                }
+                    </ResponsiveContainer>
+                ) : (
+                    loadingSpinner
+                )}
             </section>
-                
         );
 
     }

@@ -22,7 +22,7 @@
     }
 
     .chart-range:hover {
-        color: var(--text1);
+        color: $blue;
     }
 
     .chart-range-active {
@@ -50,7 +50,7 @@
     background-color: var(--bg1);
     border: var(--text4) solid 3px;
     border-radius: 4px;
-    height: 320px;
+    height: 326px;
     position: relative;
     overflow: hidden;
 
@@ -64,8 +64,8 @@
     > p {
         display: inline-block;
         position: absolute;
-        font-size: 64px;
-        font-weight: 700;
+        font-size: 72px;
+        font-weight: 600;
         top: 16px;
         left: 16px;
         opacity: 0.3;

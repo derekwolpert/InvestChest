@@ -6,14 +6,14 @@ const iexSandboxToken = require("../../config/keys").iexSandboxToken;
 
 
 router.get("/batch/:symbols", (req, res) => {
-    axios.get(`https://${process.env.NODE_ENV === "production" ? "cloud" : "sandbox"}.iexapis.com/stable/stock/market/batch?symbols=${req.params.symbols}&filter=symbol,companyName,open,latestPrice,latestUpdate&types=quote&token=${iexApiToken}`)
+    axios.get(`https://${process.env.NODE_ENV === "production" ? "cloud" : "sandbox"}.iexapis.com/stable/stock/market/batch?symbols=${req.params.symbols}&filter=symbol,companyName,latestPrice,latestUpdate,previousClose,changePercent,lastTradeTime&types=quote&token=${iexApiToken}`)
         .then(stocks => res.json(stocks.data))
         .catch(err => res.status(err.response.status).json({ noStocksFound: err.response.data })
         );
 });
 
 router.get("/lookup/:symbol", (req, res) => {
-    axios.get(`https://${process.env.NODE_ENV === "production" ? "cloud" : "sandbox"}.iexapis.com/stable/stock/${req.params.symbol}/quote?filter=symbol,companyName,open,latestPrice,latestUpdate&token=${iexApiToken}`)
+    axios.get(`https://${process.env.NODE_ENV === "production" ? "cloud" : "sandbox"}.iexapis.com/stable/stock/${req.params.symbol}/quote?filter=symbol,companyName,latestPrice,latestUpdate,previousClose,changePercent,lastTradeTime&token=${iexApiToken}`)
         .then(stock => res.json(stock.data))
         .catch(err => res.status(err.response.status).json({ noStockFound: err.response.data, symbol: req.params.symbol.toUpperCase() }));
 });

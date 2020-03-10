@@ -1,7 +1,7 @@
 import React from "react";
 import * as moment from "moment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faChevronUp, faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 
 class PortfolioItem extends React.Component {
 
@@ -54,28 +54,64 @@ class PortfolioItem extends React.Component {
 
     formatTradesHistory() {
         return (
-            <div className="portfolio-table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Purchase Date</th>
-                            <th># of Shares</th>
-                            <th>Price per Share</th>
-                        </tr>
-                    </thead>
-                    <tbody >
-                        {[...this.props.trades].reverse().map((trade, idx) => (
-                            <tr key={idx}>
-                                <td>{moment(trade.date)
-                                    .format("l LTS")}</td>
-                                <td>{trade.numberOfShares}</td>
-                                <td>${trade.purchasePrice.toFixed(2)}</td>
+            <>
+                <span>Transaction History:</span>
+                <div className="portfolio-table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th># of Shares</th>
+                                <th>Price-per-Share</th>
+                                <th>Profit %</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
-        )
+                        </thead>
+                        <tbody>
+                            {[...this.props.trades].reverse().map((trade, idx) => (
+                                <tr key={idx}>
+                                    <td>{moment(trade.date).format("M/D/YY h:mm A")}</td>
+                                    <td>{trade.numberOfShares}</td>
+                                    <td>${trade.purchasePrice.toFixed(2)}</td>
+                                    <td
+                                        className={
+                                            this.props.stock.latestPrice !== null
+                                                ? this.props.stock.latestPrice >
+                                                trade.purchasePrice
+                                                    ? "green"
+                                                    : this.props.stock.latestPrice <
+                                                    trade.purchasePrice
+                                                    ? "red"
+                                                    : ""
+                                                : ""
+                                        }
+                                    >
+                                        {(
+                                            ((this.props.stock.latestPrice -
+                                                trade.purchasePrice) /
+                                                trade.purchasePrice) *
+                                            100
+                                        ).toFixed(2)}%
+                                        {this.props.stock.latestPrice !== null ? (
+                                            this.props.stock.latestPrice >
+                                            trade.purchasePrice ? (
+                                                <FontAwesomeIcon icon={faArrowUp} />
+                                            ) : this.props.stock.latestPrice <
+                                            trade.purchasePrice ? (
+                                                <FontAwesomeIcon icon={faArrowDown} />
+                                            ) : (
+                                                null
+                                            )
+                                        ) : (
+                                            null
+                                        )}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </>
+        );
     }
 
     render() {
@@ -90,13 +126,13 @@ class PortfolioItem extends React.Component {
                         }`}</span>
                         <span
                             className={
-                                this.props.stock.open !== null ?
-                                (this.props.stock.latestPrice > this.props.stock.open
-                                    ? "green"
-                                    : (this.props.stock.latestPrice <
-                                      this.props.stock.open
-                                    ? "red"
-                                    : "")) : ""
+                                this.props.stock.changePercent !== null
+                                    ? this.props.stock.changePercent > 0
+                                        ? "green"
+                                        : this.props.stock.changePercent < 0
+                                        ? "red"
+                                        : ""
+                                    : ""
                             }
                         >
                             {`$${this.state.totalValue.toFixed(2)}`}
@@ -116,7 +152,87 @@ class PortfolioItem extends React.Component {
                         Last Updated:{" "}
                         {moment(this.props.stock.latestUpdate).format("l LT")}
                     </span>
-                    {this.state.showDetails ? this.formatTradesHistory() : null}
+                    {this.state.showDetails ? (
+                        <>
+                            <span>Daily Trading Data:</span>
+                            <div className="portfolio-table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Previous Close</th>
+                                            <th>Latest Price</th>
+                                            <th>Change %</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                {moment(
+                                                    this.props.stock
+                                                        .lastTradeTime
+                                                ).format("M/D/YY")}
+                                            </td>
+                                            <td>
+                                                {this.props.stock
+                                                    .previousClose === null
+                                                    ? "N/A"
+                                                    : `$${this.props.stock.previousClose.toFixed(
+                                                          2
+                                                      )}`}
+                                            </td>
+                                            <td>
+                                                {this.props.stock
+                                                    .latestPrice === null
+                                                    ? "N/A"
+                                                    : `$${this.props.stock.latestPrice.toFixed(
+                                                          2
+                                                      )}`}
+                                            </td>
+                                            <td
+                                                className={
+                                                    this.props.stock
+                                                        .changePercent !== null
+                                                        ? this.props.stock
+                                                              .changePercent > 0
+                                                            ? "green"
+                                                            : this.props.stock
+                                                                  .changePercent <
+                                                              0
+                                                            ? "red"
+                                                            : ""
+                                                        : ""
+                                                }
+                                            >
+                                            {this.props.stock.changePercent !== null ? `${(this.props.stock.changePercent * 100).toFixed(2)}%` : "N/A"}
+                                            {this.props.stock.changePercent !== null ?
+                                                (this.props.stock.changePercent > 0
+                                                    ? <FontAwesomeIcon icon={faArrowUp}/>
+                                                        : (this.props.stock.changePercent < 0
+                                                        ? <FontAwesomeIcon icon={faArrowDown}/>
+                                                            : null)) : null }
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            {this.formatTradesHistory()}
+                            <p>
+                                Note: IEX Cloud API will occasionally return
+                                "null" as a value. If a "null" value occurs
+                                effected data fields are replaced with
+                                "N/A",{" "}
+                                <a
+                                    href="https://iexcloud.io/docs/api/#quote"
+                                    target="_blank"
+                                >
+                                    click here to learn more about this
+                                    limitation
+                                </a>
+                                .
+                            </p>
+                        </>
+                    ) : null}
                 </li>
                 <span className="spacer" />
             </>
