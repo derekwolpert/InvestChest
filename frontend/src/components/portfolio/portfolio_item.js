@@ -90,12 +90,13 @@ class PortfolioItem extends React.Component {
                         }`}</span>
                         <span
                             className={
-                                this.props.stock.latestPrice > this.props.stock.open
+                                this.props.stock.open !== null ?
+                                (this.props.stock.latestPrice > this.props.stock.open
                                     ? "green"
-                                    : this.props.stock.latestPrice <
+                                    : (this.props.stock.latestPrice <
                                       this.props.stock.open
                                     ? "red"
-                                    : ""
+                                    : "")) : ""
                             }
                         >
                             {`$${this.state.totalValue.toFixed(2)}`}
