@@ -31,7 +31,7 @@ Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, R
 
 NOTE: In order to avoid exceeding IEX's free-tier API call limit, Sandbox testing mode is utilized for the stock chart data - therefore the information used within the chart is purposely inaccurate. Other financial information (e.g. latest price, last updated, company name etc.) for stocks are unaffected, and should be accurate to within 15 minutes of current status.
 
-You get read more about Sandbox testing mode in IEX's docs: https://iexcloud.io/docs/api/#testing-sandbox
+You can read more about Sandbox testing mode in IEX's docs: https://iexcloud.io/docs/api/#testing-sandbox
 
 ## Functionality
 
