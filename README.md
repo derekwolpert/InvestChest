@@ -18,8 +18,8 @@ Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, R
 
 - <b>React</b>, a JavaScript library used to assist with efficient management of rapidly changing data and maintaining a single-page web application structure.
 - <b>Redux</b>, a JavaScript library used in coordination with React to create a centralized store for organizing and accessing data.
-- <b>Express.js</b>, a web application framework, used with Node.js, to provide server-side structure for querying and retrieval of API data.
 - <b>Node.js</b>, a runtime environment used to execute JavaScript for server-side scripting.
+- <b>Express.js</b>, a web application framework, used with Node.js, to provide server-side structure for querying and retrieval of API data.
 - <b>JavaScript</b>, the project's front and backend programing language.
 - <b>MongoDB</b>, a document-oriented (NoSQL) database system used for storage and management of information.
 - <b>Webpack</b>, a JavaScript bundler to assist with development and production builds.
