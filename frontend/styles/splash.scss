@@ -2,6 +2,7 @@
     padding: 40px 0 0;
     width: 100%;
     max-width: 1280px;
+    height: calc(100vh - 32px);
     margin: auto;
     background-image: url(https://investchest.s3.us-east-2.amazonaws.com/splash-bg.jpg);
     background-repeat: no-repeat;
@@ -15,19 +16,14 @@
     height: calc(100vh - 72px);
     width: 100%;
     background: rgba(var(--opacitybg), 0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
 }
 
 .splash-content {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    overflow: hidden;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
 
     h1 {
         font-size: 56px;
