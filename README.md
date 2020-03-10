@@ -38,7 +38,7 @@ You can read more about Sandbox testing mode in IEX's docs: https://iexcloud.io/
 - Comprehensive registration/authentication behavior for management of user sessions, and keeping track of user information (e.g. available cash, trades association, etc.).
 - Error handling for input fields to prevent invalid entries along with appropriate error messages (e.g. prevents users from signing in with incorrect credentials, stops a user from registering an account under a previously used email address, prevent purchase of a stocks that cost more than a user's available cash, etc.).
 - Separate Portfolio and Transaction pages. Portfolio page displays an aggregated list of all stocks a user has purchased, and lists in alphabetical order based on stock ticker. If a stock was purchased in two separate transactions then the transactions are grouped together. Transaction page displays a list of each individual trade in reverse-chronological order.
-- Color indicators for the pricing information on the Portfolio page to indicate if a user has gained (green) or lost (red) money when comparing how much they've spent on the stock verses it's current price.
+- Color indicators for the pricing information on the Portfolio page to indicate if a stock's value has increased (green) or decreased (red) in price between the most recent opening and closing values. 
 - An interactive stock chart, with hover effects, to allow users to review a selected stock's history before completing a purchase.
 - Dynamic and auto-detecting light/dark mode in conjunction with a theme switch in the webpage's header.
 - A polished, intuitive, responsive user interface/experience.

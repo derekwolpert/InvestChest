@@ -90,10 +90,10 @@ class PortfolioItem extends React.Component {
                         }`}</span>
                         <span
                             className={
-                                this.state.totalValue > this.state.totalCost
+                                this.props.stock.latestPrice > this.props.stock.open
                                     ? "green"
-                                    : this.state.totalValue <
-                                      this.state.totalCost
+                                    : this.props.stock.latestPrice <
+                                      this.props.stock.open
                                     ? "red"
                                     : ""
                             }
