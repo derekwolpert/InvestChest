@@ -87,7 +87,7 @@ You can read more about Sandbox testing mode in IEX's docs: https://iexcloud.io/
     |   |── reducers            # organizes information for the
     |   |                           # global redux store
     |   |── store               # defines the redux store
-    |   └── util                # set api calls to access backend
+    |   └── util                # sets api calls to access backend
     └── styles                  # design/styling files
 
 ## Wireframe vs. Final Design
