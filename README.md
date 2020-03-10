@@ -29,6 +29,10 @@ Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, R
 - <b>Docker</b>, containerization platform that allows the creation of lightweight/portable environments to run the project.
 - <b>Amazon Web Services</b>, an on-demand cloud computing platform utilized to assist with storage and deployment of the project (using ECR, ECS and EC2 along with appropriate network configuration).
 
+NOTE: In order to avoid exceeding IEX's free-tier API call limit, Sandbox testing mode is used for the stock chart data - therefore the information used for the chart is purposely inaccurate. Other financial information (e.g. latest price, last updated, company name etc.) for stock tickers are unaffected, and should be accurate to within 15 minutes of current status.
+
+You get read more about Sandbox testing mode in IEX's docs: https://iexcloud.io/docs/api/#testing-sandbox
+
 ## Functionality
 
 - Comprehensive registration/authentication behavior for management of user sessions, and keeping track of user information (e.g. available cash, trades association, etc.).
