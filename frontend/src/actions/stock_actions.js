@@ -5,6 +5,8 @@ export const RECEIVE_STOCK = "RECEIVE_STOCK";
 export const RECEIVE_CHART = "RECEIVE_CHART";
 export const RECEIVE_STOCK_ERROR = "RECEIVE_STOCK_ERROR";
 export const REMOVE_STOCK_ERROR = "REMOVE_STOCK_ERROR";
+export const RECEIVE_CHART_ERROR = "RECEIVE_CHART_ERROR";
+export const REMOVE_CHART_ERROR = "REMOVE_CHART_ERROR";
 
 const receiveBatchStocks = stocks => ({
     type: RECEIVE_BATCH_STOCKS,
@@ -30,6 +32,15 @@ export const removeStockError = () => ({
     type: REMOVE_STOCK_ERROR,
 });
 
+export const receiveChartError = error => ({
+    type: RECEIVE_CHART_ERROR,
+    error
+});
+
+export const removeChartError = () => ({
+    type: REMOVE_CHART_ERROR
+});
+
 export const getStocks = stocks => dispatch =>
     APIUtil.getStocks(stocks).then(stocks =>
         dispatch(receiveBatchStocks(stocks))
@@ -46,4 +57,7 @@ export const getStock = stock => dispatch =>
 export const getChart = (symbol, range) => dispatch =>
     APIUtil.getChart(symbol, range).then(chart =>
         dispatch(receiveChart(chart))
-    );
+    )
+    .catch (err => {
+        dispatch(receiveChartError(err.response.data));
+    });

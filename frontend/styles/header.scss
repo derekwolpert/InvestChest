@@ -63,6 +63,7 @@ header {
         > div:hover, a:hover {
             background: $blue;
             color: var(--text1);
+            border-color: var(--text1);
         }
 
         a.active {

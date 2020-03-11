@@ -8,7 +8,8 @@ const mapStateToProps = state => {
     return {
         user: state.session.user,
         stocks: state.entities.stocks ? state.entities.stocks : {},
-        stockError: state.errors.stock
+        stockError: state.errors.stock,
+        chartError: state.errors.chart
     };
 };
 

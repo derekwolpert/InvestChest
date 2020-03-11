@@ -126,10 +126,13 @@ class PortfolioItem extends React.Component {
                         }`}</span>
                         <span
                             className={
-                                this.props.stock.changePercent !== null
-                                    ? this.props.stock.changePercent > 0
+                                this.props.stock.previousClose !== null &&
+                                this.props.stock.latestPrice !== null
+                                    ? this.props.stock.latestPrice >
+                                      this.props.stock.previousClose
                                         ? "green"
-                                        : this.props.stock.changePercent < 0
+                                        : this.props.stock.latestPrice <
+                                          this.props.stock.previousClose
                                         ? "red"
                                         : ""
                                     : ""
@@ -192,25 +195,47 @@ class PortfolioItem extends React.Component {
                                             <td
                                                 className={
                                                     this.props.stock
-                                                        .changePercent !== null
+                                                        .previousClose !==
+                                                        null &&
+                                                    this.props.stock
+                                                        .latestPrice !== null
                                                         ? this.props.stock
-                                                              .changePercent > 0
+                                                              .latestPrice >
+                                                          this.props.stock
+                                                              .previousClose
                                                             ? "green"
                                                             : this.props.stock
-                                                                  .changePercent <
-                                                              0
+                                                                  .latestPrice <
+                                                              this.props.stock
+                                                                  .previousClose
                                                             ? "red"
                                                             : ""
                                                         : ""
                                                 }
                                             >
-                                            {this.props.stock.changePercent !== null ? `${(this.props.stock.changePercent * 100).toFixed(2)}%` : "N/A"}
-                                            {this.props.stock.changePercent !== null ?
-                                                (this.props.stock.changePercent > 0
-                                                    ? <FontAwesomeIcon icon={faArrowUp}/>
-                                                        : (this.props.stock.changePercent < 0
-                                                        ? <FontAwesomeIcon icon={faArrowDown}/>
-                                                            : null)) : null }
+                                                {this.props.stock
+                                                    .previousClose !== null &&
+                                                this.props.stock.latestPrice !==
+                                                    null
+                                                    ? `${((this.props.stock.latestPrice - this.props.stock.previousClose)
+                                                           *
+                                                          (100 / this.props.stock.previousClose)
+                                                      ).toFixed(2)}%`
+                                                    : "N/A"}
+                                                {this.props.stock
+                                                    .changePercent !== null ? (
+                                                    this.props.stock
+                                                        .changePercent > 0 ? (
+                                                        <FontAwesomeIcon
+                                                            icon={faArrowUp}
+                                                        />
+                                                    ) : this.props.stock
+                                                          .changePercent < 0 ? (
+                                                        <FontAwesomeIcon
+                                                            icon={faArrowDown}
+                                                        />
+                                                    ) : null
+                                                ) : null}
                                             </td>
                                         </tr>
                                     </tbody>
@@ -220,8 +245,7 @@ class PortfolioItem extends React.Component {
                             <p>
                                 Note: IEX Cloud API will occasionally return
                                 "null" as a value. If a "null" value occurs
-                                effected data fields are replaced with
-                                "N/A",{" "}
+                                effected data fields are replaced with "N/A",{" "}
                                 <a
                                     href="https://iexcloud.io/docs/api/#quote"
                                     target="_blank"

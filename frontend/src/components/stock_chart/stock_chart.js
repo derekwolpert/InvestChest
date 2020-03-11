@@ -52,13 +52,16 @@ class StockChart extends React.Component {
             }
         }
     }
-
+// Unavailable For Legal Reasons
     render() {
         const loadingSpinner = <div className="center-spinner"><div className="lds-ring"><div></div><div></div><div></div><div></div></div></div>;
-
         return this.props.data === undefined ? (
             <section className="stock-chart-container">
-                {this.props.symbol ? loadingSpinner : null}
+                {this.props.symbol ?
+                    (this.props.error ?
+                        <p className="chart-error">{`Chat Data for ${this.props.symbol} is unavailable through IEX Cloud API due to legal restrictions`}</p>
+                        : loadingSpinner)
+                    : null}
             </section>
         ) : (
             <section
@@ -72,7 +75,7 @@ class StockChart extends React.Component {
                     this.state.color === "#7cafc2" ? this.setColor() : null
                 }
             >
-                <p>{this.props.symbol}</p>
+                <p className="chart-ticker">{this.props.symbol}</p>
                 {this.props.data.length > 0 ? (
                     <ResponsiveContainer isAnimationActive={false} height={320}>
                         <AreaChart
