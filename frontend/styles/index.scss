@@ -11,6 +11,10 @@ body {
   }
 }
 
+html, body {
+  height: 100%;
+}
+
 input {
   line-height: normal;
   -webkit-appearance: none;
@@ -24,7 +28,7 @@ input {
   background: var(--bg2);
   border-left: var(--text4) solid 2px;
   border-right: var(--text4) solid 2px;
-  height: calc(100vh - 32px);
+  height: calc(100%);
 }
 
 @import "modal";

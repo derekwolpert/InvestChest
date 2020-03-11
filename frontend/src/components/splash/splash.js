@@ -1,25 +1,49 @@
 import React from "react";
 
 class Splash extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            height: null
+        };
+        this.handleSplashHeight = this.handleSplashHeight.bind(this);
+    }
 
     componentDidMount() {
-        document.title = "InvestChest";
+        if (this.state.height === null) {
+            this.handleSplashHeight();
+            window.addEventListener("resize", this.handleSplashHeight);
+        } else {
+            document.title = "InvestChest";
+        }
     }
 
     componentDidUpdate() {
         document.title = "InvestChest";
     }
 
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.handleSplashHeight);
+    }
+
+    handleSplashHeight() {
+        this.setState({ height: window.innerHeight });
+    }
+
     render() {
         return (
             <section className="splash-container">
-                <div className="splash">
+                <div
+                    className="splash"
+                    style={{ height: `${this.state.height - 72}px` }}
+                 >
                     <div className="splash-content">
                         <h1>Trade and Grow</h1>
                         <div>
                             <span>Welcome to InvestChest!</span>
                             <span>
-                                The online destination for building your very own (mock) stock investment portfolio
+                                The online destination for building your very
+                                own (mock) stock investment portfolio
                             </span>
                         </div>
                         <div className="splash-button-container">

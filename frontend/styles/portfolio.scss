@@ -27,8 +27,9 @@
 
 .portfolio-content {
     display: flex;    
-    margin: 8px 0 16px 16px;
-    height: calc(100vh - 144px);
+    margin: 8px 0 0px 16px;
+    padding-bottom: 16px;
+    height: calc(100vh - 128px);
     justify-content: space-between;
     overflow: hidden;
 

@@ -2,7 +2,6 @@
     padding: 40px 0 0;
     width: 100%;
     max-width: 1280px;
-    height: calc(100vh - 32px);
     margin: auto;
     background-image: url(https://investchest.s3.us-east-2.amazonaws.com/splash-bg.jpg);
     background-repeat: no-repeat;
@@ -15,7 +14,7 @@
 .splash {
     height: calc(100vh - 72px);
     width: 100%;
-    background: rgba(var(--opacitybg), 0.5);
+    background: rgba(var(--opacitybg), 0.4);
     overflow: hidden;
 }
 
@@ -67,8 +66,8 @@
         border-radius: 4px;
         border: $blue solid 2px;
         cursor: pointer;
-        display: flex;
         text-align: center;
+        width: max-content;
     }
 
     div:hover {
