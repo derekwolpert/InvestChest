@@ -64,18 +64,18 @@
     > .chart-ticker {
         display: inline-block;
         position: absolute;
-        font-size: 72px;
+        font-size: 48px;
         font-weight: 600;
         top: 16px;
         left: 16px;
         opacity: 0.3;
         color: var(--text1);
         letter-spacing: 1px;
-        -webkit-text-stroke-width: 3px;
+        -webkit-text-stroke-width: 2px;
         -webkit-text-stroke-color: var(--bg1);
     }
     .chart-error {
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 700;
         color: $red;
         text-align: center;

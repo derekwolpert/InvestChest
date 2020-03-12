@@ -12,7 +12,7 @@ const TransactionItem = (props) => {
                         props.trade.numberOfShares > 1 ? "s" : ""
                         } @ $${props.trade.purchasePrice.toFixed(2)}`}</span>
                 </div>
-                <span>
+                <span className="transaction-date">
                     Purchase Date:{" "}
                     {moment(
                         props.trade.date

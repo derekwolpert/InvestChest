@@ -119,11 +119,9 @@ class PortfolioItem extends React.Component {
             <>
                 <li>
                     <div>
-                        <span>{`${this.props.stock.symbol} (${
-                            this.props.stock.companyName
-                        }) – ${this.state.totalShares} Share${
-                            this.state.totalShares > 1 ? "s" : ""
-                        }`}</span>
+                        <span>{`${this.props.stock.symbol} – ${
+                            this.state.totalShares
+                        } Share${this.state.totalShares > 1 ? "s" : ""}`}</span>
                         <span
                             className={
                                 this.props.stock.previousClose !== null &&
@@ -139,6 +137,16 @@ class PortfolioItem extends React.Component {
                             }
                         >
                             {`$${this.state.totalValue.toFixed(2)}`}
+                            {this.props.stock.latestPrice !== null &&
+                            this.props.stock.previousClose !== null ? (
+                                this.props.stock.latestPrice >
+                                this.props.stock.previousClose ? (
+                                    <FontAwesomeIcon icon={faArrowUp} />
+                                ) : this.props.stock.latestPrice <
+                                  this.props.stock.previousClose ? (
+                                    <FontAwesomeIcon icon={faArrowDown} />
+                                ) : null
+                            ) : null}
                         </span>
                     </div>
                     <FontAwesomeIcon
@@ -152,8 +160,13 @@ class PortfolioItem extends React.Component {
                         }
                     />
                     <span>
-                        Last Updated:{" "}
-                        {moment(this.props.stock.latestUpdate).format("l LT")}
+                        <span>({this.props.stock.companyName})</span>
+                        <span>
+                            Last Updated:{" "}
+                            {moment(this.props.stock.latestUpdate).format(
+                                "l LT"
+                            )}
+                        </span>
                     </span>
                     {this.state.showDetails ? (
                         <>
@@ -217,20 +230,31 @@ class PortfolioItem extends React.Component {
                                                     .previousClose !== null &&
                                                 this.props.stock.latestPrice !==
                                                     null
-                                                    ? `${((this.props.stock.latestPrice - this.props.stock.previousClose)
-                                                           *
-                                                          (100 / this.props.stock.previousClose)
+                                                    ? `${(
+                                                          (this.props.stock
+                                                              .latestPrice -
+                                                              this.props.stock
+                                                                  .previousClose) *
+                                                          (100 /
+                                                              this.props.stock
+                                                                  .previousClose)
                                                       ).toFixed(2)}%`
                                                     : "N/A"}
                                                 {this.props.stock
-                                                    .changePercent !== null ? (
+                                                    .latestPrice !== null &&
+                                                this.props.stock
+                                                    .previousClose !== null ? (
                                                     this.props.stock
-                                                        .changePercent > 0 ? (
+                                                        .latestPrice >
+                                                    this.props.stock
+                                                        .previousClose ? (
                                                         <FontAwesomeIcon
                                                             icon={faArrowUp}
                                                         />
                                                     ) : this.props.stock
-                                                          .changePercent < 0 ? (
+                                                          .latestPrice <
+                                                      this.props.stock
+                                                          .previousClose ? (
                                                         <FontAwesomeIcon
                                                             icon={faArrowDown}
                                                         />

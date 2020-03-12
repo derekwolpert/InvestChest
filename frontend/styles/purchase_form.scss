@@ -73,6 +73,18 @@
         margin-bottom: 8px;
         width: 100%;
         text-align: center;
+        p {
+            display: inline-block;
+        }
+        .green {
+            color: $green;
+        }
+        .red {
+            color: $red;
+        }
+        svg {
+            margin-left: 4px;
+        }
     }
 
     span:first-of-type {

@@ -1,6 +1,8 @@
 import React from "react";
 import * as moment from "moment";
 import StockChart from "../stock_chart/stock_chart";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 
 class PurchaseForm extends React.Component {
     constructor(props) {
@@ -95,37 +97,115 @@ class PurchaseForm extends React.Component {
         
         return (
             <>
-                <span/>
-                    {this.state.currentStock ?
-                        (this.state.currentStock in this.props.stocks ?
-                            <>
-                                <span>{`Selected Company: ${this.props.stocks[this.state.currentStock].quote.symbol} (${this.props.stocks[this.state.currentStock].quote.companyName})`}</span>
-                                <span>{`Latest Price: $${this.props.stocks[this.state.currentStock].quote.latestPrice.toFixed(2)}`}</span>
-                                <span>Last Updated:{" "}
-                                    {moment(
-                                        this.props.stocks[this.state.currentStock].quote.latestUpdate
-                                    ).format('MMM Do YYYY, h:mm:ss A')}
-                                </span>
-                            </> 
-                            :
-                            (this.props.stockError.noStockFound ?
-                                <>
-                                    <span className="stock-data purchase-error">
-                                        {`${this.props.stockError.noStockFound} ${this.props.stockError.symbol}`}
-                                    </span>
-                                    <span className="empty stock-data purchase-error" />
-                                    <span className="empty stock-data purchase-error" />
-                                </>
-                                :
-                                <div className="purchase-loading-container">{loadingSpinner}</div>
-                            )
-                        ) :
+                <span />
+                {this.state.currentStock ? (
+                    this.state.currentStock in this.props.stocks ? (
                         <>
-                            <span className="empty" />
-                            <span className="empty" />
-                            <span className="empty" />
+                            <span>{`Selected Company: ${
+                                this.props.stocks[this.state.currentStock].quote
+                                    .symbol
+                            } (${
+                                this.props.stocks[this.state.currentStock].quote
+                                    .companyName
+                            })`}</span>
+                            <span>
+                                Latest Price:{" "}
+                                <p
+                                    className={
+                                        this.props.stocks[
+                                            this.state.currentStock
+                                        ].quote.latestPrice === null ||
+                                        this.props.stocks[
+                                            this.state.currentStock
+                                        ].quote.previousClose === null
+                                            ? ""
+                                            : this.props.stocks[
+                                                  this.state.currentStock
+                                              ].quote.latestPrice >
+                                              this.props.stocks[
+                                                  this.state.currentStock
+                                              ].quote.previousClose
+                                            ? "green"
+                                            : this.props.stocks[
+                                                  this.state.currentStock
+                                              ].quote.latestPrice <
+                                              this.props.stocks[
+                                                  this.state.currentStock
+                                              ].quote.previousClose
+                                            ? "red"
+                                            : ""
+                                    }
+                                >
+                                    {`$${this.props.stocks[
+                                        this.state.currentStock
+                                    ].quote.latestPrice.toFixed(2)} (${(
+                                        (this.props.stocks[
+                                            this.state.currentStock
+                                        ].quote.latestPrice -
+                                            this.props.stocks[
+                                                this.state.currentStock
+                                            ].quote.previousClose) *
+                                        (100 /
+                                            this.props.stocks[
+                                                this.state.currentStock
+                                            ].quote.previousClose)
+                                    ).toFixed(2)}%)`}
+                                    {(
+                                        this.props.stocks[
+                                            this.state.currentStock
+                                        ].quote.latestPrice === null ||
+                                        this.props.stocks[
+                                            this.state.currentStock
+                                        ].quote.previousClose === null
+                                    ) ? null : (
+                                        this.props.stocks[
+                                            this.state.currentStock
+                                        ].quote.latestPrice >
+                                            this.props.stocks[
+                                                this.state.currentStock
+                                            ].quote.previousClose ? (
+                                            <FontAwesomeIcon icon={faArrowUp} />
+                                        ) : this.props.stocks[
+                                              this.state.currentStock
+                                          ].quote.latestPrice <
+                                          this.props.stocks[
+                                              this.state.currentStock
+                                          ].quote.previousClose ? (
+                                            <FontAwesomeIcon
+                                                icon={faArrowDown}
+                                            />
+                                        ) : null
+                                    )}
+                                </p>
+                            </span>
+                            <span>
+                                Last Updated:{" "}
+                                {moment(
+                                    this.props.stocks[this.state.currentStock]
+                                        .quote.latestUpdate
+                                ).format("MMM Do YYYY, h:mm:ss A")}
+                            </span>
                         </>
-                    }
+                    ) : this.props.stockError.noStockFound ? (
+                        <>
+                            <span className="stock-data purchase-error">
+                                {`${this.props.stockError.noStockFound} ${this.props.stockError.symbol}`}
+                            </span>
+                            <span className="empty stock-data purchase-error" />
+                            <span className="empty stock-data purchase-error" />
+                        </>
+                    ) : (
+                        <div className="purchase-loading-container">
+                            {loadingSpinner}
+                        </div>
+                    )
+                ) : (
+                    <>
+                        <span className="empty" />
+                        <span className="empty" />
+                        <span className="empty" />
+                    </>
+                )}
                 <input
                     type="number"
                     value={this.state.quantity}
@@ -135,11 +215,20 @@ class PurchaseForm extends React.Component {
                 />
                 <input
                     className="purchase-button"
-                    disabled={((this.state.currentStock.length === 0) || (!this.state.quantity) || this.unaffordableWarning()) }
+                    disabled={
+                        this.state.currentStock.length === 0 ||
+                        !this.state.quantity ||
+                        this.unaffordableWarning()
+                    }
                     type="submit"
                     value="Submit"
                 />
-                {this.unaffordableWarning() ? <div className="purchase-error" >Cannot afford {this.state.quantity} shares of {this.state.currentStock}</div> : null }
+                {this.unaffordableWarning() ? (
+                    <div className="purchase-error">
+                        Cannot afford {this.state.quantity} shares of{" "}
+                        {this.state.currentStock}
+                    </div>
+                ) : null}
             </>
         );
     }
