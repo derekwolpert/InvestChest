@@ -52,18 +52,31 @@ class StockChart extends React.Component {
             }
         }
     }
-// Unavailable For Legal Reasons
+
     render() {
         const loadingSpinner = <div className="center-spinner"><div className="lds-ring"><div></div><div></div><div></div><div></div></div></div>;
-        return this.props.data === undefined ? (
-            <section className="stock-chart-container">
-                {this.props.symbol ?
-                    (this.props.error ?
-                        <p className="chart-error">{`Chat Data for ${this.props.symbol} is unavailable through IEX Cloud API due to legal restrictions`}</p>
-                        : loadingSpinner)
-                    : null}
-            </section>
-        ) : (
+
+        if (this.props.data === undefined) {
+            return (
+                <section className="stock-chart-container">
+                    {this.props.symbol ?
+                        (this.props.error ?
+                            <p className="chart-error">{`Chat Data for ${this.props.symbol} is unavailable through IEX Cloud API due to legal restrictions`}</p>
+                            : loadingSpinner)
+                        : null}
+                </section>
+            );
+        }
+
+        if ((typeof this.props.data === "object") && (this.props.data.length === 0 )) {
+            return (
+                <section className="stock-chart-container">
+                    <p className="chart-error">{`IEX Cloud API was unable to retrieve chart data for ${this.props.symbol} over the selected time period`}</p>
+                </section>
+            );
+        }
+        
+        return (
             <section
                 className="stock-chart-container"
                 onMouseOver={() =>
