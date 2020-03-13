@@ -44,6 +44,10 @@ header {
 
     h1:hover {
         color: $blue;
+
+        svg {
+            color: $yellow;
+        }
     }
 
     > div {

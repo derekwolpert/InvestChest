@@ -157,8 +157,12 @@
         color: var(--text4);
         text-align: center;
 
-        a:hover {
+        a {
             color: $blue;
+        }
+
+        a:hover {
+            color: var(--text1);
         }
     }
 }

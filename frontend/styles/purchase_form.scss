@@ -109,15 +109,20 @@
     > p {
         display: block;
         margin: 12px 12px 0;
-        font-size: 12px;
+        font-size: 13px;
         line-height: normal;
         color: var(--text4);
         text-align: center;
     }
 
-    a:hover {
+    a {
         color: $blue;
     }
+
+    a:hover {
+        color: var(--text1);
+    }
+
     .purchase-loading-container {
         height: 64px;
         display: block;
