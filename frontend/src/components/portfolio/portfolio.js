@@ -152,7 +152,7 @@ class Portfolio extends React.Component {
         );
 
         return (
-            <section className="portfolio-container" style={{ height: `${this.state.height - 32}px` }}>
+            <section className="portfolio-container" style={{ height: `${this.state.height - 76}px` }}>
                 {this.props.trades ? (
                     (this.props.trades && this.props.stocks) ||
                     this.props.trades.length === 0 ? (
@@ -166,7 +166,7 @@ class Portfolio extends React.Component {
                                     {this.props.user.name}
                                 </span>
                             </h1>
-                            <div className="portfolio-content" style={{ height: `${this.state.height - 128}px` }}>
+                            <div className="portfolio-content" style={{ height: `${this.state.height - 132}px` }}>
                                 {this.props.trades.length > 0 ? (
                                     <div ref={l => (this._leftscroll = l)}>
                                         {this.props.match.path === "/portfolio"

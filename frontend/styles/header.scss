@@ -1,5 +1,5 @@
 header {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
@@ -14,6 +14,7 @@ header {
     background-color: var(--bg1);
     color: var(--text3);
     border-bottom: var(--text4) solid 2px;
+    box-sizing: content-box;
 
     * {
         white-space: nowrap;

@@ -35,7 +35,7 @@ class Splash extends React.Component {
             <section className="splash-container">
                 <div
                     className="splash"
-                    style={{ height: `${this.state.height - 72}px` }}
+                    style={{ height: `${this.state.height - 76}px` }}
                  >
                     <div className="splash-content">
                         <h1>Trade and Grow</h1>
