@@ -40,9 +40,8 @@ class Splash extends React.Component {
                     <div className="splash-content">
                         <h1>Trade and Grow</h1>
                         <div>
-                            <span>Welcome to InvestChest!</span>
                             <span>
-                                The online destination for building your very
+                                Welcome to the online destination for building your very
                                 own (mock) stock investment portfolio
                             </span>
                         </div>

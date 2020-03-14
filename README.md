@@ -109,6 +109,10 @@ You can read more about Sandbox testing mode in IEX's docs: https://iexcloud.io/
     <img src="./readme_images/final_transactions.png" width="430" />
 </p>
 
+## Known Issues
+
+- During after-market hours the IEX Cloud API can return inaccurate values for the latest price and previous closing price of a given stock ticker. Many aspects of this web-app rely on these values - including the various green/red performance indicators and calculated profit values. This issue seems to be most prevalent in the middle of the night, so it is likely caused by a datetime inconsistency between IEX and the source used to aggregate financial data.
+
 ## Potential Future Features
 
 - Implement selling of stocks, which would be included as their own separate entries on the Transaction page
