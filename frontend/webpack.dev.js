@@ -11,8 +11,6 @@ module.exports = merge(common, {
         publicPath: "/",
         proxy: { "/api": "http://localhost:3000" },
         compress: true,
-        watchContentBase: true,
-        host: "0.0.0.0",
-        disableHostCheck: true
+        watchContentBase: true
     }
 });
