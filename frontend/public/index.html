@@ -3,9 +3,7 @@
 
 <head>
     <script type="text/javascript">
-        if ("investchest.herokuapp.com" === window.location.host) {
-            window.location.host = "investchest.derekwolpert.com";
-        } else if (("investchest.derekwolpert.com" === window.location.host) && (window.location.protocol !== "https:")) {
+        if (("investchest.derekwolpert.com" === window.location.host) && (window.location.protocol !== "https:")) {
             window.location.protocol = "https:";
         }
     </script>
